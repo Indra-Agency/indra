@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-background: #0a0a0a; /* سيولّد تلقائياً كلاس bg-background */
+  --color-surface: #141414;    /* سيولّد تلقائياً كلاس bg-surface */
+  --color-foreground: #fafafa; /* سيولّد تلقائياً كلاس text-foreground */
+  --color-border: #27272a;     /* سيولّد تلقائياً كلاس border-border */
+}
+
+/* التنسيقات الأساسية لـ body باستخدام كود CSS قياسي وافتراطي */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== تنسيقات شريط التمرير المخصص ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+/* ===== أنيميشن الوهج الخلفي ===== */
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+
+/* ===== تأثير وميض النقطة ===== */
+@keyframes dot-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-dot-blink {
+  animation: dot-blink 2s ease-in-out infinite;
+}
+
+/* ===== أنيميشن الشبكة المتحركة ===== */
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 60px;
+  }
+}
+
+.animate-grid-move {
+  background-image:
+    linear-gradient(to right, rgba(52, 211, 153, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52, 211, 153, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-move 20s linear infinite;
+}
