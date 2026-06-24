@@ -48,7 +48,7 @@ export function Footer() {
               <a href="mailto:indraagency.dev@gmail.com" className="w-11 h-11 bg-white rounded-full border-[1.5px] border-black flex items-center justify-center text-lg hover:bg-black hover:text-[#4FFFB0] transition-colors shadow-sm">
                 <FiMail />
               </a>
-              <a href="https://wa.me/967773799744" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white rounded-full border-[1.5px] border-black flex items-center justify-center text-lg hover:bg-black hover:text-[#4FFFB0] transition-colors shadow-sm">
+              <a href="https://wa.me/967738688812" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white rounded-full border-[1.5px] border-black flex items-center justify-center text-lg hover:bg-black hover:text-[#4FFFB0] transition-colors shadow-sm">
                 <FaWhatsapp />
               </a>
             </div>
@@ -76,8 +76,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+967773799744" dir="ltr" className="hover:opacity-100 block">
-                  +967 773 799 744
+                <a href="tel:+967738688812" dir="ltr" className="hover:opacity-100 block">
+                  +967 738 688 812
                 </a>
               </li>
               <li>مقيم في اليمن</li>
