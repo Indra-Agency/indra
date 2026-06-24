@@ -1,31 +1,32 @@
 ---
-name: indra-ui-builder-skill
-description: Constructs a high-end, RTL Arabic landing page for Indra Automation Agency using Next.js, Tailwind CSS v4, and Framer Motion.
+name: indra-boutique-agency-skill
+description: Constructs a premium, portfolio-style Arabic landing page for Indra Automation Agency using Next.js, Tailwind CSS v4, and Framer Motion, inspired by top-tier personal developer portfolios.
 ---
 
-# Indra UI Builder Skill
+# Indra Boutique Agency Skill
 
-هذه المهارة مسؤولة عن بناء وتطوير واجهات صفحة الهبوط الخاصة بوكالة "Indra" لحلول الأتمتة والذكاء الاصطناعي، مع الالتزام الصارم بالهوية البصرية الداكنة (Dark Theme) ودعم اللغة العربية (RTL).
+هذه المهارة مسؤولة عن إعادة بناء وتطوير موقع "Indra" بأسلوب (Portfolio/Boutique Agency)، بحيث يدمج بين الطابع الشخصي الاحترافي وقوة وكالات الذكاء الاصطناعي، مع دعم كامل للغة العربية (RTL).
 
 ## When to use this skill
-- عند الحاجة لبناء أو تعديل أقسام صفحة الهبوط (مثل Hero section, Services, Sectors).
-- عند إنشاء مكونات واجهة (UI Components) جديدة تخص مشروع Indra.
-- عند طلب إضافة حركات سينمائية (Animations) للعناصر أثناء التمرير.
+- عند بناء أو إعادة هيكلة الموقع ليكون شبيهاً بالمواقع الشخصية الاحترافية (Portfolio Style) مثل ahmedali.online.
+- عند تعديل الهوية البصرية لتكون أكثر عصرية وتكنولوجية.
 
 ## How to use it
-1. تأكد من أن بيئة العمل تستخدم (Next.js App Router, Tailwind v4, Framer Motion).
-2. قم بتوليد الهيكل الأساسي للمكون (Component Skeleton) باستخدام TypeScript.
-3. طبق الهوية البصرية الصارمة:
-   - استخدم `bg-background` للخلفيات (أسود).
-   - استخدم `bg-surface` للبطاقات (رمادي داكن).
-   - استخدم `text-emerald-400` للتمييز ولفت الانتباه.
-   - استخدم `border-border` للحدود الخافتة.
-4. أضف حركات `framer-motion` (مثل `initial={{ opacity: 0, y: 20 }}`) لتفعيل الظهور المتسلسل الأنيق.
-5. تأكد من أن النصوص عربية بالكامل، وأن الكود يدعم اتجاه (RTL) بشكل سليم (استخدام `ml` بدلاً من `mr` أو استخدام الخصائص المنطقية مثل `ms` و `me`).
-6. قسم الكود إلى مكونات صغيرة (Atomic Components) لسهولة الصيانة وإعادة الاستخدام.
+1. تأكد من استخدام بيئة (Next.js App Router, Tailwind v4, Framer Motion).
+2. طبق الهوية البصرية الجديدة الصارمة في ملفات الـ CSS والـ Tailwind:
+   - خلفية رئيسية (Background): أسود ليلي عميق `#09090b`.
+   - خلفية البطاقات (Surface): رمادي داكن ناعم `#18181b`.
+   - الألوان التمييزية (Accents): دمج بين الأزرق الكهربائي (`text-blue-500`) والبنفسجي النيون (`text-purple-500`) في الأزرار والتأثيرات (Gradients).
+   - نصوص (Text): أبيض ناصع للعناوين، ورمادي فاتح `#a1a1aa` للوصف.
+3. هيكلة الأقسام لتطابق نمط المواقع الشخصية الاحترافية:
+   - Hero Section: تعريف مباشر وقوي بالوكالة مع تأثير بصري أو 3D في الجانب/الخلفية.
+   - About Section: من نحن، رؤيتنا، وكيف نعمل (بأسلوب السرد الشخصي).
+   - Services/Skills: شبكة خدمات مصممة بأسلوب بطاقات تفاعلية.
+   - Portfolio/Projects: معرض لأهم الأعمال أو دراسات الحالة السابقة.
+   - Contact: نموذج تواصل مباشر وأنيق مع روابط الشبكات الاجتماعية.
+4. الحركة والتفاعل: استخدم `framer-motion` بكثافة لعمل (Micro-interactions) ناعمة جداً، مثل تأثيرات الرفع (Hover) والوهج (Glow).
+5. ادعم اتجاه (RTL) بشكل مثالي واستخدم خصائص منطقية مثل `ms` و `me`.
 
 ## Conventions:
-- لا تستخدم الألوان الصارخة أو الظلال القوية.
-- اعتمد دائمًا على المسافات السلبية (Negative Space) لراحة العين.
-- يجب أن تكون جميع المكونات مصممة للعمل بكفاءة على شاشات الجوال أولاً (Mobile-First Approach).
-- جميع النصوص الوهمية (Placeholder text) يجب أن تكون باللغة العربية وتتعلق بمجال الأتمتة (Automation) والذكاء الاصطناعي.
+- ابتعد عن التصاميم الجامدة للشركات الكبرى، وركز على تصميم يعطي إحساساً بـ "وكالة بوتيك" حصرية.
+- استخدم التدرجات اللونية (Gradients) بحذر في العناوين الرئيسية فقط لإبرازها.

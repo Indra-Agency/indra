@@ -1,24 +1,49 @@
-import { Navbar } from '@/components/landing/Navbar';
-import { HeroSection } from '@/components/landing/HeroSection';
-import { SectorsSection } from '@/components/landing/SectorsSection';
-import { ServicesSection } from '@/components/landing/ServicesSection';
-import { ProcessSection } from '@/components/landing/ProcessSection';
-import { FaqSection } from '@/components/landing/FaqSection';
-import { FinalCtaSection } from '@/components/landing/FinalCtaSection';
-import { ContactForm } from '@/components/landing/ContactForm';
-import { Footer } from '@/components/landing/Footer';
+import { Navbar }       from '@/components/landing/navbar';
+import { HeroSection }  from '@/components/landing/hero';
+import { MarqueeSection } from '@/components/landing/marquee';
+import { AboutSection } from '@/components/landing/about';
+import { MakeDifferenceSection }  from '@/components/landing/why/MakeDifferenceSection';
+import { ServicesPhysicsCloud }   from '@/components/landing/why/ServicesPhysicsCloud';
+import { ServicesSection } from '@/components/landing/services';
+import { MethodologySection } from '@/components/landing/methodology';
+import { ProjectsSection } from '@/components/landing/projects';
+import { StatsSection } from '@/components/landing/stats';
+import { ContactSection } from '@/components/landing/contact';
+import { Footer } from '@/components/landing/footer';
+import { ExperienceSection } from '@/components/landing/experience';
+import { ClientsSection } from '@/components/landing/clients';
 
-export default function Home() {
+export default async function Home() {
+  let logos: string[] = [];
+  try {
+    const res = await fetch('https://api.github.com/repos/Indra-Agency/images-web/contents/LOGO', { 
+      next: { revalidate: 3600 } // Cache for 1 hour to avoid rate limits while staying fresh
+    });
+    if (res.ok) {
+      const data = await res.json();
+      logos = data
+        .filter((item: any) => item.type === 'file' && item.name.match(/\.(png|jpe?g|svg)$/i))
+        .map((item: any) => item.download_url);
+    }
+  } catch (e) {
+    console.error('Error fetching logos from GitHub:', e);
+  }
+
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" style={{ background: '#0A0A0A' }}>
       <Navbar />
-      <HeroSection />
-      <SectorsSection />
+      <HeroSection logos={logos} />
+      <MarqueeSection />
+      <AboutSection />
+      <MakeDifferenceSection />
+      <ServicesPhysicsCloud />
       <ServicesSection />
-      <ProcessSection />
-      <FaqSection />
-      <FinalCtaSection />
-      <ContactForm />
+      <MethodologySection />
+      <ProjectsSection />
+      <StatsSection />
+      <ExperienceSection />
+      <ClientsSection logos={logos} />
+      <ContactSection />
       <Footer />
     </main>
   );

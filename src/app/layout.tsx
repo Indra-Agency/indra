@@ -1,35 +1,52 @@
-import type { Metadata } from 'next';
-// استخدام خط Cairo - الأنسب للعربية مع طابع عصري
-import { Cairo } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.css";
 
-const cairo = Cairo({
-  subsets: ['arabic', 'latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-  variable: '--font-cairo',
+/* ── Primary font: Thmanyah Sans ── */
+const thmanyahSans = localFont({
+  src: [
+    { path: "./fonts/thmanyah typeface/thmanyahsans/otf/thmanyahsans-Light.otf", weight: "300", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahsans/otf/thmanyahsans-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahsans/otf/thmanyahsans-Medium.otf", weight: "500", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahsans/otf/thmanyahsans-Bold.otf", weight: "700", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahsans/otf/thmanyahsans-Black.otf", weight: "900", style: "normal" },
+  ],
+  variable: "--font-body",
+  display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: 'Indra | حلول الأتمتة والذكاء الاصطناعي',
-  description:
-    'نُنفّذ أنظمة أتمتة متكاملة مدعومة بالذكاء الاصطناعي ترفع الكفاءة، تقلّل التكاليف التشغيلية، وتزيد المبيعات مع دمج سلس في أنظمة الـCRM الحالية.',
-  keywords: [
-    'أتمتة',
-    'ذكاء اصطناعي',
-    'CRM',
-    'عقارات',
-    'عيادات',
-    'تجارة إلكترونية',
-    'Indra',
+/* ── Heading font: Thmanyah Serif Display ── */
+const thmanyahSerifDisplay = localFont({
+  src: [
+    { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/otf/thmanyahserifdisplay-Light.otf", weight: "300", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/otf/thmanyahserifdisplay-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/otf/thmanyahserifdisplay-Medium.otf", weight: "500", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/otf/thmanyahserifdisplay-Bold.otf", weight: "700", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/otf/thmanyahserifdisplay-Black.otf", weight: "900", style: "normal" },
   ],
-  openGraph: {
-    title: 'Indra | حلول الأتمتة والذكاء الاصطناعي',
-    description:
-      'نُنفّذ أنظمة أتمتة متكاملة مدعومة بالذكاء الاصطناعي ترفع الكفاءة وتزيد المبيعات.',
-    locale: 'ar_SA',
-    type: 'website',
-  },
+  variable: "--font-heading",
+  display: "swap",
+});
+
+/* ── Paragraph/Sub-heading font: Thmanyah Serif Text ── */
+const thmanyahSerifText = localFont({
+  src: [
+    { path: "./fonts/thmanyah typeface/thmanyahseriftext/otf/thmanyahseriftext-Light.otf", weight: "300", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahseriftext/otf/thmanyahseriftext-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahseriftext/otf/thmanyahseriftext-Medium.otf", weight: "500", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahseriftext/otf/thmanyahseriftext-Bold.otf", weight: "700", style: "normal" },
+    { path: "./fonts/thmanyah typeface/thmanyahseriftext/otf/thmanyahseriftext-Black.otf", weight: "900", style: "normal" },
+  ],
+  variable: "--font-text",
+  display: "swap",
+});
+
+
+
+export const metadata: Metadata = {
+  title: "Indra | وكالة أتمتة الذكاء الاصطناعي",
+  description:
+    "وكالة متخصصة في حلول الأتمتة والذكاء الاصطناعي. نُحوّل العمليات اليدوية إلى أنظمة ذكية تعمل على مدار الساعة.",
 };
 
 export default function RootLayout({
@@ -38,9 +55,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // تحويل اتجاه الموقع ليكون من اليمين لليسار (RTL)
-    <html lang="ar" dir="rtl" className={cairo.variable}>
-      <body className="min-h-screen bg-background text-foreground overflow-x-hidden font-[family-name:var(--font-cairo)]">
+    <html
+      lang="ar"
+      dir="rtl"
+      className={`${thmanyahSans.variable} ${thmanyahSerifDisplay.variable} ${thmanyahSerifText.variable} scroll-smooth`}
+    >
+      <body
+        style={{ fontFamily: "var(--font-body), sans-serif", direction: "rtl" }}
+        className="bg-[#0A0A0A] text-white antialiased"
+      >
         {children}
       </body>
     </html>
