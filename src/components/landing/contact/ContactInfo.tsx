@@ -45,8 +45,8 @@ export function ContactInfo() {
         </div>
         <div className="flex flex-col items-start justify-center w-full pl-0 sm:pl-14 text-start">
           <span className="text-[11px] text-zinc-400 font-bold mb-1">الهاتف</span>
-          <a href="tel:+967773799744" className="font-extrabold text-[14px] hover:text-[#10b981] transition-colors" dir="ltr">
-            +967 773 799 744
+          <a href="tel:+967738688812" className="font-extrabold text-[14px] hover:text-[#10b981] transition-colors" dir="ltr">
+            +967 738 688 812
           </a>
         </div>
       </div>
@@ -58,7 +58,7 @@ export function ContactInfo() {
         </div>
         <div className="flex flex-col items-start justify-center w-full pl-0 sm:pl-14 text-start">
           <span className="text-[11px] text-zinc-400 font-bold mb-1">واتساب</span>
-          <a href="https://wa.me/967773799744" target="_blank" rel="noopener noreferrer" className="font-extrabold text-[14px] hover:text-[#10b981] transition-colors">
+          <a href="https://wa.me/967738688812" target="_blank" rel="noopener noreferrer" className="font-extrabold text-[14px] hover:text-[#10b981] transition-colors">
             تواصل الآن
           </a>
         </div>
