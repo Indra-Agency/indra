@@ -49,6 +49,8 @@ export const metadata: Metadata = {
     "وكالة متخصصة في حلول الأتمتة والذكاء الاصطناعي. نُحوّل العمليات اليدوية إلى أنظمة ذكية تعمل على مدار الساعة.",
 };
 
+import { FloatingWhatsApp } from "@/components/landing/FloatingWhatsApp";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,6 +67,7 @@ export default function RootLayout({
         className="bg-[#0A0A0A] text-white antialiased"
       >
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

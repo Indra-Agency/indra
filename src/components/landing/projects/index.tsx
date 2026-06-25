@@ -22,26 +22,25 @@ const PROJECTS_DATA = [
       { name: 'Analytics', img: 'https://api.iconify.design/logos:google-analytics.svg' },
       { name: 'Supabase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
       { name: 'Google Maps', img: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg' },
-    ]
+    ],
+    image: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/project/2.png'
   },
   {
-    title: 'Play Game',
+    title: 'أبشر',
     year: '2026',
-    country: 'دول الخليج (عن بُعد)',
-    logo: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/13.png',
+    country: 'السعودية',
     bgColor: 'bg-white',
     textColor: 'text-black',
-    desc: 'موقع يوفر جميع بطاقات الترفيه للألعاب والمسلسلات والأفلام. بُني الموقع من الصفر مع تطوير تجربة المستخدم (UI/UX) وتحسين محركات البحث في وقت قياسي جداً (شهر واحد).',
-    tags: ['تطوير شامل', 'تجربة مستخدم', 'أُطلق في شهر'],
-    ctaType: 'website',
+    desc: 'منصة متكاملة (تطبيق Flutter وموقع إلكتروني) مخصصة لاستئجار المعدات الثقيلة، وتوفير فرص عمل وتوظيف لأصحاب المعدات لربطهم بالعملاء بسهولة وموثوقية.',
+    tags: ['تطبيق وموقع', 'استئجار معدات', 'توظيف'],
+    ctaType: 'apps',
     tech: [
-      { name: 'WordPress', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg' },
-      { name: 'SEO', img: 'https://api.iconify.design/flat-color-icons:search.svg' },
-      { name: 'GA4', img: 'https://api.iconify.design/logos:google-analytics.svg' },
-      { name: 'Analytics', img: 'https://api.iconify.design/logos:google-analytics.svg' },
-      { name: 'Optimization', img: 'https://api.iconify.design/flat-color-icons:positive-dynamic.svg' },
-      { name: 'SEO Strategy', img: 'https://api.iconify.design/flat-color-icons:bullish.svg' },
-    ]
+      { name: 'Flutter', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
+      { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+      { name: 'Firebase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
+      { name: 'Google Maps', img: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg' },
+    ],
+    image: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/project/3.jpg'
   },
   {
     title: 'Delivery App',
@@ -61,7 +60,8 @@ const PROJECTS_DATA = [
       { name: 'Analytics', img: 'https://api.iconify.design/logos:google-analytics.svg' },
       { name: 'Supabase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
       { name: 'Google Maps', img: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg' },
-    ]
+    ],
+    image: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/project/1.png'
   }
 ];
 
@@ -203,7 +203,7 @@ export function ProjectsSection() {
 
                   {/* Fully covering mockup image */}
                   <img
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                    src={project.image}
                     alt="Project Showcase"
                     className="w-full h-full object-cover absolute inset-0"
                   />
