@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { FiSend, FiCheck, FiX } from 'react-icons/fi';
 import { useState } from 'react';
+import { NeoButton } from '@/components/ui/NeoButton';
+import { submitContactForm } from '@/actions/contact';
 
 export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -10,20 +12,25 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
-    
-    const form = e.currentTarget;
+    const form = e.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
+    
+    // Explicit client-side validation to catch what HTML5 validation might miss programmatically
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const subject = formData.get('_subject') as string;
+    const message = formData.get('message') as string;
+    
+    if (!name || !email || !subject || !message || !email.includes('@')) {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+      return;
+    }
 
     try {
-      const res = await fetch("https://formsubmit.co/ajax/indraagency.dev@gmail.com", {
-        method: "POST",
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-      });
+      const result = await submitContactForm(formData);
 
-      if (res.ok) {
+      if (result.success) {
         setStatus('success');
         form.reset();
         setTimeout(() => setStatus('idle'), 5000);
@@ -55,7 +62,6 @@ export function ContactForm() {
 
         {/* Spam Protection & Config */}
         <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
 
         <div className="flex-1 space-y-5">
           {/* Row 1 */}
@@ -112,10 +118,11 @@ export function ContactForm() {
         </div>
 
         {/* Submit Button */}
-        <button 
+        <NeoButton 
           type="submit" 
+          variant="green"
           disabled={status === 'loading'}
-          className="mt-8 w-full bg-[#4FFFB0] text-black font-extrabold text-[16px] py-4 rounded-2xl flex items-center justify-center gap-3 border-2 border-black hover:-translate-y-1 hover:-translate-x-1 transition-transform shadow-[4px_4px_0_0_#000] disabled:opacity-70 disabled:pointer-events-none"
+          className="mt-8 w-full text-[16px] py-4 disabled:opacity-70 disabled:pointer-events-none"
         >
           {status === 'loading' ? (
             'جاري الإرسال...'
@@ -126,7 +133,7 @@ export function ContactForm() {
           ) : (
             <>إرسال الرسالة <FiSend className="text-lg -rotate-45 mb-1" /></>
           )}
-        </button>
+        </NeoButton>
       </form>
     </motion.div>
   );

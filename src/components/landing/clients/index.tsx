@@ -1,17 +1,22 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const MarqueeSet = ({ logos }: { logos: string[] }) => (
   <div className="flex shrink-0 items-center w-max">
     {logos.map((logo, i) => (
       <div key={i} className="flex shrink-0 px-4 md:px-6 justify-center">
-        <img
-          src={logo}
-          alt="Client Logo"
-          // White with gray mask effect
-          className="h-14 md:h-20 lg:h-24 max-w-[160px] md:max-w-[220px] object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300"
-        />
+        <div className="relative h-14 md:h-20 lg:h-24 w-[160px] md:w-[220px]">
+          <Image
+            src={logo}
+            alt="Client Logo"
+            fill
+            unoptimized={true}
+            sizes="(max-width: 768px) 160px, 220px"
+            className="object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300"
+          />
+        </div>
       </div>
     ))}
   </div>

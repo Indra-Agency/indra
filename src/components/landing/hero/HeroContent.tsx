@@ -18,17 +18,9 @@
 import { motion } from 'framer-motion';
 import { HeroBadge } from './HeroBadge';
 import { TrustedBy } from './TrustedBy';
+import { NeoButton } from '@/components/ui/NeoButton';
 
-/* ── Edit copy here without touching component markup ── */
-const COPY = {
-  headingLine1: 'حين تُدار أنظمتك بذكاء',
-  headingAccent: 'يصبح النمو',
-  headingLine2: 'نتيجة حتمية.',
-  subtext1: 'وكالة متخصصة في حلول الأتمتة والذكاء الاصطناعي.',
-  subtext2: 'نُحوّل العمليات اليدوية إلى أنظمة ذكية تعمل على مدار الساعة.',
-  ctaPrimary:   { label: 'شاهد أعمالنا',  href: '#work' },
-  ctaSecondary: { label: 'تواصل معنا',     href: '#contact' },
-};
+import { HERO_COPY } from '@/data/hero';
 
 /* ── Animation variants ── */
 const container = {
@@ -59,10 +51,10 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
           className="ar-heading text-3xl sm:text-4xl md:text-5xl lg:text-[60px]"
           style={{ color: '#fff', lineHeight: 1.35, fontWeight: 700, letterSpacing: '-0.01em' }}
         >
-          {COPY.headingLine1}
+          {HERO_COPY.headingLine1}
           <br />
-          <span style={{ color: '#4FFFB0' }}>{COPY.headingAccent}</span>{' '}
-          {COPY.headingLine2}
+          <span style={{ color: '#4FFFB0' }}>{HERO_COPY.headingAccent}</span>{' '}
+          {HERO_COPY.headingLine2}
         </h1>
       </motion.div>
 
@@ -72,9 +64,9 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
         className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-10"
         style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 400 }}
       >
-        {COPY.subtext1}
+        {HERO_COPY.subtext1}
         <br className="hidden sm:block" />
-        {COPY.subtext2}
+        {HERO_COPY.subtext2}
       </motion.p>
 
       {/* CTA Buttons */}
@@ -84,24 +76,24 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
         style={{ pointerEvents: 'auto' }}
       >
         {/* Primary — Green */}
-        <a href={COPY.ctaPrimary.href} className="btn-neo btn-neo-green">
+        <NeoButton href={HERO_COPY.ctaPrimary.href} variant="green">
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
             viewBox="0 0 24 24" fill="none" stroke="currentColor"
             strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="m12 19-7-7 7-7" /><path d="M19 12H5" />
           </svg>
-          {COPY.ctaPrimary.label}
-        </a>
+          {HERO_COPY.ctaPrimary.label}
+        </NeoButton>
 
         {/* Secondary — White */}
-        <a href={COPY.ctaSecondary.href} className="btn-neo btn-neo-white">
+        <NeoButton href={HERO_COPY.ctaSecondary.href} variant="white">
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
             viewBox="0 0 24 24" fill="none" stroke="currentColor"
             strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
-          {COPY.ctaSecondary.label}
-        </a>
+          {HERO_COPY.ctaSecondary.label}
+        </NeoButton>
       </motion.div>
 
       {/* Trusted-By */}

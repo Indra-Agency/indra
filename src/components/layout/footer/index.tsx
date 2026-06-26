@@ -2,6 +2,7 @@
 
 import { FiArrowLeft, FiArrowUp, FiMail } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import { NeoButton } from '@/components/ui/NeoButton';
 
 export function Footer() {
   const scrollToTop = () => {
@@ -22,13 +23,13 @@ export function Footer() {
             لديك مشروع أو فكرة أو تريد أن تقول مرحباً؟ يسعدني التواصل.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto px-4">
-            <a href="#contact" className="w-full sm:w-auto bg-white text-black font-extrabold text-[15px] px-8 py-4 rounded-full border-2 border-black flex items-center justify-center gap-3 shadow-[4px_4px_0_0_#000] hover:-translate-y-1 hover:-translate-x-1 transition-transform">
+            <NeoButton href="#contact" variant="white" className="w-full sm:w-auto text-[15px] px-8 py-4">
               ابدأ مشروعاً
               <FiArrowLeft className="text-xl" />
-            </a>
-            <a href="mailto:indraagency.dev@gmail.com" className="w-full sm:w-auto bg-white text-black font-extrabold text-[15px] px-8 py-4 rounded-full border-2 border-black flex items-center justify-center gap-3 shadow-[4px_4px_0_0_#000] hover:-translate-y-1 hover:-translate-x-1 transition-transform">
+            </NeoButton>
+            <NeoButton href="mailto:indraagency.dev@gmail.com" variant="white" className="w-full sm:w-auto text-[15px] px-8 py-4">
               قُل مرحباً
-            </a>
+            </NeoButton>
           </div>
         </div>
 

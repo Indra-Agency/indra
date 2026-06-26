@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 /**
  * TrustedBy.tsx
@@ -29,12 +30,16 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
       <div className="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-5 lg:gap-x-6 gap-y-3">
         {displayLogos.length > 0 ? (
           displayLogos.map((url, i) => (
-            <img
-              key={i}
-              src={url}
-              alt={`Partner ${i + 1}`}
-              className="h-14 md:h-16 lg:h-20 max-w-[140px] md:max-w-[180px] lg:max-w-[200px] object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
-            />
+            <div key={i} className="relative h-14 w-[140px] md:h-16 md:w-[180px] lg:h-20 lg:w-[200px]">
+              <Image
+                src={url}
+                alt={`Partner ${i + 1}`}
+                fill
+                unoptimized={true}
+                sizes="(max-width: 768px) 140px, (max-width: 1024px) 180px, 200px"
+                className="object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
+              />
+            </div>
           ))
         ) : (
           <div className="text-sm font-semibold tracking-widest uppercase text-zinc-500">

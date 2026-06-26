@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     "وكالة متخصصة في حلول الأتمتة والذكاء الاصطناعي. نُحوّل العمليات اليدوية إلى أنظمة ذكية تعمل على مدار الساعة.",
 };
 
-import { FloatingWhatsApp } from "@/components/landing/FloatingWhatsApp";
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
 export default function RootLayout({
   children,
