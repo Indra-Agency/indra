@@ -3,15 +3,15 @@ import { HeroSection }  from '@/components/landing/hero';
 import { MarqueeSection } from '@/components/landing/marquee';
 import { AboutSection } from '@/components/landing/about';
 import { MakeDifferenceSection }  from '@/components/landing/why/MakeDifferenceSection';
-import { ServicesPhysicsCloud }   from '@/components/landing/why/ServicesPhysicsCloud';
 import { ServicesSection } from '@/components/landing/services';
 import { MethodologySection } from '@/components/landing/methodology';
 import { ProjectsSection } from '@/components/landing/projects';
 import { StatsSection } from '@/components/landing/stats';
-import { ContactSection } from '@/components/landing/contact';
 import { Footer } from '@/components/layout/footer';
 import { ExperienceSection } from '@/components/landing/experience';
 import { ClientsSection } from '@/components/landing/clients';
+import { DynamicServicesPhysicsCloud as ServicesPhysicsCloud } from '@/components/wrappers/DynamicServicesPhysicsCloud';
+import { DynamicContactSection as ContactSection } from '@/components/wrappers/DynamicContactSection';
 
 interface GitHubRepoItem {
   name: string;
