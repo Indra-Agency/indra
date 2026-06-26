@@ -58,23 +58,45 @@ export function MorphingCanvas() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      const w   = canvas.offsetWidth;
-      const h   = canvas.offsetHeight;
-      canvas.width  = w * dpr;
-      canvas.height = h * dpr;
+    let cw = canvas.offsetWidth;
+    let ch = canvas.offsetHeight;
+    let rect = canvas.getBoundingClientRect();
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width  = cw * dpr;
+    canvas.height = ch * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (pRef.current.length === 0) initParticles(cw, ch);
+
+    const ro = new ResizeObserver((entries) => {
+      if (!entries[0]) return;
+      cw = entries[0].contentRect.width;
+      ch = entries[0].contentRect.height;
+      canvas.width = cw * dpr;
+      canvas.height = ch * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      if (pRef.current.length === 0) initParticles(w, h);
+      rect = canvas.getBoundingClientRect();
+    });
+    ro.observe(canvas);
+
+    const onScroll = () => {
+      rect = canvas.getBoundingClientRect();
     };
-    resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Handle mouse move with cached rect to avoid forced layout
+    const onMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
+    const onMouseLeave = () => {
+      mouseRef.current = { x: -9999, y: -9999 };
+    };
+    canvas.addEventListener('mousemove', onMouseMove, { passive: true });
+    canvas.addEventListener('mouseleave', onMouseLeave, { passive: true });
 
     const loop = (timestamp: number) => {
       timeRef.current = timestamp * 0.001;
       const t  = timeRef.current;
-      const cw = canvas.offsetWidth;
-      const ch = canvas.offsetHeight;
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
 
@@ -138,25 +160,17 @@ export function MorphingCanvas() {
 
     rafRef.current = requestAnimationFrame(loop);
     return () => {
-      window.removeEventListener('resize', resize);
+      ro.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      canvas.removeEventListener('mousemove', onMouseMove);
+      canvas.removeEventListener('mouseleave', onMouseLeave);
       cancelAnimationFrame(rafRef.current);
     };
   }, [initParticles]);
 
-  const onMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
-    const rect = canvasRef.current!.getBoundingClientRect();
-    mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
-  }, []);
-
-  const onMouseLeave = useCallback(() => {
-    mouseRef.current = { x: -9999, y: -9999 };
-  }, []);
-
   return (
     <canvas
       ref={canvasRef}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
       className="absolute inset-0 w-full h-full"
       style={{ pointerEvents: 'auto', zIndex: 1 }}
     />

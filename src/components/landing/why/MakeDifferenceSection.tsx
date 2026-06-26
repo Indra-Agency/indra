@@ -35,43 +35,41 @@ export function MakeDifferenceSection() {
     const DURATION = 15000; // 15 seconds for a full round-trip (very slow & smooth)
     let start: number | null = null;
     let raf: number;
+    let widthCache = { container: 0, text: 0, svg: 120 };
+
+    // Asynchronously observe dimensions without forced reflows
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === containerRef.current) widthCache.container = entry.contentRect.width;
+        else if (entry.target === textRef.current) widthCache.text = entry.contentRect.width;
+        else if (gradRef.current?.ownerSVGElement && entry.target === gradRef.current.ownerSVGElement) {
+          widthCache.svg = entry.contentRect.width;
+        }
+      }
+    });
+
+    if (containerRef.current) ro.observe(containerRef.current);
+    if (textRef.current) ro.observe(textRef.current);
+    if (gradRef.current?.ownerSVGElement) ro.observe(gradRef.current.ownerSVGElement);
 
     const step = (ts: number) => {
       if (start === null) start = ts;
       
       const progress = ((ts - start) % DURATION) / DURATION;
-      
-      /* 
-       * Smooth Ping-Pong using Sine wave (0 → 1 → 0)
-       * ease=0 means light is at far right (start of text)
-       * ease=1 means light is at far left (end of SVG)
-       */
       const ease = (Math.sin(progress * Math.PI * 2 - Math.PI / 2) + 1) / 2;
 
       if (containerRef.current && textRef.current && gradRef.current) {
-        const totalWidth = containerRef.current.offsetWidth;
-        const textWidth = textRef.current.offsetWidth;
+        const totalWidth = widthCache.container || window.innerWidth;
+        const textWidth = widthCache.text || 500;
         
-        /* 
-          Global light X: 0 is the far left of the container.
-          We start 150px off-screen right, and end 150px off-screen left.
-        */
         const lightX = (totalWidth + 150) - ease * (totalWidth + 300);
 
-        /* 1. Map to Text (text is on the right in RTL, its left edge is totalWidth - textWidth) */
         const textLocalX = lightX - (totalWidth - textWidth);
-        // Math for bg-size: 300% to map local center to CSS percentage:
         const pos = 100 * (1.5 - textLocalX / textWidth) / 2;
         textRef.current.style.backgroundPosition = `${pos}% center`;
 
-        /* 2. Map to SVG (svg is on the left, its left edge is 0) */
-        const svgElement = gradRef.current.ownerSVGElement;
-        const svgWidth = svgElement ? svgElement.clientWidth : 120;
-        
-        // Map pixel X to SVG viewBox units (viewBox width is 120)
+        const svgWidth = widthCache.svg || 120;
         const svgLocalX = lightX * (120 / svgWidth);
-        
-        // Gradient center is at X=60. We translate it so center matches svgLocalX.
         const tx = svgLocalX - 60;
         gradRef.current.setAttribute('gradientTransform', `translate(${tx.toFixed(2)}, 0)`);
       }
@@ -80,7 +78,10 @@ export function MakeDifferenceSection() {
     };
 
     raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+    };
   }, []);
 
   return (

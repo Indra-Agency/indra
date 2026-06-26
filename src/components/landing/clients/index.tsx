@@ -7,14 +7,16 @@ const MarqueeSet = ({ logos }: { logos: string[] }) => (
   <div className="flex shrink-0 items-center w-max">
     {logos.map((logo, i) => (
       <div key={i} className="flex shrink-0 px-4 md:px-6 justify-center">
-        <div className="relative h-14 md:h-20 lg:h-24 w-[160px] md:w-[220px]">
+        <div className="flex justify-center items-center w-[160px] md:w-[220px]">
           <Image
             src={logo}
             alt="Client Logo"
-            fill
+            width={220}
+            height={96}
+            loading="lazy"
+            decoding="async"
             unoptimized={true}
-            sizes="(max-width: 768px) 160px, 220px"
-            className="object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300"
+            className="object-contain w-full h-auto brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300"
           />
         </div>
       </div>

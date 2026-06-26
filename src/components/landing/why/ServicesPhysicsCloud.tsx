@@ -47,136 +47,113 @@ export function ServicesPhysicsCloud() {
   const engineRef = useRef<Matter.Engine | null>(null);
 
   useEffect(() => {
-    if (!sceneRef.current) return;
-    const scene = sceneRef.current;
-    
-    // 1. Setup Matter.js Engine & World
-    const engine = Matter.Engine.create();
-    engine.world.gravity.y = 0.8; // Realistic drop feel
-    engineRef.current = engine;
+    let runner: Matter.Runner;
+    let engine: Matter.Engine;
+    let raf: number;
+    let ro: ResizeObserver;
+    let onScroll: () => void;
+    let handlePointerDown: (e: PointerEvent) => void;
+    let handlePointerMove: (e: PointerEvent) => void;
+    let handlePointerLeave: () => void;
 
-    const width = scene.clientWidth;
-    const height = scene.clientHeight;
+    // Wrap initialization in requestIdleCallback to prevent blocking the main thread during hydration
+    const idleId = (window.requestIdleCallback || window.setTimeout)(() => {
+      if (!sceneRef.current) return;
+      const scene = sceneRef.current;
+      
+      engine = Matter.Engine.create();
+      engine.world.gravity.y = 0.8;
+      engineRef.current = engine;
 
-    // 2. Invisible boundaries (Edge-to-Edge)
-    const wallOptions = { 
-      isStatic: true, 
-      render: { visible: false },
-      friction: 0.2, 
-      restitution: 0.3 // Soft bounce
-    };
-    
-    // Extrawide bounds to prevent anything from escaping
-    const ground = Matter.Bodies.rectangle(width / 2, height + 25, width * 3, 50, wallOptions);
-    const leftWall = Matter.Bodies.rectangle(-25, height / 2, 50, height * 3, wallOptions);
-    const rightWall = Matter.Bodies.rectangle(width + 25, height / 2, 50, height * 3, wallOptions);
-    const ceiling = Matter.Bodies.rectangle(width / 2, -500, width * 3, 50, wallOptions); 
+      const width = scene.clientWidth;
+      const height = scene.clientHeight;
+      let rect = scene.getBoundingClientRect();
 
-    Matter.World.add(engine.world, [ground, leftWall, rightWall, ceiling]);
+      const wallOptions = { isStatic: true, render: { visible: false }, friction: 0.2, restitution: 0.3 };
+      const ground = Matter.Bodies.rectangle(width / 2, height + 25, width * 3, 50, wallOptions);
+      const leftWall = Matter.Bodies.rectangle(-25, height / 2, 50, height * 3, wallOptions);
+      const rightWall = Matter.Bodies.rectangle(width + 25, height / 2, 50, height * 3, wallOptions);
+      const ceiling = Matter.Bodies.rectangle(width / 2, -500, width * 3, 50, wallOptions); 
+      Matter.World.add(engine.world, [ground, leftWall, rightWall, ceiling]);
 
-    // 3. Create physical bodies for each DOM tag
-    const tagBodies: { body: Matter.Body, elem: HTMLElement }[] = [];
-    
-    TAGS.forEach((tag, idx) => {
-      const elem = elementsRef.current.get(tag.id);
-      if (elem) {
-        const w = elem.offsetWidth;
-        const h = elem.offsetHeight;
-        
-        // Spawn randomly across the top edge
-        const startX = 50 + Math.random() * (width - 100);
-        const startY = -100 - (Math.random() * 400);
+      const tagBodies: { body: Matter.Body, elem: HTMLElement, w: number, h: number }[] = [];
+      
+      TAGS.forEach((tag) => {
+        const elem = elementsRef.current.get(tag.id);
+        if (elem) {
+          const w = elem.offsetWidth;
+          const h = elem.offsetHeight;
+          const startX = 50 + Math.random() * (width - 100);
+          const startY = -100 - (Math.random() * 400);
 
-        const body = Matter.Bodies.rectangle(startX, startY, w, h, {
-          restitution: 0.3,
-          friction: 0.1,
-          density: 0.001,
-          chamfer: { radius: h / 2 }, // Pill shape
-          angle: (Math.random() - 0.5) * 0.4,
+          const body = Matter.Bodies.rectangle(startX, startY, w, h, {
+            restitution: 0.3, friction: 0.1, density: 0.001,
+            chamfer: { radius: h / 2 }, angle: (Math.random() - 0.5) * 0.4,
+          });
+          Matter.World.add(engine.world, body);
+          tagBodies.push({ body, elem, w, h }); // Cache w and h to avoid forced reflows
+        }
+      });
+
+      let isInteractive = false;
+      const triggerScatter = (e: PointerEvent, forceMultiplier: number = 1) => {
+        const mousePos = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+        const bodies = tagBodies.map(t => t.body);
+        const hovered = Matter.Query.point(bodies, mousePos);
+        hovered.forEach(body => {
+          const forceMagnitude = 0.05 * forceMultiplier;
+          Matter.Body.applyForce(body, body.position, {
+            x: (Math.random() - 0.5) * forceMagnitude, y: -forceMagnitude
+          });
         });
-        
-        Matter.World.add(engine.world, body);
-        tagBodies.push({ body, elem });
-      }
+      };
+
+      handlePointerDown = (e: PointerEvent) => { isInteractive = true; triggerScatter(e, 2); };
+      handlePointerMove = (e: PointerEvent) => { if (isInteractive) triggerScatter(e, 1); };
+      handlePointerLeave = () => { isInteractive = false; };
+
+      scene.addEventListener('pointerdown', handlePointerDown);
+      scene.addEventListener('pointermove', handlePointerMove);
+      scene.addEventListener('pointerleave', handlePointerLeave);
+
+      runner = Matter.Runner.create();
+      Matter.Runner.run(runner, engine);
+
+      const syncDOM = () => {
+        tagBodies.forEach(({ body, elem, w, h }) => {
+          const { x, y } = body.position;
+          elem.style.transform = `translate(${x - w / 2}px, ${y - h / 2}px) rotate(${body.angle}rad)`;
+        });
+        raf = requestAnimationFrame(syncDOM);
+      };
+      raf = requestAnimationFrame(syncDOM);
+
+      ro = new ResizeObserver((entries) => {
+        if (!entries[0]) return;
+        rect = scene.getBoundingClientRect();
+        const newWidth = entries[0].contentRect.width;
+        const newHeight = entries[0].contentRect.height;
+        Matter.Body.setPosition(ground, { x: newWidth / 2, y: newHeight + 25 });
+        Matter.Body.setPosition(rightWall, { x: newWidth + 25, y: newHeight / 2 });
+      });
+      ro.observe(scene);
+
+      onScroll = () => { rect = scene.getBoundingClientRect(); };
+      window.addEventListener('scroll', onScroll, { passive: true });
     });
 
-    // 4. Custom Interaction (Scroll-Safe)
-    let isInteractive = false;
-
-    const triggerScatter = (e: PointerEvent, forceMultiplier: number = 1) => {
-      const rect = scene.getBoundingClientRect();
-      const mousePos = { 
-        x: e.clientX - rect.left, 
-        y: e.clientY - rect.top 
-      };
-      
-      const bodies = tagBodies.map(t => t.body);
-      const hovered = Matter.Query.point(bodies, mousePos);
-      
-      hovered.forEach(body => {
-        const forceMagnitude = 0.05 * forceMultiplier; // Stronger force on click
-        Matter.Body.applyForce(body, body.position, {
-          x: (Math.random() - 0.5) * forceMagnitude,
-          y: -forceMagnitude
-        });
-      });
-    };
-
-    const handlePointerDown = (e: PointerEvent) => {
-      isInteractive = true;
-      triggerScatter(e, 2); // Double force on click for a satisfying "pop"
-    };
-
-    const handlePointerMove = (e: PointerEvent) => {
-      if (!isInteractive) return;
-      triggerScatter(e, 1); // Normal force on hover
-    };
-
-    const handlePointerLeave = () => {
-      isInteractive = false;
-    };
-
-    scene.addEventListener('pointerdown', handlePointerDown);
-    scene.addEventListener('pointermove', handlePointerMove);
-    scene.addEventListener('pointerleave', handlePointerLeave);
-
-    // 6. Run the physics simulation
-    const runner = Matter.Runner.create();
-    Matter.Runner.run(runner, engine);
-
-    // 7. Sync DOM elements to Matter.js coordinates
-    let raf: number;
-    const syncDOM = () => {
-      tagBodies.forEach(({ body, elem }) => {
-        const { x, y } = body.position;
-        const angle = body.angle;
-        
-        const w = elem.offsetWidth;
-        const h = elem.offsetHeight;
-        
-        // DOM positioning: transform maps Matter's center-based coords to DOM's top-left
-        elem.style.transform = `translate(${x - w / 2}px, ${y - h / 2}px) rotate(${angle}rad)`;
-      });
-      raf = requestAnimationFrame(syncDOM);
-    };
-    raf = requestAnimationFrame(syncDOM);
-
-    const handleResize = () => {
-      const newWidth = scene.clientWidth;
-      const newHeight = scene.clientHeight;
-      Matter.Body.setPosition(ground, { x: newWidth / 2, y: newHeight + 25 });
-      Matter.Body.setPosition(rightWall, { x: newWidth + 25, y: newHeight / 2 });
-    };
-    window.addEventListener('resize', handleResize);
-
     return () => {
-      window.removeEventListener('resize', handleResize);
-      scene.removeEventListener('pointerdown', handlePointerDown);
-      scene.removeEventListener('pointermove', handlePointerMove);
-      scene.removeEventListener('pointerleave', handlePointerLeave);
-      cancelAnimationFrame(raf);
-      Matter.Runner.stop(runner);
-      Matter.Engine.clear(engine);
+      (window.cancelIdleCallback || window.clearTimeout)(idleId);
+      if (raf) cancelAnimationFrame(raf);
+      if (ro) ro.disconnect();
+      if (onScroll) window.removeEventListener('scroll', onScroll);
+      if (sceneRef.current) {
+        if (handlePointerDown) sceneRef.current.removeEventListener('pointerdown', handlePointerDown);
+        if (handlePointerMove) sceneRef.current.removeEventListener('pointermove', handlePointerMove);
+        if (handlePointerLeave) sceneRef.current.removeEventListener('pointerleave', handlePointerLeave);
+      }
+      if (runner) Matter.Runner.stop(runner);
+      if (engine) Matter.Engine.clear(engine);
     };
   }, []);
 

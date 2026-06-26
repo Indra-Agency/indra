@@ -47,14 +47,25 @@ export function AuroraBackground() {
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
-    let W = 0, H = 0;
-    const resize = () => {
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    const ro = new ResizeObserver(resize);
+    let W = canvas.offsetWidth;
+    let H = canvas.offsetHeight;
+    canvas.width = W;
+    canvas.height = H;
+    
+    let rect = canvas.getBoundingClientRect();
+
+    const ro = new ResizeObserver((entries) => {
+      if (!entries[0]) return;
+      W = canvas.width = entries[0].contentRect.width;
+      H = canvas.height = entries[0].contentRect.height;
+      rect = canvas.getBoundingClientRect();
+    });
     ro.observe(canvas);
+
+    const onScroll = () => {
+      rect = canvas.getBoundingClientRect();
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     /* Mouse tracking */
     const raw   = { x: 0.5, y: 0.30 };
@@ -62,11 +73,11 @@ export function AuroraBackground() {
     const mpx   = { x: -9999, y: -9999 };
 
     const onMouse = (e: MouseEvent) => {
-      const r = canvas.getBoundingClientRect();
-      raw.x  = (e.clientX - r.left) / (r.width  || 1);
-      raw.y  = (e.clientY - r.top)  / (r.height || 1);
-      mpx.x  = e.clientX - r.left;
-      mpx.y  = e.clientY - r.top;
+      // Use cached rect to avoid forced synchronous layout
+      raw.x  = (e.clientX - rect.left) / (rect.width  || 1);
+      raw.y  = (e.clientY - rect.top)  / (rect.height || 1);
+      mpx.x  = e.clientX - rect.left;
+      mpx.y  = e.clientY - rect.top;
     };
     window.addEventListener('mousemove', onMouse, { passive: true });
 
@@ -154,6 +165,7 @@ export function AuroraBackground() {
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('mousemove', onMouse);
+      window.removeEventListener('scroll', onScroll);
       ro.disconnect();
     };
   }, []);
