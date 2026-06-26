@@ -13,14 +13,14 @@ jobs:
     name: Build & Test
     runs-on: ubuntu-latest
 
-    steps:
+   steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Standard LTS version
+          node-version: '20'
           cache: 'npm'
 
       - name: Install Dependencies
@@ -32,14 +32,16 @@ jobs:
       - name: Build Next.js Application
         run: npm run build
 
+      # 1. نشغل الخادم في الخلفية أولاً
+      - name: Start Next.js Server
+        run: npm run start & npx wait-on http://localhost:3000
+
+      # 2. الآن نشغل الاختبارات بعد التأكد أن الخادم جاهز
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
       - name: Run Playwright E2E Tests
         run: npx playwright test
-
-      - name: Start Next.js Server
-        run: npm run start & npx wait-on http://localhost:3000  
 
       - name: Upload Playwright Report
         if: always()
