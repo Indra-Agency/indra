@@ -35,6 +35,7 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
                 src={url}
                 alt={`Partner ${i + 1}`}
                 fill
+                priority
                 unoptimized={true}
                 sizes="(max-width: 768px) 140px, (max-width: 1024px) 180px, 200px"
                 className="object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
