@@ -13,7 +13,7 @@ jobs:
     name: Build & Test
     runs-on: ubuntu-latest
 
-   steps:
+    steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -32,11 +32,9 @@ jobs:
       - name: Build Next.js Application
         run: npm run build
 
-      # 1. نشغل الخادم في الخلفية أولاً
       - name: Start Next.js Server
         run: npm run start & npx wait-on http://localhost:3000
 
-      # 2. الآن نشغل الاختبارات بعد التأكد أن الخادم جاهز
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
