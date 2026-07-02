@@ -44,13 +44,88 @@ const thmanyahSerifText = localFont({
 
 
 export const metadata: Metadata = {
-  title: "Indra | وكالة أتمتة الذكاء الاصطناعي",
-  description:
-    "وكالة متخصصة في حلول الأتمتة والذكاء الاصطناعي. نُحوّل العمليات اليدوية إلى أنظمة ذكية تعمل على مدار الساعة.",
+  metadataBase: new URL("https://indra.agency"),
+  title: {
+    default: "وكالة إندرا للأتمتة والذكاء الاصطناعي | Indra",
+    template: "%s | Indra - وكالة إندرا للأتمتة والذكاء الاصطناعي",
+  },
+  description: "وكالة إندرا (Indra) هي وكالة متخصصة في تقديم حلول أتمتة الأعمال، وتطبيقات الذكاء الاصطناعي، وتطوير البرمجيات، وتحليل النظم، وهيكلة المشاريع التقنية. نبتكر حلولاً رقمية ذكية وشاملة تزيد من إنتاجية الشركات وتدفع مسيرة التحول الرقمي.",
+  keywords: [
+    "وكالة إندرا",
+    "إندرا",
+    "Indra",
+    "Indra Agency",
+    "أتمتة الأعمال",
+    "الذكاء الاصطناعي",
+    "تطوير البرمجيات",
+    "تحليل النظم",
+    "هيكلة المشاريع التقنية",
+    "حلول رقمية",
+    "Business Automation",
+    "Artificial Intelligence",
+    "Software Development",
+    "Systems Analysis",
+    "AI Agency",
+    "AI Automation",
+    "برمجيات ذكية"
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ar_AR",
+    url: "https://indra.agency",
+    title: "وكالة إندرا للأتمتة والذكاء الاصطناعي | Indra",
+    description: "وكالة إندرا (Indra) هي وكالة متخصصة في تقديم حلول أتمتة الأعمال، وتطبيقات الذكاء الاصطناعي، وتطوير البرمجيات، وتحليل النظم، وهيكلة المشاريع التقنية. نبتكر حلولاً رقمية ذكية وشاملة.",
+    siteName: "إندرا (Indra)",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "وكالة إندرا للأتمتة والذكاء الاصطناعي",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "وكالة إندرا للأتمتة والذكاء الاصطناعي | Indra",
+    description: "وكالة إندرا (Indra) هي وكالة متخصصة في تقديم حلول أتمتة الأعمال، وتطبيقات الذكاء الاصطناعي، وتطوير البرمجيات، وتحليل النظم، وهيكلة المشاريع التقنية.",
+    images: ["/images/og-image.png"],
+  },
 };
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DynamicWidgetsWrapper } from "@/components/wrappers/DynamicWidgetsWrapper";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "وكالة إندرا للأتمتة والذكاء الاصطناعي | Indra",
+  "alternateName": "Indra Agency",
+  "url": "https://indra.agency",
+  "logo": "https://indra.agency/images/logo.png",
+  "description": "وكالة إندرا (Indra) هي وكالة رائدة متخصصة في أتمتة الأعمال، وحلول الذكاء الاصطناعي، وتطوير البرمجيات، وتحليل النظم، وهيكلة المشاريع التقنية. نقدم حلولاً رقمية ذكية لزيادة كفاءة وأداء الشركات.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+967-738-688-812",
+    "contactType": "customer service",
+    "areaServed": "Worldwide",
+    "availableLanguage": ["Arabic", "English"]
+  },
+  "sameAs": [
+    "https://wa.me/967738688812"
+  ]
+};
 
 export default function RootLayout({
   children,
@@ -67,6 +142,10 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-body), sans-serif", direction: "rtl" }}
         className="bg-[#0A0A0A] text-white antialiased"
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
         <DynamicWidgetsWrapper />
         <SpeedInsights />

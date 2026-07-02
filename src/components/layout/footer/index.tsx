@@ -39,8 +39,18 @@ export function Footer() {
           {/* Right Side (Name/Agency & Socials) */}
           <div className="flex flex-col items-center md:items-start text-center md:text-start">
             <div className="flex items-center gap-2 mb-3" dir="ltr">
-              <div className="w-3 h-3 bg-white rotate-45 mt-1 rounded-sm shadow-sm"></div>
-              <h3 className="text-4xl font-extrabold tracking-tight">Indra</h3>
+              <svg
+                className="w-8 h-8 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path d="M18 6L19.5 9L22.5 10.5L19.5 12L18 15L16.5 12L13.5 10.5L16.5 9L18 6Z" fill="white" />
+                <path d="M9 13L10 15L12 16L10 17L9 19L8 17L6 16L8 15L9 13Z" fill="white" />
+                <path d="M7 3L7.6 4.2L8.8 4.8L7.6 5.4L7 6.6L6.4 5.4L5.2 4.8L6.4 4.2L7 3Z" fill="white" />
+              </svg>
+              <h3 className="text-4xl font-extrabold tracking-tight font-satoshi">Indra</h3>
             </div>
             <p className="text-[13px] font-semibold opacity-70 max-w-xs mb-8 leading-relaxed">
               وكالة رقمية متكاملة متخصصة في حلول الأتمتة والذكاء الاصطناعي، وتطوير المواقع والتطبيقات المبتكرة. نُحوّل رؤيتك إلى أنظمة متطورة تعمل على مدار الساعة لتعزيز نمو أعمالك.

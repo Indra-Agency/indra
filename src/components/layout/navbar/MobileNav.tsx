@@ -24,8 +24,22 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
     <>
       {/* ── Top bar ── */}
       <div className="flex items-center justify-between px-5 py-4 bg-[#09090b]/85 backdrop-blur-xl border-b border-white/5">
-        <a href="#" className="text-xl font-bold text-white select-none">
-          Indra<span style={{ color: '#4FFFB0' }}>.</span>
+        <a
+          href="#"
+          className="text-xl select-none text-white flex items-center gap-1.5"
+        >
+          <svg
+            className="w-5.5 h-5.5 shrink-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M18 6L19.5 9L22.5 10.5L19.5 12L18 15L16.5 12L13.5 10.5L16.5 9L18 6Z" fill="#4FFFB0" />
+            <path d="M9 13L10 15L12 16L10 17L9 19L8 17L6 16L8 15L9 13Z" fill="#4FFFB0" />
+            <path d="M7 3L7.6 4.2L8.8 4.8L7.6 5.4L7 6.6L6.4 5.4L5.2 4.8L6.4 4.2L7 3Z" fill="#4FFFB0" />
+          </svg>
+          <span className="font-satoshi font-extrabold tracking-tight">Indra</span>
         </a>
 
         <div className="flex items-center gap-2">
