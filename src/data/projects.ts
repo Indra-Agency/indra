@@ -22,7 +22,7 @@ export const PROJECTS_DATA: ProjectData[] = [
     title: 'متجر عُدّتي',
     year: '2026',
     country: 'SA السعودية',
-    logo: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/12.png',
+    logo: '/images/logos/12.png',
     bgColor: 'bg-[#4FFFB0]',
     textColor: 'text-black',
     desc: 'بناء تطبيق Flutter متكامل للمتجر مع شات بوت ذكي، نظام ولاء عملاء، لوحات أداء لحظية، وبوابات دفع متكاملة. صُمم وطُور وأُطلق على المتاجر في أقل من شهر.',
@@ -37,7 +37,7 @@ export const PROJECTS_DATA: ProjectData[] = [
       { name: 'Supabase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
       { name: 'Google Maps', img: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg' },
     ],
-    image: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/project/2.png'
+    image: '/images/projects/2.png'
   },
   {
     title: 'أبشر',
@@ -54,13 +54,13 @@ export const PROJECTS_DATA: ProjectData[] = [
       { name: 'Firebase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
       { name: 'Google Maps', img: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg' },
     ],
-    image: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/project/3.jpg'
+    image: '/images/projects/3.jpg'
   },
   {
     title: 'Delivery App',
     year: '2023',
     country: 'اليمن',
-    logo: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/11.png',
+    logo: '/images/logos/11.png',
     bgColor: 'bg-[#4FFFB0]',
     textColor: 'text-black',
     desc: 'منظومة توصيل متكاملة تتكون من 3 تطبيقات (تطبيق للعميل، تطبيق للمشرفين، وتطبيق للسائقين). تم التطوير والربط والإطلاق في وقت قياسي (شهرين).',
@@ -75,6 +75,6 @@ export const PROJECTS_DATA: ProjectData[] = [
       { name: 'Supabase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
       { name: 'Google Maps', img: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg' },
     ],
-    image: 'https://raw.githubusercontent.com/Indra-Agency/images-web/main/project/1.png'
+    image: '/images/projects/1.png'
   }
 ];
