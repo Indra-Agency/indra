@@ -56,7 +56,7 @@ export function ProjectsSection() {
                   {/* Optional Logo */}
                   {project.logo && (
                     <div className="-mb-3 md:-mb-4 relative h-20 md:h-24 w-[200px]">
-                      <Image src={project.logo} alt="Logo" fill unoptimized={true} sizes="200px" className="object-contain object-right brightness-0 opacity-90" />
+                      <Image src={project.logo} alt="Logo" fill sizes="200px" className="object-contain object-right brightness-0 opacity-90" />
                     </div>
                   )}
 
@@ -150,7 +150,6 @@ export function ProjectsSection() {
                     src={project.image}
                     alt="Project Showcase"
                     fill
-                    unoptimized={true}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />

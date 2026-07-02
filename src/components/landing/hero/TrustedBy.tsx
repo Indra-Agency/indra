@@ -38,7 +38,6 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
                 height={52}
                 priority
                 decoding="async"
-                unoptimized={true}
                 className="object-contain w-full h-auto brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
               />
             </div>

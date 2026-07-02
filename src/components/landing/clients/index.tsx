@@ -15,7 +15,6 @@ const MarqueeSet = ({ logos }: { logos: string[] }) => (
             height={56}
             loading="lazy"
             decoding="async"
-            unoptimized={true}
             className="object-contain w-full h-auto brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300"
           />
         </div>
