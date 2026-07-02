@@ -34,19 +34,19 @@ const item = {
 
 export function HeroContent({ logos = [] }: { logos?: string[] }) {
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate="visible"
-      className="max-w-6xl mx-auto text-center pt-32 pb-0"
-    >
+    <div className="max-w-6xl mx-auto text-center pt-32 pb-0">
       {/* Badge */}
-      <motion.div variants={item} className="mb-7">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+        className="mb-7"
+      >
         <HeroBadge />
       </motion.div>
 
       {/* Main Heading */}
-      <motion.div variants={item} className="mb-7">
+      <div className="mb-7">
         <h1
           className="ar-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
           style={{ color: '#fff', lineHeight: 1.35, fontWeight: 700, letterSpacing: '-0.01em' }}
@@ -56,22 +56,23 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
           <span style={{ color: '#4FFFB0' }}>{HERO_COPY.headingAccent}</span>{' '}
           {HERO_COPY.headingLine2}
         </h1>
-      </motion.div>
+      </div>
 
       {/* Sub-headline */}
-      <motion.p
-        variants={item}
+      <p
         className="text-sm sm:text-base md:text-base leading-relaxed max-w-3xl mx-auto mb-10"
         style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 400 }}
       >
         {HERO_COPY.subtext1}
         <br className="hidden sm:block" />
         {HERO_COPY.subtext2}
-      </motion.p>
+      </p>
 
       {/* CTA Buttons */}
       <motion.div
-        variants={item}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
         className="flex flex-wrap justify-center gap-5 mb-10"
         style={{ pointerEvents: 'auto' }}
       >
@@ -97,9 +98,14 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
       </motion.div>
 
       {/* Trusted-By */}
-      <motion.div variants={item} className="mb-12">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.45 }}
+        className="mb-12"
+      >
         <TrustedBy logos={logos} />
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
