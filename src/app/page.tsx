@@ -13,26 +13,26 @@ import { ClientsSection } from '@/components/landing/clients';
 import { DynamicServicesPhysicsCloud as ServicesPhysicsCloud } from '@/components/wrappers/DynamicServicesPhysicsCloud';
 import { DynamicContactSection as ContactSection } from '@/components/wrappers/DynamicContactSection';
 
-const LOCAL_LOGOS = [
-  "/images/logos/11.png",
-  "/images/logos/12.png",
-  "/images/logos/13.png",
-  "/images/logos/14.png",
-  "/images/logos/15.png",
-  "/images/logos/16.png",
-  "/images/logos/17.png",
-  "/images/logos/18.png",
-  "/images/logos/19.png",
-  "/images/logos/20.png",
-  "/images/logos/21.png",
-  "/images/logos/22.png",
-  "/images/logos/23.png",
-  "/images/logos/24.png",
-  "/images/logos/25.png"
+const REMOTE_LOGOS = [
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/11.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/12.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/13.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/14.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/15.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/16.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/17.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/18.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/19.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/20.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/21.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/22.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/23.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/24.png",
+  "https://raw.githubusercontent.com/Indra-Agency/images-web/main/LOGO/25.png"
 ];
 
 export default async function Home() {
-  const logos = LOCAL_LOGOS;
+  const logos = REMOTE_LOGOS;
 
   return (
     <main className="min-h-screen" style={{ background: '#0A0A0A' }}>
