@@ -48,7 +48,7 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
       {/* Main Heading */}
       <motion.div variants={item} className="mb-7">
         <h1
-          className="ar-heading text-3xl sm:text-4xl md:text-5xl lg:text-[60px]"
+          className="ar-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
           style={{ color: '#fff', lineHeight: 1.35, fontWeight: 700, letterSpacing: '-0.01em' }}
         >
           {HERO_COPY.headingLine1}
@@ -61,7 +61,7 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
       {/* Sub-headline */}
       <motion.p
         variants={item}
-        className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-10"
+        className="text-sm sm:text-base md:text-base leading-relaxed max-w-3xl mx-auto mb-10"
         style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 400 }}
       >
         {HERO_COPY.subtext1}

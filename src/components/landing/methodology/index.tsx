@@ -42,7 +42,7 @@ export function MethodologySection() {
   });
 
   return (
-    <section id="methodology" className="py-24 relative bg-[#0A0A0A]" dir="rtl">
+    <section id="methodology" className="py-16 md:py-24 relative bg-[#0A0A0A]" dir="rtl">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-32">
@@ -50,7 +50,7 @@ export function MethodologySection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-emerald-400 font-bold mb-4 text-xl tracking-wide"
+            className="text-emerald-400 font-bold mb-4 text-base tracking-wide"
           >
             المنهجية
           </motion.h3>
@@ -59,7 +59,7 @@ export function MethodologySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 pb-4 leading-normal"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 pb-4 leading-normal"
           >
             كيف نعمل
           </motion.h2>
@@ -89,7 +89,7 @@ export function MethodologySection() {
                 
                 {/* Huge Number (Right side of the line) */}
                 <div className="flex items-center justify-center">
-                  <span className="text-[4rem] md:text-[5rem] lg:text-[6.5rem] font-serif font-extrabold bg-gradient-to-b from-emerald-200 to-emerald-800 text-transparent bg-clip-text leading-none select-none">
+                  <span className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-serif font-extrabold bg-gradient-to-b from-emerald-200 to-emerald-800 text-transparent bg-clip-text leading-none select-none">
                     {step.id}
                   </span>
                 </div>
@@ -99,7 +99,7 @@ export function MethodologySection() {
 
                 {/* Content Box (Left side of the line) */}
                 <div className="flex flex-col items-start text-right py-4 z-10">
-                  <h3 className="text-white font-extrabold text-2xl md:text-3xl lg:text-[2.5rem] mb-3 tracking-tight">{step.title}</h3>
+                  <h3 className="text-white font-extrabold text-xl md:text-2xl lg:text-3xl mb-3 tracking-tight">{step.title}</h3>
                   <p className="text-emerald-400/90 text-sm md:text-base font-medium mb-4">{step.subtitle}</p>
                   <p className="text-zinc-300 leading-[1.8] mb-6 text-sm md:text-base max-w-xl font-serif">{step.description}</p>
                   

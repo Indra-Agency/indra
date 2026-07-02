@@ -26,8 +26,8 @@ export function ProjectCard({ project, index }: Props) {
       <div className="grid md:grid-cols-2">
         <div className="p-10 md:p-16 flex flex-col justify-center">
           <span className="text-zinc-500 text-sm font-semibold mb-4">{project.tag}</span>
-          <h3 className="text-3xl font-bold text-white mb-6">{project.title}</h3>
-          <p className="text-zinc-400 leading-relaxed text-lg font-light mb-8">{project.desc}</p>
+          <h3 className="text-2xl font-bold text-white mb-6">{project.title}</h3>
+          <p className="text-zinc-400 leading-relaxed text-base font-light mb-8">{project.desc}</p>
           
           <div className="mt-auto flex items-center gap-2 text-white font-medium group-hover:text-zinc-300 transition-colors">
             <span>عرض التفاصيل</span>

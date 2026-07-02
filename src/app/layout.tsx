@@ -50,6 +50,7 @@ export const metadata: Metadata = {
 };
 
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { SmartChatbot } from "@/components/ui/SmartChatbot";
 
 export default function RootLayout({
   children,
@@ -68,6 +69,7 @@ export default function RootLayout({
       >
         {children}
         <FloatingWhatsApp />
+        <SmartChatbot />
       </body>
     </html>
   );

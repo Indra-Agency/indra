@@ -9,7 +9,7 @@ import { EXPERIENCE_DATA } from '@/data/experience';
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 relative" dir="rtl">
+    <section id="experience" className="py-16 md:py-24 relative" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
@@ -28,7 +28,7 @@ export function ExperienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-white font-black text-4xl md:text-5xl lg:text-6xl tracking-tight"
+            className="text-3xl md:text-4xl lg:text-5xl tracking-tight"
           >
             أين صنعت الأثر
           </motion.h2>
@@ -63,14 +63,14 @@ export function ExperienceSection() {
                     
                     {/* Top Row: Company & Badge */}
                     <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                      <span className="font-extrabold text-lg md:text-xl">{exp.company}</span>
+                      <span className="font-extrabold text-base md:text-lg">{exp.company}</span>
                       <span className="bg-black/5 px-3 py-1 rounded-full text-[11px] font-bold border border-black/5">
                         {exp.badge}
                       </span>
                     </div>
 
                     {/* Job Title */}
-                    <h3 className="text-2xl md:text-3xl font-black mb-4 tracking-tight leading-tight">
+                    <h3 className="text-xl md:text-2xl font-black mb-4 tracking-tight leading-tight">
                       {exp.title}
                     </h3>
                     

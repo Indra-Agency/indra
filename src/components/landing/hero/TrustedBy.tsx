@@ -27,15 +27,15 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
       </div>
 
       {/* Brand Logos */}
-      <div className="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-5 lg:gap-x-6 gap-y-3">
+      <div className="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
         {displayLogos.length > 0 ? (
           displayLogos.map((url, i) => (
-            <div key={i} className="flex justify-center items-center w-[140px] md:w-[180px] lg:w-[200px]">
+            <div key={i} className="flex justify-center items-center w-[90px] md:w-[110px] lg:w-[130px]">
               <Image
                 src={url}
                 alt={`Partner ${i + 1}`}
-                width={200}
-                height={80}
+                width={130}
+                height={52}
                 priority
                 decoding="async"
                 unoptimized={true}

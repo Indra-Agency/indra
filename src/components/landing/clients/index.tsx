@@ -6,13 +6,13 @@ import { motion } from 'framer-motion';
 const MarqueeSet = ({ logos }: { logos: string[] }) => (
   <div className="flex shrink-0 items-center w-max">
     {logos.map((logo, i) => (
-      <div key={i} className="flex shrink-0 px-4 md:px-6 justify-center">
-        <div className="flex justify-center items-center w-[160px] md:w-[220px]">
+      <div key={i} className="flex shrink-0 px-2 md:px-3 justify-center">
+        <div className="flex justify-center items-center w-[95px] md:w-[130px]">
           <Image
             src={logo}
             alt="Client Logo"
-            width={220}
-            height={96}
+            width={130}
+            height={56}
             loading="lazy"
             decoding="async"
             unoptimized={true}
@@ -32,7 +32,7 @@ export function ClientsSection({ logos }: { logos: string[] }) {
   const bottomLogos = logos.slice(mid);
 
   return (
-    <section id="clients" className="py-24 bg-[#0A0A0A] overflow-hidden" dir="rtl">
+    <section id="clients" className="py-16 md:py-24 bg-[#0A0A0A] overflow-hidden" dir="rtl">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-10 text-center flex flex-col items-center">
         <motion.span
@@ -49,7 +49,7 @@ export function ClientsSection({ logos }: { logos: string[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-white font-black text-3xl md:text-4xl -mt-2 md:-mt-3"
+          className="text-white font-black text-2xl md:text-3xl -mt-2 md:-mt-3"
         >
           أبرز العملاء
         </motion.h2>

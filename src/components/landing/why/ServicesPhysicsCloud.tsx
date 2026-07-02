@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { useInView } from 'framer-motion';
 import Matter from 'matter-js';
 import { 
   SiZapier, SiWordpress, SiOpenai, SiNextdotjs, SiTypescript, 
@@ -46,7 +47,10 @@ export function ServicesPhysicsCloud() {
   const elementsRef = useRef<Map<string, HTMLDivElement>>(new Map());
   const engineRef = useRef<Matter.Engine | null>(null);
 
+  const isInView = useInView(sceneRef, { once: true, margin: "-50px" });
+
   useEffect(() => {
+    if (!isInView) return;
     let runner: Matter.Runner;
     let engine: Matter.Engine;
     let raf: number;
@@ -155,7 +159,7 @@ export function ServicesPhysicsCloud() {
       if (runner) Matter.Runner.stop(runner);
       if (engine) Matter.Engine.clear(engine);
     };
-  }, []);
+  }, [isInView]);
 
   return (
     <section className="w-full bg-[#0A0A0A]">

@@ -20,36 +20,21 @@
  */
 
 import { AuroraBackground } from './AuroraBackground';
-import { MorphingCanvas }   from './MorphingCanvas';
 import { HeroContent }      from './HeroContent';
 
 export function HeroSection({ logos = [] }: { logos?: string[] }) {
   return (
     <section
-      className="relative overflow-hidden flex flex-col"
-      style={{ background: '#0A0A0A', minHeight: '100svh' }}
+      className="relative overflow-hidden flex flex-col min-h-screen w-full"
+      style={{ backgroundColor: 'hsl(260, 87%, 3%)' }}
     >
-      {/* ── Layer 0: Autonomous + mouse-reactive Aurora ── */}
+      {/* Fluid Gradient Background (CSS Only) */}
       <AuroraBackground />
 
-      {/* ── Layer 1: Morphing Canvas particles (desktop) ── */}
-      <div className="absolute inset-0 hidden md:block" style={{ zIndex: 2 }}>
-        <MorphingCanvas />
-      </div>
-
-      {/* ── Layer 2: Mobile fallback glow (no canvas) ── */}
+      {/* Content wrapper sitting clearly above the animated background */}
       <div
-        className="absolute inset-0 md:hidden"
-        style={{
-          zIndex: 2,
-          background: 'radial-gradient(ellipse at 50% 30%, rgba(79,255,176,0.10) 0%, transparent 60%)',
-        }}
-      />
-
-      {/* ── Layer 3: Hero text, buttons, badges ── */}
-      <div
-        className="relative flex-1 flex items-center w-full px-6 md:px-12 lg:px-20"
-        style={{ zIndex: 10, pointerEvents: 'none' }}
+        className="relative z-10 flex-1 flex items-center w-full px-6 md:px-12 lg:px-20"
+        style={{ pointerEvents: 'none' }}
       >
         <HeroContent logos={logos} />
       </div>

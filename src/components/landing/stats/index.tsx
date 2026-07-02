@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { FiGlobe, FiCalendar, FiCheckCircle, FiHeart } from 'react-icons/fi';
 
 const STATS_DATA = [
@@ -34,9 +35,59 @@ const STATS_DATA = [
   },
 ];
 
+function CountUpValue({ targetStr }: { targetStr: string }) {
+  const [current, setCurrent] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const isPercent = targetStr.includes('%');
+  const isPlusAtStart = targetStr.startsWith('+');
+  const isPlusAtEnd = targetStr.endsWith('+');
+  const cleanNumberStr = targetStr.replace(/[^0-9]/g, '');
+  const targetNum = parseInt(cleanNumberStr, 10) || 0;
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTimestamp: number | null = null;
+    const duration = 1800; // 1.8 seconds
+
+    let animationFrameId: number;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+      // Easing out quadratic
+      const easeOutQuad = (x: number): number => {
+        return 1 - (1 - x) * (1 - x);
+      };
+
+      const currentVal = Math.floor(easeOutQuad(progress) * targetNum);
+      setCurrent(currentVal);
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(step);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isInView, targetNum]);
+
+  return (
+    <span ref={ref}>
+      {isPlusAtStart ? '+' : ''}
+      {current}
+      {isPlusAtEnd ? '+' : ''}
+      {isPercent ? '%' : ''}
+    </span>
+  );
+}
+
 export function StatsSection() {
   return (
-    <section className="py-24 relative bg-[#0a0a0a]" dir="rtl">
+    <section className="py-16 md:py-24 relative bg-[#0a0a0a]" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
@@ -46,7 +97,7 @@ export function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl text-white font-extrabold tracking-tight"
+            className="text-2xl md:text-4xl text-white font-extrabold tracking-tight"
           >
             أثر يُثبت بالأرقام
           </motion.h2>
@@ -84,13 +135,13 @@ export function StatsSection() {
                 </div>
 
                 {/* Value */}
-                <h3 className="text-4xl md:text-[2.75rem] font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-[#4FFFB0] mb-5 tracking-wide">
-                  {stat.value}
+                <h3 className="text-3xl md:text-4xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-[#4FFFB0] mb-5 tracking-wide">
+                  <CountUpValue targetStr={stat.value} />
                 </h3>
 
                 {/* Title & Subtitle */}
                 <div className="flex flex-col gap-1.5">
-                  <span className="text-white font-heading text-xl font-bold">{stat.title}</span>
+                  <span className="text-white font-heading text-lg font-bold">{stat.title}</span>
                   <span className="text-white/40 text-[13px] font-medium leading-relaxed">{stat.subtitle}</span>
                 </div>
               </div>

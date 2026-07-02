@@ -9,7 +9,7 @@ import { PROJECTS_DATA } from '@/data/projects';
 
 export function ProjectsSection() {
   return (
-    <section id="work" className="py-24 relative" dir="rtl">
+    <section id="work" className="py-16 md:py-24 relative" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* Section Header */}
@@ -28,7 +28,7 @@ export function ProjectsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl text-white font-bold tracking-tight"
+            className="text-3xl md:text-4xl lg:text-5xl text-white font-bold tracking-tight"
           >
             المشاريع المميزة
           </motion.h2>
@@ -60,7 +60,7 @@ export function ProjectsSection() {
                     </div>
                   )}
 
-                  <h3 className="text-2xl md:text-3xl lg:text-[2.2rem] font-extrabold mb-4 tracking-tight leading-tight">
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-4 tracking-tight leading-tight">
                     {project.title}
                   </h3>
 

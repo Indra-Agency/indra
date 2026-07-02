@@ -56,7 +56,7 @@ export function ContactForm() {
         
         {/* Title area */}
         <div className="text-start mb-8 flex flex-col items-start w-full">
-          <h3 className="text-3xl md:text-4xl font-extrabold mb-2 tracking-tight">أرسل رسالة</h3>
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-2 tracking-tight">أرسل رسالة</h3>
           <p className="text-zinc-500 font-medium text-[14px]">سأعود إليك خلال 24 ساعة.</p>
         </div>
 

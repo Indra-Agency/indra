@@ -72,7 +72,7 @@ export function CenterCard() {
 
       {/* ── Info ── */}
       <div className="text-center mb-10 w-full">
-        <h3 className="text-2xl font-bold text-white mb-2">وكالة Indra</h3>
+        <h3 className="text-xl font-bold text-white mb-2">وكالة Indra</h3>
         <p className="text-sm text-[#4FFFB0] font-medium mb-4">شريكك التقني الشامل</p>
         <p className="text-xs text-zinc-500 flex items-center justify-center gap-1.5">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -86,17 +86,17 @@ export function CenterCard() {
       {/* ── Stats ── */}
       <div className="flex w-full justify-between items-center px-4 mb-8">
         <div className="text-center">
-          <p className="text-white font-bold text-xl mb-1">4</p>
+          <p className="text-white font-bold text-lg mb-1">4</p>
           <p className="text-zinc-600 text-[10px] uppercase tracking-wider">دول</p>
         </div>
         <div className="w-px h-8 bg-zinc-800" />
         <div className="text-center">
-          <p className="text-white font-bold text-xl mb-1">+50</p>
+          <p className="text-white font-bold text-lg mb-1">+50</p>
           <p className="text-zinc-600 text-[10px] uppercase tracking-wider">مشروع</p>
         </div>
         <div className="w-px h-8 bg-zinc-800" />
         <div className="text-center">
-          <p className="text-white font-bold text-xl mb-1">+5</p>
+          <p className="text-white font-bold text-lg mb-1">+5</p>
           <p className="text-zinc-600 text-[10px] uppercase tracking-wider">سنوات</p>
         </div>
       </div>
