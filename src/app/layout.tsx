@@ -49,9 +49,8 @@ export const metadata: Metadata = {
     "وكالة متخصصة في حلول الأتمتة والذكاء الاصطناعي. نُحوّل العمليات اليدوية إلى أنظمة ذكية تعمل على مدار الساعة.",
 };
 
-import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
-import { SmartChatbot } from "@/components/ui/SmartChatbot";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { DynamicWidgetsWrapper } from "@/components/wrappers/DynamicWidgetsWrapper";
 
 export default function RootLayout({
   children,
@@ -69,8 +68,7 @@ export default function RootLayout({
         className="bg-[#0A0A0A] text-white antialiased"
       >
         {children}
-        <FloatingWhatsApp />
-        <SmartChatbot />
+        <DynamicWidgetsWrapper />
         <SpeedInsights />
       </body>
     </html>
