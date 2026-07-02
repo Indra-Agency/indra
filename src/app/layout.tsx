@@ -51,6 +51,7 @@ export const metadata: Metadata = {
 
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { SmartChatbot } from "@/components/ui/SmartChatbot";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -70,6 +71,7 @@ export default function RootLayout({
         {children}
         <FloatingWhatsApp />
         <SmartChatbot />
+        <SpeedInsights />
       </body>
     </html>
   );
