@@ -80,6 +80,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" }
+    ],
+    apple: "/icon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "ar_AR",
