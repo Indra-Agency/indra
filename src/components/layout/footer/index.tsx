@@ -46,9 +46,9 @@ export function Footer() {
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
               >
-                <path d="M18 6L19.5 9L22.5 10.5L19.5 12L18 15L16.5 12L13.5 10.5L16.5 9L18 6Z" fill="white" />
-                <path d="M9 13L10 15L12 16L10 17L9 19L8 17L6 16L8 15L9 13Z" fill="white" />
-                <path d="M7 3L7.6 4.2L8.8 4.8L7.6 5.4L7 6.6L6.4 5.4L5.2 4.8L6.4 4.2L7 3Z" fill="white" />
+                <path d="M 12 3.5 Q 12 7.5 16 7.5 Q 12 7.5 12 11.5 Q 12 7.5 8 7.5 Q 12 7.5 12 3.5 Z" fill="white" />
+                <path d="M 18.5 10 Q 18.5 15.5 24 15.5 Q 18.5 15.5 18.5 21 Q 18.5 15.5 13 15.5 Q 18.5 15.5 18.5 10 Z" fill="white" />
+                <path d="M 8 16.5 Q 8 19.5 11 19.5 Q 8 19.5 8 22.5 Q 8 19.5 5 19.5 Q 8 19.5 8 16.5 Z" fill="white" />
               </svg>
               <h3 className="text-4xl font-extrabold tracking-tight font-satoshi">Indra</h3>
             </div>
