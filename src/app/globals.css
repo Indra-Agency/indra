@@ -9,14 +9,9 @@ html {
   scroll-behavior: smooth;
 }
 
-@theme {
-  --color-background: #0A0A0A;
-  --color-surface: #18181b;
-  --color-border: #27272a;
-  --color-foreground: #ffffff;
-  --color-muted: #a1a1aa;
-  --color-accent: #4FFFB0;
+@import "./colors.css";
 
+@theme {
   --font-sans: var(--font-body), sans-serif;
   --font-heading: var(--font-heading), sans-serif;
   --font-serif: var(--font-text), serif;
@@ -32,9 +27,9 @@ body {
 
 /* ===== Scrollbar ===== */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: #52525b; }
+::-webkit-scrollbar-track { background: var(--color-abyssal-blue); }
+::-webkit-scrollbar-thumb { background: var(--color-blue-fantastic); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-oatmeal); }
 
 /* ===== Heading Font Class ===== */
 .ar-heading {
@@ -43,10 +38,10 @@ body {
 
 /* ===== Floating Nav ===== */
 .floating-nav {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(44, 59, 77, 0.08);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(201, 193, 177, 0.1);
 }
 
 /* ===== Marquee Scroll Keyframes ===== */
@@ -72,8 +67,8 @@ body {
   font-size: 16px;
   font-weight: 700;
   transition: all 0.2s ease;
-  border: 2px solid #0A0A0A;
-  box-shadow: 5px 5px 0px 0px #0A0A0A;
+  border: 2px solid var(--color-abyssal-blue);
+  box-shadow: 5px 5px 0px 0px var(--color-abyssal-blue);
   cursor: pointer;
 }
 .btn-neo:hover {
@@ -81,15 +76,15 @@ body {
 }
 .btn-neo:active {
   transform: translate(3px, 3px);
-  box-shadow: 0 0 0 0 #0A0A0A;
+  box-shadow: 0 0 0 0 var(--color-abyssal-blue);
 }
 .btn-neo-green {
-  background: #4FFFB0;
-  color: #0A0A0A;
+  background: var(--color-burning-flame);
+  color: var(--color-abyssal-blue);
 }
 .btn-neo-white {
-  background: #ffffff;
-  color: #0A0A0A;
+  background: var(--color-palladian);
+  color: var(--color-abyssal-blue);
 }
 
 /* ===== Breathing glow keyframe ===== */

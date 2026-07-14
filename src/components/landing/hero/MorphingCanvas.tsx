@@ -6,7 +6,7 @@
  * Interactive HTML5 Canvas — 90 white particles that float slowly upward.
  * When mouse is within 140px of a particle, it:
  *   1. Swells in size (baseSize → +5px)
- *   2. Shifts colour to #4FFFB0 (mint green)
+ *   2. Shifts colour to var(--color-burning-flame) (mint green)
  *   3. Grows a radial-gradient glow halo
  *   4. Oscillates via Math.sin/cos (wavy sphere effect)
  * On mouse leave: particle eases back to white (ease-out).
@@ -142,7 +142,7 @@ export function MorphingCanvas() {
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
           ctx.fillStyle  = `rgba(79, 255, 176, ${Math.min(1, p.opacity * 1.8)})`;
-          ctx.shadowColor = '#4FFFB0';
+          ctx.shadowColor = 'var(--color-burning-flame)';
           ctx.shadowBlur  = 12 * p.morphT;
           ctx.fill();
         } else {

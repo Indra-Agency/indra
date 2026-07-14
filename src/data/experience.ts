@@ -12,7 +12,7 @@ export interface ExperienceData {
   shortDesc: string;
   achievements: string[];
   tech: TechStackItem[];
-  btnVariant: 'green' | 'white';
+  btnVariant: 'white' | 'white';
 }
 
 export const EXPERIENCE_DATA: ExperienceData[] = [
@@ -22,9 +22,9 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
     title: 'مهندس برمجيات ومطور أول',
     date: '2026',
     location: 'السعودية (عن بُعد)',
-    pillClass: 'bg-red-50 text-[#d96a5b]', 
+    pillClass: 'bg-burning-flame/10 text-burning-flame', 
     bgColor: 'bg-white',
-    textColor: 'text-black',
+    textColor: 'text-abyssal-blue',
     shortDesc: 'قيادة التطوير التقني الشامل لمتجر "عُدّتي" الإلكتروني، وتأسيس بنية تحتية قابلة للتوسع السريع لخدمة السوق السعودي.',
     achievements: [
       'بناء تطبيق Flutter متكامل يربط بين تجربة المستخدم المريحة والأداء السريع.',
@@ -49,9 +49,9 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
     title: 'مطور واجهات وتحسين محركات البحث',
     date: '2026',
     location: 'دول الخليج (عن بُعد)',
-    pillClass: 'bg-white text-black shadow-sm',
-    bgColor: 'bg-[#4FFFB0]',
-    textColor: 'text-black',
+    pillClass: 'bg-burning-flame/10 text-burning-flame',
+    bgColor: 'bg-white',
+    textColor: 'text-abyssal-blue',
     shortDesc: 'تطوير منصة ترفيهية شاملة لبيع بطاقات الألعاب والمسلسلات، مع التركيز المكثف على سرعة الأداء واكتساب العملاء عضوياً.',
     achievements: [
       'بناء الموقع من الصفر ليوفر جميع بطاقات الترفيه الرقمية بأسلوب عرض جذاب ومبسط.',
@@ -65,7 +65,7 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
       { name: 'GA4', img: 'https://api.iconify.design/logos:google-analytics.svg' },
       { name: 'Optimization', img: 'https://api.iconify.design/flat-color-icons:positive-dynamic.svg' }
     ],
-    btnVariant: 'white'
+    btnVariant: 'green'
   },
   {
     company: 'منظومة Delivery App',
@@ -73,9 +73,9 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
     title: 'مؤسس تقني ومهندس أنظمة',
     date: '2023',
     location: 'اليمن',
-    pillClass: 'bg-red-50 text-[#d96a5b]', 
+    pillClass: 'bg-burning-flame/10 text-burning-flame', 
     bgColor: 'bg-white',
-    textColor: 'text-black',
+    textColor: 'text-abyssal-blue',
     shortDesc: 'هندسة وتطوير منظومة توصيل ونقل بضائع متكاملة مصممة خصيصاً لتلبية احتياجات السوق اليمني، وربط كافة الأطراف في بيئة موحدة.',
     achievements: [
       'بناء 3 تطبيقات مدمجة ومترابطة (تطبيق للعميل، تطبيق للمشرفين، وتطبيق للسائقين).',

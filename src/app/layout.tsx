@@ -147,7 +147,7 @@ export default function RootLayout({
     >
       <body
         style={{ fontFamily: "var(--font-body), sans-serif", direction: "rtl" }}
-        className="bg-[#0A0A0A] text-white antialiased"
+        className="bg-background text-foreground antialiased"
       >
         <script
           type="application/ld+json"

@@ -23,10 +23,10 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
   return (
     <>
       {/* ── Top bar ── */}
-      <div className="flex items-center justify-between px-5 py-4 bg-[#09090b]/85 backdrop-blur-xl border-b border-white/5">
+      <div className="flex items-center justify-between px-5 py-4 bg-abyssal-blue/85 backdrop-blur-xl border-b border-palladian/5">
         <a
           href="#"
-          className="text-xl select-none text-white flex items-center gap-1.5"
+          className="text-xl select-none text-palladian flex items-center gap-1.5"
         >
           <svg
             className="w-5.5 h-5.5 shrink-0"
@@ -35,9 +35,9 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
-            <path d="M 12 3.5 Q 12 7.5 16 7.5 Q 12 7.5 12 11.5 Q 12 7.5 8 7.5 Q 12 7.5 12 3.5 Z" fill="#4FFFB0" />
-            <path d="M 18.5 10 Q 18.5 15.5 24 15.5 Q 18.5 15.5 18.5 21 Q 18.5 15.5 13 15.5 Q 18.5 15.5 18.5 10 Z" fill="#4FFFB0" />
-            <path d="M 8 16.5 Q 8 19.5 11 19.5 Q 8 19.5 8 22.5 Q 8 19.5 5 19.5 Q 8 19.5 8 16.5 Z" fill="#4FFFB0" />
+            <path d="M 12 3.5 Q 12 7.5 16 7.5 Q 12 7.5 12 11.5 Q 12 7.5 8 7.5 Q 12 7.5 12 3.5 Z" fill="var(--color-burning-flame)" />
+            <path d="M 18.5 10 Q 18.5 15.5 24 15.5 Q 18.5 15.5 18.5 21 Q 18.5 15.5 13 15.5 Q 18.5 15.5 18.5 10 Z" fill="var(--color-burning-flame)" />
+            <path d="M 8 16.5 Q 8 19.5 11 19.5 Q 8 19.5 8 22.5 Q 8 19.5 5 19.5 Q 8 19.5 8 16.5 Z" fill="var(--color-burning-flame)" />
           </svg>
           <span className="font-satoshi font-extrabold tracking-tight">Indra</span>
         </a>
@@ -47,7 +47,7 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
           <a
             href="/"
             style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}
-            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full text-[12px] font-bold text-white"
+            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full text-[12px] font-bold text-palladian"
             aria-label="Switch to English"
           >
             <FlagIcon size={16} />
@@ -61,11 +61,11 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
             className="w-9 h-9 rounded-full flex flex-col items-center justify-center gap-[5px] cursor-pointer"
             aria-label="القائمة"
           >
-            <span className="block h-[2px] rounded-full bg-white transition-all duration-300 origin-center"
+            <span className="block h-[2px] rounded-full bg-palladian transition-all duration-300 origin-center"
               style={{ width: 18, transform: mobileOpen ? 'translateY(7px) rotate(-45deg)' : 'none' }} />
-            <span className="block h-[2px] rounded-full bg-white transition-all duration-300"
+            <span className="block h-[2px] rounded-full bg-palladian transition-all duration-300"
               style={{ width: 12, opacity: mobileOpen ? 0 : 1 }} />
-            <span className="block h-[2px] rounded-full bg-white transition-all duration-300 origin-center"
+            <span className="block h-[2px] rounded-full bg-palladian transition-all duration-300 origin-center"
               style={{ width: 15, transform: mobileOpen ? 'translateY(-7px) rotate(45deg)' : 'none' }} />
           </button>
         </div>
@@ -79,7 +79,7 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[90] bg-[#09090b]/96 backdrop-blur-2xl flex flex-col items-center justify-center md:hidden"
+            className="fixed inset-0 z-[90] bg-abyssal-blue/96 backdrop-blur-2xl flex flex-col items-center justify-center md:hidden"
           >
             <nav className="flex flex-col items-center gap-8">
               {NAV_LINKS.map((link, i) => (
@@ -90,7 +90,7 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.06 }}
                   style={{ color: 'rgba(255,255,255,0.8)' }}
-                  className="text-2xl font-bold hover:text-white transition-colors"
+                  className="text-2xl font-bold hover:text-palladian transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
@@ -102,7 +102,7 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                style={{ background: '#4FFFB0', color: '#0A0A0A', border: '2px solid #0A0A0A', boxShadow: '3px 3px 0px 0px #0A0A0A' }}
+                style={{ background: 'var(--color-burning-flame)', color: 'var(--color-abyssal-blue)', border: '2px solid var(--color-abyssal-blue)', boxShadow: '3px 3px 0px 0px var(--color-abyssal-blue)' }}
                 className="mt-4 inline-flex items-center gap-2 h-12 px-8 rounded-full text-base font-bold"
                 onClick={() => setMobileOpen(false)}
               >

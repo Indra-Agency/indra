@@ -11,8 +11,8 @@ export function ContactSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-4xl font-extrabold flex flex-col items-center justify-center gap-2 mb-4">
-            <span className="text-[#4FFFB0]">تواصل</span>
-            <span className="text-white">لتعمل معاً</span>
+            <span className="text-burning-flame">تواصل</span>
+            <span className="text-palladian">لتعمل معاً</span>
           </h2>
           <p className="text-zinc-400 text-sm md:text-base">
             لديك مشروع في ذهنك؟ دعنا نحول رؤيتك إلى واقع.

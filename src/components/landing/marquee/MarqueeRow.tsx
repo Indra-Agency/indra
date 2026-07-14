@@ -19,14 +19,14 @@ function PillUnit({ label }: { label: string }) {
   return (
     <>
       <span
-        className="ar-heading shrink-0 text-base md:text-lg px-5 md:px-6 py-2 md:py-2.5 rounded-full whitespace-nowrap"
-        style={{ background: '#4FFFB0', color: '#0A0A0A', fontWeight: 400 }}
+        className="ar-heading shrink-0 text-base md:text-lg px-6 md:px-8 py-2.5 md:py-3 rounded-full whitespace-nowrap shadow-sm font-bold"
+        style={{ background: 'var(--color-burning-flame)', color: 'var(--color-abyssal-blue)' }}
       >
         {label}
       </span>
       <span
         className="flex items-center text-xl md:text-2xl shrink-0"
-        style={{ color: '#fff' }}
+        style={{ color: 'white' }}
         aria-hidden="true"
       >
         ✳

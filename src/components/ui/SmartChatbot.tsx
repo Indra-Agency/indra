@@ -180,11 +180,11 @@ export function SmartChatbot() {
             setIsOpen(!isOpen);
             setShowTooltip(false);
           }}
-          className="relative w-14 h-14 bg-[#4FFFB0] text-black rounded-full flex items-center justify-center border-2 border-black shadow-[3px_3px_0_0_#000] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[5px_5px_0_0_#000] transition-all duration-300 pointer-events-auto"
+          className="relative w-14 h-14 bg-burning-flame text-abyssal-blue rounded-full flex items-center justify-center border-2 border-abyssal-blue shadow-[3px_3px_0_0_var(--color-abyssal-blue)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[5px_5px_0_0_var(--color-abyssal-blue)] transition-all duration-300 pointer-events-auto"
           aria-label="اسأل Indra"
         >
           {/* Online Dot */}
-          <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500 border border-black" />
+          <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500 border border-abyssal-blue" />
           
           <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
@@ -199,13 +199,13 @@ export function SmartChatbot() {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 15, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="bg-white text-zinc-900 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 border border-zinc-100 max-w-[260px] md:max-w-xs text-start relative pointer-events-auto font-medium"
+              className="bg-palladian text-blue-fantastic px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 border border-oatmeal max-w-[260px] md:max-w-xs text-start relative pointer-events-auto font-medium"
             >
               <span className="text-xs md:text-sm font-semibold leading-relaxed">
                 اسألني عن خدمات Indra وحلول الأتمتة والذكاء الاصطناعي 🤖
               </span>
               {/* Tooltip arrow pointing right to the button */}
-              <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-white border-r border-t border-zinc-100 transform rotate-45" />
+              <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-palladian border-r border-t border-oatmeal transform rotate-45" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -219,12 +219,12 @@ export function SmartChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="w-[90vw] sm:w-[380px] h-[550px] bg-white border-2 border-black rounded-3xl overflow-hidden shadow-2xl flex flex-col text-start pointer-events-auto"
+            className="w-[90vw] sm:w-[380px] h-[550px] bg-palladian border-2 border-abyssal-blue rounded-3xl overflow-hidden shadow-2xl flex flex-col text-start pointer-events-auto"
           >
             {/* Header */}
-            <div className="bg-[#86EFAC] p-4 flex items-center justify-between text-black relative z-10 border-b-2 border-black">
+            <div className="bg-burning-flame p-4 flex items-center justify-between text-abyssal-blue relative z-10 border-b-2 border-abyssal-blue">
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-black/10 bg-white/20">
+                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-abyssal-blue/10 bg-palladian/20">
                   <Image
                     src="/images/4.jpg"
                     alt="Indra"
@@ -236,7 +236,7 @@ export function SmartChatbot() {
                       target.src = "https://api.iconify.design/ph:user-bold.svg";
                     }}
                   />
-                  <span className="absolute bottom-0 left-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-[#86EFAC]" />
+                  <span className="absolute bottom-0 left-0 w-2.5 h-2.5 rounded-full bg-burning-flame border border-burning-flame" />
                 </div>
                 <div className="flex flex-col items-start leading-tight">
                   <span className="font-extrabold text-sm">اسأل Indra</span>
@@ -247,10 +247,10 @@ export function SmartChatbot() {
               {/* Close Button */}
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-black/5 hover:bg-black/10 transition-colors"
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-abyssal-blue/5 hover:bg-abyssal-blue/10 transition-colors"
                 aria-label="إغلاق المحادثة"
               >
-                <FiX className="text-lg text-black" />
+                <FiX className="text-lg text-abyssal-blue" />
               </button>
             </div>
 
@@ -263,7 +263,7 @@ export function SmartChatbot() {
                 >
                   {/* Bot Avatar */}
                   {msg.sender === 'bot' && (
-                    <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-zinc-200 bg-white">
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-oatmeal bg-palladian">
                       <Image
                         src="/images/4.jpg"
                         alt="Indra"
@@ -284,8 +284,8 @@ export function SmartChatbot() {
                     <div
                       className={`px-4 py-3 rounded-2xl text-[13px] leading-relaxed whitespace-pre-wrap ${
                         msg.sender === 'user'
-                          ? 'bg-zinc-900 text-white rounded-tl-none border border-zinc-800'
-                          : 'bg-white text-zinc-900 rounded-tr-none shadow-sm border border-zinc-200/80'
+                          ? 'bg-blue-fantastic text-palladian rounded-tl-none border border-blue-fantastic'
+                          : 'bg-palladian text-blue-fantastic rounded-tr-none shadow-sm border border-oatmeal/80'
                       }`}
                     >
                       {msg.text}
@@ -301,7 +301,7 @@ export function SmartChatbot() {
               {/* Typing Indicator */}
               {isTyping && (
                 <div className="flex items-start gap-2.5">
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-zinc-200 bg-white">
+                  <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-oatmeal bg-palladian">
                     <Image
                       src="/images/4.jpg"
                       alt="Indra"
@@ -314,7 +314,7 @@ export function SmartChatbot() {
                       }}
                     />
                   </div>
-                  <div className="bg-white px-4 py-3 rounded-2xl rounded-tr-none shadow-sm border border-zinc-200/80 flex items-center justify-center gap-1">
+                  <div className="bg-palladian px-4 py-3 rounded-2xl rounded-tr-none shadow-sm border border-oatmeal/80 flex items-center justify-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce" />
                     <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce [animation-delay:0.2s]" />
                     <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce [animation-delay:0.4s]" />
@@ -326,12 +326,12 @@ export function SmartChatbot() {
             </div>
 
             {/* Quick Questions (Chips) */}
-            <div className="p-3 border-t border-zinc-100 bg-white flex flex-wrap gap-1.5 justify-start max-h-[120px] overflow-y-auto">
+            <div className="p-3 border-t border-oatmeal bg-palladian flex flex-wrap gap-1.5 justify-start max-h-[120px] overflow-y-auto">
               {QUICK_QUESTIONS.map((q, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleSendMessage(q)}
-                  className="bg-white hover:bg-zinc-50 text-zinc-700 border border-zinc-200 hover:border-zinc-300 px-3.5 py-2 rounded-full text-[12px] font-bold shadow-sm transition-all duration-200 active:scale-95 whitespace-nowrap"
+                  className="bg-palladian hover:bg-zinc-50 text-zinc-700 border border-oatmeal hover:border-zinc-300 px-3.5 py-2 rounded-full text-[12px] font-bold shadow-sm transition-all duration-200 active:scale-95 whitespace-nowrap"
                 >
                   {q}
                 </button>
@@ -344,19 +344,19 @@ export function SmartChatbot() {
                 e.preventDefault();
                 handleSendMessage(inputValue);
               }}
-              className="p-4 border-t border-zinc-100 bg-white flex items-center"
+              className="p-4 border-t border-oatmeal bg-palladian flex items-center"
             >
-              <div className="w-full flex items-center border-2 border-black rounded-full px-3 py-1 bg-white">
+              <div className="w-full flex items-center border-2 border-abyssal-blue rounded-full px-3 py-1 bg-palladian">
                 <input
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="اسألني أي شيء..."
-                  className="flex-1 bg-transparent text-black px-2 py-2 text-xs md:text-sm focus:outline-none placeholder:text-zinc-400 font-medium"
+                  className="flex-1 bg-transparent text-abyssal-blue px-2 py-2 text-xs md:text-sm focus:outline-none placeholder:text-zinc-400 font-medium"
                 />
                 <button
                   type="submit"
-                  className="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-black flex items-center justify-center transition-all shrink-0"
+                  className="w-8 h-8 rounded-full bg-oatmeal hover:bg-oatmeal text-zinc-500 hover:text-abyssal-blue flex items-center justify-center transition-all shrink-0"
                   aria-label="إرسال"
                 >
                   <FiSend className="text-sm rtl:-rotate-180" />

@@ -52,7 +52,7 @@ export function ContactForm() {
       viewport={{ once: true, margin: "-100px" }}
       className="h-full"
     >
-      <form onSubmit={handleSubmit} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm text-black flex flex-col h-full relative">
+      <form onSubmit={handleSubmit} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm text-abyssal-blue flex flex-col h-full relative">
         
         {/* Title area */}
         <div className="text-start mb-8 flex flex-col items-start w-full">
@@ -72,7 +72,7 @@ export function ContactForm() {
                 type="text" 
                 name="name"
                 required
-                className="w-full bg-[#fcfcfc] border border-zinc-200 rounded-2xl px-5 py-3.5 text-black text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
+                className="w-full bg-[#fcfcfc] border border-oatmeal rounded-2xl px-5 py-3.5 text-abyssal-blue text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
                 placeholder="اسمك"
                 dir="rtl"
               />
@@ -83,7 +83,7 @@ export function ContactForm() {
                 type="email" 
                 name="email"
                 required
-                className="w-full bg-[#fcfcfc] border border-zinc-200 rounded-2xl px-5 py-3.5 text-black text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
+                className="w-full bg-[#fcfcfc] border border-oatmeal rounded-2xl px-5 py-3.5 text-abyssal-blue text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
                 placeholder="your@email.com"
                 dir="rtl"
               />
@@ -97,7 +97,7 @@ export function ContactForm() {
               type="text" 
               name="_subject"
               required
-              className="w-full bg-[#fcfcfc] border border-zinc-200 rounded-2xl px-5 py-3.5 text-black text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
+              className="w-full bg-[#fcfcfc] border border-oatmeal rounded-2xl px-5 py-3.5 text-abyssal-blue text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
               placeholder="ما موضوع رسالتك؟"
               dir="rtl"
             />
@@ -110,7 +110,7 @@ export function ContactForm() {
               name="message"
               required
               rows={4}
-              className="w-full bg-[#fcfcfc] border border-zinc-200 rounded-2xl px-5 py-4 text-black text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px] resize-none"
+              className="w-full bg-[#fcfcfc] border border-oatmeal rounded-2xl px-5 py-4 text-abyssal-blue text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px] resize-none"
               placeholder="أخبرني عن مشروعك وأهدافك والجدول الزمني..."
               dir="rtl"
             />

@@ -606,7 +606,7 @@ export function AuroraBackground() {
         className="absolute bottom-0 left-0 right-0 pointer-events-none"
         style={{
           height: '25%',
-          background: 'linear-gradient(to bottom, transparent 0%, #0A0A0A 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, var(--color-abyssal-blue) 100%)',
           zIndex: 5,
         }}
       />

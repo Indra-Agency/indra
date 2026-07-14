@@ -6,7 +6,7 @@ import { SERVICES_DATA } from '@/data/services';
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-16 md:py-24 relative bg-[#0A0A0A]" dir="rtl">
+    <section id="services" className="py-16 md:py-24 relative bg-abyssal-blue" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-24">
@@ -14,7 +14,7 @@ export function ServicesSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-emerald-400 font-bold mb-4 text-base tracking-wide"
+            className="text-burning-flame font-bold mb-4 text-base tracking-wide"
           >
             الخدمات
           </motion.h3>
@@ -23,7 +23,7 @@ export function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 pb-4 leading-normal"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-palladian to-zinc-400 pb-4 leading-normal"
           >
             خبرات تصنع الفارق
           </motion.h2>
@@ -52,7 +52,7 @@ export function ServicesSection() {
                 {/* Right side: Text Content */}
                 <div className="flex flex-col justify-center">
                   <div className="flex justify-start mb-6">
-                    <div className={`flex items-center gap-3 px-4 py-2 rounded-full border border-black/5 ${service.iconBg}`}>
+                    <div className={`flex items-center gap-3 px-4 py-2 rounded-full border border-abyssal-blue/5 ${service.iconBg}`}>
                       <span className="text-sm md:text-base font-bold opacity-80">{service.id}</span>
                       <div className="w-8 h-8 flex items-center justify-center">
                         {service.icon}

@@ -87,7 +87,7 @@ function CountUpValue({ targetStr }: { targetStr: string }) {
 
 export function StatsSection() {
   return (
-    <section className="py-16 md:py-24 relative bg-[#0a0a0a]" dir="rtl">
+    <section className="py-16 md:py-24 relative bg-abyssal-blue" dir="rtl">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
@@ -97,7 +97,7 @@ export function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-4xl text-white font-extrabold tracking-tight"
+            className="text-2xl md:text-4xl text-palladian font-extrabold tracking-tight"
           >
             أثر يُثبت بالأرقام
           </motion.h2>
@@ -112,37 +112,37 @@ export function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="relative p-[1.5px] rounded-3xl overflow-hidden group shadow-[0_0_20px_rgba(79,255,176,0.02)] hover:shadow-[0_0_30px_rgba(79,255,176,0.1)] transition-shadow duration-500"
+              className="relative p-[1.5px] rounded-3xl overflow-hidden group shadow-[0_0_20px_rgba(255,153,51,0.02)] hover:shadow-[0_0_30px_rgba(255,153,51,0.1)] transition-shadow duration-500"
             >
               
               {/* Spinning Glow Border Layer (2 Angles) */}
-              <div className="absolute inset-[-150%] animate-spin [animation-duration:6s] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(79,255,176,0)_0%,rgba(79,255,176,0.8)_25%,rgba(79,255,176,0)_50%,rgba(79,255,176,0.8)_75%,rgba(79,255,176,0)_100%)]"></div>
+              <div className="absolute inset-[-150%] animate-spin [animation-duration:6s] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(255,153,51,0)_0%,rgba(255,153,51,0.8)_25%,rgba(255,153,51,0)_50%,rgba(255,153,51,0.8)_75%,rgba(255,153,51,0)_100%)]"></div>
 
               {/* Inner Card */}
-              <div className="relative bg-[#111111] rounded-[calc(1.5rem-1.5px)] p-10 flex flex-col items-center text-center h-full z-10 hover:bg-[#141414] transition-colors duration-500">
+              <div className="relative bg-abyssal-blue rounded-[calc(1.5rem-1.5px)] p-10 flex flex-col items-center text-center h-full z-10 hover:bg-[#223040] transition-colors duration-500">
                 {/* Icon in Circle Arc */}
                 <div className="w-16 h-16 rounded-full flex items-center justify-center mb-8 relative">
                   {/* SVG open arc */}
                   <svg 
-                    className="absolute inset-0 w-full h-full text-[#4FFFB0]/50 -rotate-90 group-hover:rotate-[90deg] transition-transform duration-1000 origin-center" 
+                    className="absolute inset-0 w-full h-full text-burning-flame/50 -rotate-90 group-hover:rotate-[90deg] transition-transform duration-1000 origin-center" 
                     viewBox="0 0 100 100" 
                     fill="none"
                   >
                     <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="2.5" strokeDasharray="220 100" strokeLinecap="round" />
                   </svg>
                   {/* Icon */}
-                  <stat.icon className="text-[#4FFFB0] text-2xl relative z-10" />
+                  <stat.icon className="text-burning-flame text-2xl relative z-10" />
                 </div>
 
                 {/* Value */}
-                <h3 className="text-3xl md:text-4xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-[#4FFFB0] mb-5 tracking-wide">
+                <h3 className="text-3xl md:text-4xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-palladian to-burning-flame mb-5 tracking-wide">
                   <CountUpValue targetStr={stat.value} />
                 </h3>
 
                 {/* Title & Subtitle */}
                 <div className="flex flex-col gap-1.5">
-                  <span className="text-white font-heading text-lg font-bold">{stat.title}</span>
-                  <span className="text-white/40 text-[13px] font-medium leading-relaxed">{stat.subtitle}</span>
+                  <span className="text-palladian font-heading text-lg font-bold">{stat.title}</span>
+                  <span className="text-palladian/40 text-[13px] font-medium leading-relaxed">{stat.subtitle}</span>
                 </div>
               </div>
 

@@ -13,32 +13,32 @@ import {
 } from 'react-icons/fa';
 import { MdRocketLaunch, MdAnalytics } from 'react-icons/md';
 
-const GOOGLE_GRADIENT = 'bg-[linear-gradient(90deg,#4285F4_0%,#EA4335_33%,#FBBC05_66%,#34A853_100%)] text-white';
+const GOOGLE_GRADIENT = 'bg-[linear-gradient(90deg,#4285F4_0%,#EA4335_33%,#FBBC05_66%,#34A853_100%)] text-palladian';
 
 const TAGS = [
   // Existing Kept Tags
-  { id: 'ai', text: 'الذكاء الاصطناعي', icon: SiOpenai, color: 'bg-[#6EE7B7] text-zinc-900' },
-  { id: 'auto', text: 'أتمتة العمليات', icon: SiZapier, color: 'bg-[#F97316] text-white' },
-  { id: 'db', text: 'قواعد البيانات', icon: SiFirebase, color: 'bg-[#F5CD3F] text-black' },
-  { id: 'firebase', text: 'Firebase', icon: SiFirebase, color: 'bg-[#F5CD3F] text-black' },
-  { id: 'supabase', text: 'Supabase', icon: SiFirebase, color: 'bg-[#4ade80] text-zinc-900' }, // Using green for supabase since icon is generic here
-  { id: 'web', text: 'تطوير الويب', icon: SiNextdotjs, color: 'bg-white text-black' },
-  { id: 'wp', text: 'إدارة المحتوى', icon: SiWordpress, color: 'bg-[#3b82f6] text-white' },
-  { id: 'seo', text: 'تحسين محركات البحث', icon: FaSearch, color: 'bg-[#6EE7B7] text-zinc-900' },
-  { id: 'ts', text: 'البرمجة TS', icon: SiTypescript, color: 'bg-[#3178C6] text-white' },
+  { id: 'ai', text: 'الذكاء الاصطناعي', icon: SiOpenai, color: 'bg-[#6EE7B7] text-blue-fantastic' },
+  { id: 'auto', text: 'أتمتة العمليات', icon: SiZapier, color: 'bg-[#F97316] text-palladian' },
+  { id: 'db', text: 'قواعد البيانات', icon: SiFirebase, color: 'bg-[#F5CD3F] text-abyssal-blue' },
+  { id: 'firebase', text: 'Firebase', icon: SiFirebase, color: 'bg-[#F5CD3F] text-abyssal-blue' },
+  { id: 'supabase', text: 'Supabase', icon: SiFirebase, color: 'bg-[#4ade80] text-blue-fantastic' }, // Using green for supabase since icon is generic here
+  { id: 'web', text: 'تطوير الويب', icon: SiNextdotjs, color: 'bg-palladian text-abyssal-blue' },
+  { id: 'wp', text: 'إدارة المحتوى', icon: SiWordpress, color: 'bg-[#3b82f6] text-palladian' },
+  { id: 'seo', text: 'تحسين محركات البحث', icon: FaSearch, color: 'bg-[#6EE7B7] text-blue-fantastic' },
+  { id: 'ts', text: 'البرمجة TS', icon: SiTypescript, color: 'bg-[#3178C6] text-palladian' },
 
   // Google Wave Gradient Tags
   { id: 'googleads', text: 'إعلانات جوجل', icon: SiGoogle, color: GOOGLE_GRADIENT },
   { id: 'maps', text: 'خرائط جوجل', icon: SiGooglemaps, color: GOOGLE_GRADIENT },
 
   // New Technical Tags
-  { id: 'chatbots', text: 'روبوتات الدردشة', icon: FaRobot, color: 'bg-[#4C1D95] text-white' },
-  { id: 'flutter', text: 'تطبيقات فلاتر', icon: SiFlutter, color: 'bg-[#02569B] text-white' },
-  { id: 'prompt', text: 'هندسة الأوامر', icon: FaTerminal, color: 'bg-[#059669] text-white' },
-  { id: 'api', text: 'تكامل الأنظمة API', icon: FaNetworkWired, color: 'bg-[#0369A1] text-white' },
-  { id: 'crm', text: 'إدارة علاقات العملاء CRM', icon: FaUsers, color: 'bg-[#BE123C] text-white' },
-  { id: 'analytics_new', text: 'تحليل البيانات', icon: FaChartLine, color: 'bg-[#CA8A04] text-black' },
-  { id: 'cloud_new', text: 'البنية السحابية', icon: FaCloud, color: 'bg-[#334155] text-white' },
+  { id: 'chatbots', text: 'روبوتات الدردشة', icon: FaRobot, color: 'bg-[#4C1D95] text-palladian' },
+  { id: 'flutter', text: 'تطبيقات فلاتر', icon: SiFlutter, color: 'bg-[#02569B] text-palladian' },
+  { id: 'prompt', text: 'هندسة الأوامر', icon: FaTerminal, color: 'bg-[#059669] text-palladian' },
+  { id: 'api', text: 'تكامل الأنظمة API', icon: FaNetworkWired, color: 'bg-[#0369A1] text-palladian' },
+  { id: 'crm', text: 'إدارة علاقات العملاء CRM', icon: FaUsers, color: 'bg-[#BE123C] text-palladian' },
+  { id: 'analytics_new', text: 'تحليل البيانات', icon: FaChartLine, color: 'bg-[#CA8A04] text-abyssal-blue' },
+  { id: 'cloud_new', text: 'البنية السحابية', icon: FaCloud, color: 'bg-[#334155] text-palladian' },
   { id: 'ui', text: 'تطوير الواجهات', icon: SiReact, color: 'bg-[#18181B] text-[#61DAFB]' },
 ];
 
@@ -162,7 +162,7 @@ export function ServicesPhysicsCloud() {
   }, [isInView]);
 
   return (
-    <section className="w-full bg-[#0A0A0A]">
+    <section className="w-full bg-abyssal-blue">
       <div 
         ref={sceneRef} 
         className="relative w-full h-[350px] overflow-hidden cursor-pointer"

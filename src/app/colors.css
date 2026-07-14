@@ -1,0 +1,25 @@
+@theme {
+  /* 
+    ========================================
+    ملف الألوان الرئيسي (Main Colors File)
+    ========================================
+    يمكنك تغيير الألوان من هنا وسيتم تطبيقها على الموقع بالكامل.
+  */
+  --color-palladian: #EEE9DF;
+  --color-oatmeal: #C9C1B1;
+  --color-blue-fantastic: #2C3B4D;
+  --color-burning-flame: #FF9933;
+  --color-truffle-trouble: #A35139;
+  --color-abyssal-blue: #1B2632;
+
+  /* 
+    الألوان الأساسية المستخدمة في الموقع 
+    (Semantic Colors mapped to Brand Colors)
+  */
+  --color-background: var(--color-abyssal-blue);
+  --color-surface: var(--color-blue-fantastic);
+  --color-border: color-mix(in srgb, var(--color-oatmeal) 20%, transparent);
+  --color-foreground: var(--color-palladian);
+  --color-muted: var(--color-oatmeal);
+  --color-accent: var(--color-burning-flame);
+}

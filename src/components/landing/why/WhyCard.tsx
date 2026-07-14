@@ -53,7 +53,7 @@ export function WhyCard({ card, index }: Props) {
 
       {/* Text */}
       <div>
-        <h3 className="ar-heading text-lg font-bold text-white mb-2">{card.title}</h3>
+        <h3 className="ar-heading text-lg font-bold text-palladian mb-2">{card.title}</h3>
         <p className="ar-body text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
           {card.description}
         </p>

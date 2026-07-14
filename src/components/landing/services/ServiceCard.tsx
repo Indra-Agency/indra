@@ -29,10 +29,10 @@ export function ServiceCard({ service, index }: Props) {
       viewport={{ once: true, margin: '-100px' }}
       className="bento-card p-8 flex flex-col"
     >
-      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-800 text-white mb-6">
+      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-fantastic text-palladian mb-6">
         {service.icon}
       </div>
-      <h3 className="text-lg font-bold text-white mb-3">{service.title}</h3>
+      <h3 className="text-lg font-bold text-palladian mb-3">{service.title}</h3>
       <p className="text-zinc-400 text-sm leading-relaxed">{service.desc}</p>
     </motion.div>
   );

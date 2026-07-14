@@ -31,7 +31,7 @@ export function ClientsSection({ logos }: { logos: string[] }) {
   const bottomLogos = logos.slice(mid);
 
   return (
-    <section id="clients" className="py-16 md:py-24 bg-[#0A0A0A] overflow-hidden" dir="rtl">
+    <section id="clients" className="py-16 md:py-24 bg-abyssal-blue overflow-hidden" dir="rtl">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-10 text-center flex flex-col items-center">
         <motion.span
@@ -39,7 +39,7 @@ export function ClientsSection({ logos }: { logos: string[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-emerald-400 font-bold tracking-wider text-xs md:text-sm mb-6"
+          className="text-burning-flame font-bold tracking-wider text-xs md:text-sm mb-6"
         >
           موثوق من قبل
         </motion.span>
@@ -48,7 +48,7 @@ export function ClientsSection({ logos }: { logos: string[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-white font-black text-2xl md:text-3xl -mt-2 md:-mt-3"
+          className="text-palladian font-black text-2xl md:text-3xl -mt-2 md:-mt-3"
         >
           أبرز العملاء
         </motion.h2>
@@ -78,8 +78,8 @@ export function ClientsSection({ logos }: { logos: string[] }) {
         </motion.div>
 
         {/* Gradient Overlays for smooth entry/exit */}
-        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-abyssal-blue via-abyssal-blue/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-abyssal-blue via-abyssal-blue/80 to-transparent z-10 pointer-events-none"></div>
       </div>
     </section>
   );

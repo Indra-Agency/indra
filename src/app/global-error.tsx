@@ -20,15 +20,15 @@ export default function GlobalError({
   return (
     <html lang="ar" dir="rtl">
       <body 
-        className="bg-[#0A0A0A] text-white antialiased flex items-center justify-center min-h-screen"
+        className="bg-abyssal-blue text-palladian antialiased flex items-center justify-center min-h-screen"
         style={{ fontFamily: "sans-serif" }}
       >
-        <div className="bg-[#1a1a1a] p-8 md:p-12 rounded-[2rem] border border-zinc-800 shadow-2xl max-w-lg w-full flex flex-col items-center text-center mx-4">
+        <div className="bg-[#1a1a1a] p-8 md:p-12 rounded-[2rem] border border-blue-fantastic shadow-2xl max-w-lg w-full flex flex-col items-center text-center mx-4">
           <div className="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mb-6">
             <FiAlertOctagon className="text-3xl" />
           </div>
           
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-white tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-palladian tracking-tight">
             عطل حرج في النظام
           </h2>
           

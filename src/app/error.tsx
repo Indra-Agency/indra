@@ -18,12 +18,12 @@ export default function ErrorBoundary({
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-6" dir="rtl">
-      <div className="bg-[#1a1a1a] p-8 md:p-12 rounded-[2rem] border border-zinc-800 shadow-2xl max-w-lg w-full flex flex-col items-center">
+      <div className="bg-[#1a1a1a] p-8 md:p-12 rounded-[2rem] border border-blue-fantastic shadow-2xl max-w-lg w-full flex flex-col items-center">
         <div className="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mb-6">
           <FiAlertTriangle className="text-3xl" />
         </div>
         
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-white tracking-tight">
+        <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-palladian tracking-tight">
           عذراً، حدث خطأ غير متوقع
         </h2>
         

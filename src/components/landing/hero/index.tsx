@@ -19,22 +19,20 @@
  *     └─ ./TrustedBy    — logo strip
  */
 
-import { AuroraBackground } from './AuroraBackground';
 import { HeroContent }      from './HeroContent';
+import { ParticleNetwork }  from './ParticleNetwork';
 
 export function HeroSection({ logos = [] }: { logos?: string[] }) {
   return (
     <section
-      className="relative overflow-hidden flex flex-col min-h-screen w-full"
-      style={{ backgroundColor: 'hsl(260, 87%, 3%)' }}
+      className="relative overflow-hidden flex flex-col min-h-screen w-full bg-abyssal-blue"
     >
-      {/* Fluid Gradient Background (CSS Only) */}
-      <AuroraBackground />
+      {/* Background Particle Network (z-index: 0) */}
+      <ParticleNetwork />
 
       {/* Content wrapper sitting clearly above the animated background */}
       <div
-        className="relative z-10 flex-1 flex items-center w-full px-6 md:px-12 lg:px-20"
-        style={{ pointerEvents: 'none' }}
+        className="relative z-10 flex-1 flex items-center w-full px-6 md:px-12 lg:px-20 pointer-events-none"
       >
         <HeroContent logos={logos} />
       </div>

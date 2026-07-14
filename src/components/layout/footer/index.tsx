@@ -10,12 +10,12 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#4FFFB0] text-black w-full overflow-hidden mt-20">
+    <footer className="bg-burning-flame text-abyssal-blue w-full overflow-hidden mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* ── CTA Area ── */}
         <div className="py-24 md:py-32 flex flex-col items-center justify-center text-center">
-          <span className="font-bold text-lg md:text-xl mb-4 text-black/80">مستعد للبداية؟</span>
+          <span className="font-bold text-lg md:text-xl mb-4 text-abyssal-blue/80">مستعد للبداية؟</span>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-8 tracking-tighter" style={{ lineHeight: 1.2 }}>
             لنبن شيئاً مختلفاً
           </h2>
@@ -34,7 +34,7 @@ export function Footer() {
         </div>
 
         {/* ── Footer Info Area ── */}
-        <div className="border-t border-black/10 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-start">
+        <div className="border-t border-abyssal-blue/10 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-start">
 
           {/* Right Side (Name/Agency & Socials) */}
           <div className="flex flex-col items-center md:items-start text-center md:text-start">
@@ -46,9 +46,9 @@ export function Footer() {
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
               >
-                <path d="M 12 3.5 Q 12 7.5 16 7.5 Q 12 7.5 12 11.5 Q 12 7.5 8 7.5 Q 12 7.5 12 3.5 Z" fill="white" />
-                <path d="M 18.5 10 Q 18.5 15.5 24 15.5 Q 18.5 15.5 18.5 21 Q 18.5 15.5 13 15.5 Q 18.5 15.5 18.5 10 Z" fill="white" />
-                <path d="M 8 16.5 Q 8 19.5 11 19.5 Q 8 19.5 8 22.5 Q 8 19.5 5 19.5 Q 8 19.5 8 16.5 Z" fill="white" />
+                <path d="M 12 3.5 Q 12 7.5 16 7.5 Q 12 7.5 12 11.5 Q 12 7.5 8 7.5 Q 12 7.5 12 3.5 Z" fill="var(--color-abyssal-blue)" />
+                <path d="M 18.5 10 Q 18.5 15.5 24 15.5 Q 18.5 15.5 18.5 21 Q 18.5 15.5 13 15.5 Q 18.5 15.5 18.5 10 Z" fill="var(--color-abyssal-blue)" />
+                <path d="M 8 16.5 Q 8 19.5 11 19.5 Q 8 19.5 8 22.5 Q 8 19.5 5 19.5 Q 8 19.5 8 16.5 Z" fill="var(--color-abyssal-blue)" />
               </svg>
               <h3 className="text-4xl font-extrabold tracking-tight font-satoshi">Indra</h3>
             </div>
@@ -56,10 +56,10 @@ export function Footer() {
               وكالة رقمية متكاملة متخصصة في حلول الأتمتة والذكاء الاصطناعي، وتطوير المواقع والتطبيقات المبتكرة. نُحوّل رؤيتك إلى أنظمة متطورة تعمل على مدار الساعة لتعزيز نمو أعمالك.
             </p>
             <div className="flex items-center gap-3">
-              <a href="mailto:indraagency.dev@gmail.com" className="w-11 h-11 bg-white rounded-full border-[1.5px] border-black flex items-center justify-center text-lg hover:bg-black hover:text-[#4FFFB0] transition-colors shadow-sm">
+              <a href="mailto:indraagency.dev@gmail.com" className="w-11 h-11 bg-palladian rounded-full border-[1.5px] border-abyssal-blue flex items-center justify-center text-lg text-abyssal-blue hover:bg-abyssal-blue hover:text-burning-flame transition-colors shadow-sm">
                 <FiMail />
               </a>
-              <a href="https://wa.me/967738688812" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white rounded-full border-[1.5px] border-black flex items-center justify-center text-lg hover:bg-black hover:text-[#4FFFB0] transition-colors shadow-sm">
+              <a href="https://wa.me/967738688812" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-palladian rounded-full border-[1.5px] border-abyssal-blue flex items-center justify-center text-lg text-abyssal-blue hover:bg-abyssal-blue hover:text-burning-flame transition-colors shadow-sm">
                 <FaWhatsapp />
               </a>
             </div>
@@ -96,7 +96,7 @@ export function Footer() {
 
             <button
               onClick={scrollToTop}
-              className="bg-black text-[#4FFFB0] font-bold text-[13px] px-6 py-2.5 rounded-full flex items-center justify-center gap-2.5 hover:-translate-y-1 transition-transform shadow-[2px_2px_0_0_rgba(0,0,0,0.15)]"
+              className="bg-abyssal-blue text-burning-flame font-bold text-[13px] px-6 py-2.5 rounded-full flex items-center justify-center gap-2.5 hover:-translate-y-1 transition-transform shadow-[2px_2px_0_0_rgba(27,38,50,0.3)]"
               dir="ltr"
             >
               <span dir="rtl">الأعلى</span>
@@ -108,7 +108,7 @@ export function Footer() {
       </div>
 
       {/* ── Bottom Bar ── */}
-      <div className="bg-[#0f0f0f] text-zinc-400 py-6 px-6 md:px-12 w-full text-[13px] font-medium flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+      <div className="bg-abyssal-blue text-oatmeal py-6 px-6 md:px-12 w-full text-[13px] font-medium flex flex-col md:flex-row items-center justify-between gap-4 text-center">
         <div>
           © {new Date().getFullYear()} أحمد عصام الاغبري. جميع الحقوق محفوظة.
         </div>
@@ -118,7 +118,7 @@ export function Footer() {
             href="https://www.linkedin.com/in/ahmed-essam-79a120397"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white hover:text-[#4FFFB0] transition-colors underline decoration-zinc-700 underline-offset-4"
+            className="text-palladian hover:text-burning-flame transition-colors underline decoration-oatmeal/30 underline-offset-4"
           >
             أحمد عصام الاغبري
           </a>

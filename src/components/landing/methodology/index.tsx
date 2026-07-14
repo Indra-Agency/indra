@@ -42,7 +42,7 @@ export function MethodologySection() {
   });
 
   return (
-    <section id="methodology" className="py-16 md:py-24 relative bg-[#0A0A0A]" dir="rtl">
+    <section id="methodology" className="py-16 md:py-24 relative bg-abyssal-blue" dir="rtl">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-32">
@@ -50,7 +50,7 @@ export function MethodologySection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-emerald-400 font-bold mb-4 text-base tracking-wide"
+            className="text-burning-flame font-bold mb-4 text-base tracking-wide"
           >
             المنهجية
           </motion.h3>
@@ -59,7 +59,7 @@ export function MethodologySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 pb-4 leading-normal"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-palladian to-zinc-400 pb-4 leading-normal"
           >
             كيف نعمل
           </motion.h2>
@@ -68,11 +68,11 @@ export function MethodologySection() {
         {/* Timeline Layout */}
         <div ref={containerRef} className="relative">
           {/* Main Vertical Line (background faint) */}
-          <div className="absolute top-0 bottom-0 right-[80px] md:right-[120px] lg:right-[180px] w-[2px] bg-emerald-500/20 translate-x-1/2" />
+          <div className="absolute top-0 bottom-0 right-[80px] md:right-[120px] lg:right-[180px] w-[2px] bg-burning-flame/20 translate-x-1/2" />
           
           {/* Main Vertical Line (filled glowing animated) */}
           <motion.div 
-            className="absolute top-0 bottom-0 right-[80px] md:right-[120px] lg:right-[180px] w-[2px] bg-emerald-400 shadow-[0_0_15px_#34d399] translate-x-1/2 origin-top z-0"
+            className="absolute top-0 bottom-0 right-[80px] md:right-[120px] lg:right-[180px] w-[2px] bg-burning-flame shadow-[0_0_15px_var(--color-burning-flame)] translate-x-1/2 origin-top z-0"
             style={{ scaleY: scrollYProgress }}
           />
 
@@ -89,18 +89,18 @@ export function MethodologySection() {
                 
                 {/* Huge Number (Right side of the line) */}
                 <div className="flex items-center justify-center">
-                  <span className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-serif font-extrabold bg-gradient-to-b from-emerald-200 to-emerald-800 text-transparent bg-clip-text leading-none select-none">
+                  <span className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-serif font-extrabold bg-gradient-to-b from-burning-flame to-burning-flame text-transparent bg-clip-text leading-none select-none">
                     {step.id}
                   </span>
                 </div>
 
                 {/* Node (Middle on the line) */}
-                <div className="absolute right-[80px] md:right-[120px] lg:right-[180px] top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 rounded-full bg-emerald-400 shadow-[0_0_15px_#34d399] z-10" />
+                <div className="absolute right-[80px] md:right-[120px] lg:right-[180px] top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 rounded-full bg-burning-flame shadow-[0_0_15px_var(--color-burning-flame)] z-10" />
 
                 {/* Content Box (Left side of the line) */}
                 <div className="flex flex-col items-start text-right py-4 z-10">
-                  <h3 className="text-white font-extrabold text-xl md:text-2xl lg:text-3xl mb-3 tracking-tight">{step.title}</h3>
-                  <p className="text-emerald-400/90 text-sm md:text-base font-medium mb-4">{step.subtitle}</p>
+                  <h3 className="text-palladian font-extrabold text-xl md:text-2xl lg:text-3xl mb-3 tracking-tight">{step.title}</h3>
+                  <p className="text-burning-flame/90 text-sm md:text-base font-medium mb-4">{step.subtitle}</p>
                   <p className="text-zinc-300 leading-[1.8] mb-6 text-sm md:text-base max-w-xl font-serif">{step.description}</p>
                   
                   {/* Tags */}
@@ -108,7 +108,7 @@ export function MethodologySection() {
                     {step.tags.map((tag, i) => (
                       <span 
                         key={i}
-                        className="bg-emerald-900/10 border border-emerald-500/20 text-emerald-300 text-xs md:text-sm font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-full cursor-default hover:bg-emerald-900/20 transition-colors"
+                        className="bg-burning-flame/10 border border-burning-flame/20 text-burning-flame text-xs md:text-sm font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-full cursor-default hover:bg-burning-flame/20 transition-colors"
                       >
                         {tag}
                       </span>

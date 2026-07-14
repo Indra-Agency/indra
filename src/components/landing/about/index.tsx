@@ -15,7 +15,7 @@ import { FLOATING_BADGES } from './aboutData';
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-16 md:py-28 lg:py-32 relative overflow-hidden bg-[#0A0A0A]">
+    <section id="about" className="py-16 md:py-28 lg:py-32 relative overflow-hidden bg-abyssal-blue">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Top Titles */}
         <div className="text-center mb-16 relative z-30">
@@ -23,7 +23,7 @@ export function AboutSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[#4FFFB0] font-bold text-base mb-3"
+            className="text-burning-flame font-bold text-base mb-3"
           >
             عن الوكالة
           </motion.p>
@@ -32,7 +32,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-palladian tracking-tight"
           >
             حلول رقمية شاملة
           </motion.h2>

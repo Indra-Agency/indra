@@ -49,11 +49,11 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
       <div className="mb-7">
         <h1
           className="ar-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
-          style={{ color: '#fff', lineHeight: 1.35, fontWeight: 700, letterSpacing: '-0.01em' }}
+          style={{ color: 'var(--color-palladian)', lineHeight: 1.35, fontWeight: 700, letterSpacing: '-0.01em' }}
         >
           {HERO_COPY.headingLine1}
           <br />
-          <span style={{ color: '#4FFFB0' }}>{HERO_COPY.headingAccent}</span>{' '}
+          <span style={{ color: 'var(--color-burning-flame)' }}>{HERO_COPY.headingAccent}</span>{' '}
           {HERO_COPY.headingLine2}
         </h1>
       </div>
@@ -61,7 +61,7 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
       {/* Sub-headline */}
       <p
         className="text-sm sm:text-base md:text-base leading-relaxed max-w-3xl mx-auto mb-10"
-        style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 400 }}
+        style={{ color: 'rgba(238, 233, 223, 0.75)', fontWeight: 400 }}
       >
         {HERO_COPY.subtext1}
         <br className="hidden sm:block" />

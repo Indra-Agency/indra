@@ -18,7 +18,7 @@ export function WhySection() {
     <section
       id="why"
       className="relative py-12 px-6 md:px-12 lg:px-20 overflow-hidden"
-      style={{ background: '#0A0A0A' }}
+      style={{ background: 'var(--color-abyssal-blue)' }}
     >
       {/* Subtle background glow */}
       <div

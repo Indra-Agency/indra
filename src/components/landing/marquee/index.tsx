@@ -18,17 +18,17 @@ export function MarqueeSection() {
     <div
       dir="ltr"
       className="relative overflow-hidden"
-      style={{ background: '#0A0A0A', paddingTop: 56, paddingBottom: 60 }}
+      style={{ background: 'var(--color-abyssal-blue)', paddingTop: 56, paddingBottom: 60 }}
     >
       {/* Left edge fade */}
       <div
         className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to right, #0A0A0A, transparent)' }}
+        style={{ background: 'linear-gradient(to right, var(--color-abyssal-blue), transparent)' }}
       />
       {/* Right edge fade */}
       <div
         className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to left, #0A0A0A, transparent)' }}
+        style={{ background: 'linear-gradient(to left, var(--color-abyssal-blue), transparent)' }}
       />
 
       <div className="flex flex-col gap-4">

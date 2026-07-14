@@ -19,7 +19,7 @@ export function ProjectsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-emerald-400 font-semibold tracking-wider text-sm mb-3 uppercase"
+            className="text-burning-flame font-semibold tracking-wider text-sm mb-3 uppercase"
           >
             التأثير
           </motion.span>
@@ -28,7 +28,7 @@ export function ProjectsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl text-white font-bold tracking-tight"
+            className="text-3xl md:text-4xl lg:text-5xl text-palladian font-bold tracking-tight"
           >
             المشاريع المميزة
           </motion.h2>
@@ -73,9 +73,9 @@ export function ProjectsSection() {
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-2 rounded-full border border-black/10 px-3.5 py-1.5 text-[13px] font-bold shadow-[0_1px_2px_rgba(0,0,0,0.05)] bg-black/5 hover:bg-black/10 transition-colors cursor-default"
+                        className="inline-flex items-center gap-2 rounded-full border border-abyssal-blue/10 px-3.5 py-1.5 text-[13px] font-bold shadow-[0_1px_2px_rgba(0,0,0,0.05)] bg-abyssal-blue/5 hover:bg-abyssal-blue/10 transition-colors cursor-default"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-black opacity-70"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-abyssal-blue opacity-70"></span>
                         {tag}
                       </span>
                     ))}
@@ -85,7 +85,7 @@ export function ProjectsSection() {
                   <div className="flex flex-nowrap justify-start gap-3 md:gap-4 mt-2 mb-8 overflow-x-auto pb-2 scrollbar-hide w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                     {project.tech.map((tech, idx) => (
                       <div key={idx} className="flex flex-col items-center gap-1.5 shrink-0">
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-xl shadow-sm flex items-center justify-center transition-transform hover:-translate-y-1 relative">
+                        <div className="w-8 h-8 md:w-10 md:h-10 bg-palladian rounded-xl shadow-sm flex items-center justify-center transition-transform hover:-translate-y-1 relative">
                           <Image
                             src={tech.img}
                             alt={tech.name}
@@ -105,17 +105,17 @@ export function ProjectsSection() {
                   <div className="flex flex-wrap justify-start items-center gap-3 mt-auto">
                     {project.ctaType === 'apps' ? (
                       <>
-                        <button className="flex items-center justify-center gap-2.5 bg-[#0a0a0a] text-white px-4 py-2.5 md:px-5 rounded-2xl hover:bg-zinc-800 transition-transform hover:-translate-y-1 shadow-md">
+                        <button className="flex items-center justify-center gap-2.5 bg-abyssal-blue text-palladian px-4 py-2.5 md:px-5 rounded-2xl hover:bg-blue-fantastic transition-transform hover:-translate-y-1 shadow-md">
                           <FaApple className="text-2xl mb-0.5" />
                           <div className="flex flex-col items-start leading-tight">
-                            <span className="text-[9px] text-white/80 mb-0.5">حمّله من</span>
+                            <span className="text-[9px] text-palladian/80 mb-0.5">حمّله من</span>
                             <span className="text-[14px] md:text-[15px] font-bold tracking-wide">آب ستور</span>
                           </div>
                         </button>
-                        <button className="flex items-center justify-center gap-2.5 bg-[#0a0a0a] text-white px-4 py-2.5 md:px-5 rounded-2xl hover:bg-zinc-800 transition-transform hover:-translate-y-1 shadow-md">
+                        <button className="flex items-center justify-center gap-2.5 bg-abyssal-blue text-palladian px-4 py-2.5 md:px-5 rounded-2xl hover:bg-blue-fantastic transition-transform hover:-translate-y-1 shadow-md">
                           <div className="relative w-6 h-6"><Image src="https://api.iconify.design/logos:google-play-icon.svg" alt="Google Play" fill sizes="24px" className="object-contain" /></div>
                           <div className="flex flex-col items-start leading-tight">
-                            <span className="text-[9px] text-white/80 mb-0.5">حمّله من</span>
+                            <span className="text-[9px] text-palladian/80 mb-0.5">حمّله من</span>
                             <span className="text-[14px] md:text-[15px] font-bold tracking-wide">جوجل بلاي</span>
                           </div>
                         </button>
@@ -134,14 +134,14 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Showcase Image Side */}
-                <div className="lg:w-1/2 relative bg-zinc-900 min-h-[400px] lg:min-h-full">
+                <div className="lg:w-1/2 relative bg-blue-fantastic min-h-[400px] lg:min-h-full">
 
                   {/* Floating Badges */}
-                  <div className="absolute top-6 right-6 z-10 bg-black/50 text-white rounded-full px-5 py-1.5 text-sm font-bold border border-white/10 backdrop-blur-md">
+                  <div className="absolute top-6 right-6 z-10 bg-abyssal-blue/50 text-palladian rounded-full px-5 py-1.5 text-sm font-bold border border-palladian/10 backdrop-blur-md">
                     {project.country}
                   </div>
 
-                  <div className="absolute top-6 left-6 z-10 bg-black/50 text-white rounded-full px-5 py-1.5 text-sm font-bold border border-white/10 backdrop-blur-md">
+                  <div className="absolute top-6 left-6 z-10 bg-abyssal-blue/50 text-palladian rounded-full px-5 py-1.5 text-sm font-bold border border-palladian/10 backdrop-blur-md">
                     {project.year}
                   </div>
 
@@ -154,7 +154,7 @@ export function ProjectsSection() {
                     className="object-cover"
                   />
                   {/* Subtle overlay */}
-                  <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
+                  <div className="absolute inset-0 bg-abyssal-blue/10 mix-blend-overlay"></div>
                 </div>
 
               </motion.div>
@@ -170,16 +170,17 @@ export function ProjectsSection() {
           viewport={{ once: true }}
           className="mt-20 flex justify-center"
         >
-          <a
+          <NeoButton
             href="#contact"
-            className="inline-flex flex-row items-center justify-center gap-2.5 bg-[#4FFFB0] text-black px-8 py-3 rounded-full text-base font-medium hover:bg-[#3ce59c] hover:scale-105 transition-all shadow-sm"
+            variant="green"
+            className="text-[16px] px-10"
           >
             ابدأ مشروع
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mb-0.5">
               <line x1="17" y1="17" x2="7" y2="7"></line>
               <polyline points="17 7 7 7 7 17"></polyline>
             </svg>
-          </a>
+          </NeoButton>
         </motion.div>
 
       </div>

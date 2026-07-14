@@ -19,7 +19,7 @@ export function ExperienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-emerald-400 font-semibold tracking-wider text-sm mb-3 uppercase"
+            className="text-burning-flame font-semibold tracking-wider text-sm mb-3 uppercase"
           >
             المسيرة المهنية
           </motion.span>
@@ -38,7 +38,7 @@ export function ExperienceSection() {
         <div className="relative w-full">
           
           {/* Vertical Center Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-emerald-400/50 transform -translate-x-1/2 hidden lg:block"></div>
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-burning-flame/50 transform -translate-x-1/2 hidden lg:block"></div>
 
           <div className="space-y-12 lg:space-y-20">
             {EXPERIENCE_DATA.map((exp, i) => {
@@ -56,7 +56,7 @@ export function ExperienceSection() {
                 >
                   
                   {/* Center Dot */}
-                  <div className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[18px] h-[18px] rounded-full border-[3px] border-[#A7F3D0] bg-[#0A0A0A] z-10"></div>
+                  <div className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[18px] h-[18px] rounded-full border-[3px] border-burning-flame bg-abyssal-blue z-10"></div>
                   
                   {/* Card (Wider and less padding) */}
                   <div className={`w-full lg:w-[calc(50%-2.5rem)] p-6 md:p-8 rounded-[1.5rem] shadow-2xl ${exp.bgColor} ${exp.textColor}`}>
@@ -64,7 +64,7 @@ export function ExperienceSection() {
                     {/* Top Row: Company & Badge */}
                     <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
                       <span className="font-extrabold text-base md:text-lg">{exp.company}</span>
-                      <span className="bg-black/5 px-3 py-1 rounded-full text-[11px] font-bold border border-black/5">
+                      <span className="bg-abyssal-blue/5 px-3 py-1 rounded-full text-[11px] font-bold border border-abyssal-blue/5">
                         {exp.badge}
                       </span>
                     </div>
@@ -106,7 +106,7 @@ export function ExperienceSection() {
                     <div className="flex flex-wrap justify-start items-center gap-2.5 md:gap-3 mt-auto mb-5">
                       {exp.tech.map((tech, idx) => (
                         <div key={idx} className="flex flex-col items-center gap-1 shrink-0">
-                          <div className="w-10 h-10 bg-white rounded-xl border border-black/5 shadow-sm flex items-center justify-center transition-transform hover:-translate-y-1">
+                          <div className="w-10 h-10 bg-palladian rounded-xl border border-abyssal-blue/5 shadow-sm flex items-center justify-center transition-transform hover:-translate-y-1">
                             <div className="relative w-[20px] h-[20px]">
                               <Image 
                                 src={tech.img} 

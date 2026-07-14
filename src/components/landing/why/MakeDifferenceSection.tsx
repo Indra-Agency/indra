@@ -20,15 +20,10 @@ export function MakeDifferenceSection() {
   const textRef = useRef<HTMLHeadingElement>(null);
   const gradRef = useRef<SVGLinearGradientElement>(null);
 
-  /* ── 4-pointed curved star path (cubic bezier, concave sides) ── */
+  /* ── 4-pointed sharp star path (polygon) ── */
   const star = (r: number) => {
-    const k = +(r * 0.36).toFixed(2);
-    return (
-      `M 0 ${-r} C ${k} ${-k},${k} ${-k},${r} 0 ` +
-      `C ${k} ${k},${k} ${k},0 ${r} ` +
-      `C ${-k} ${k},${-k} ${k},${-r} 0 ` +
-      `C ${-k} ${-k},${-k} ${-k},0 ${-r} Z`
-    );
+    const ir = +(r * 0.25).toFixed(2); // Inner radius controls the sharpness
+    return `M 0 ${-r} L ${ir} ${-ir} L ${r} 0 L ${ir} ${ir} L 0 ${r} L ${-ir} ${ir} L ${-r} 0 L ${-ir} ${-ir} Z`;
   };
 
   useEffect(() => {
@@ -96,7 +91,7 @@ export function MakeDifferenceSection() {
             #52525b 58%,
             #3f3f46 75%
           );
-          background-size: 100% auto;
+          background-size: 200% auto;
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -106,7 +101,7 @@ export function MakeDifferenceSection() {
 
       <section
         style={{
-          background: '#0A0A0A',
+          background: 'var(--color-abyssal-blue)',
           paddingTop: 'clamp(0.25rem, 1vw, 1.5rem)',
           paddingBottom: 'clamp(1.5rem, 3vw, 3.5rem)',
           overflow: 'hidden',
@@ -130,7 +125,7 @@ export function MakeDifferenceSection() {
             ref={textRef}
             className="shimmer-text ar-heading font-extrabold tracking-tight pb-4"
             style={{
-              fontSize: 'clamp(4rem, 6vw, 4.5rem)',
+              fontSize: 'clamp(5rem, 8vw, 6.5rem)',
               lineHeight: 1.4,
               whiteSpace: 'nowrap',
             }}
@@ -143,8 +138,8 @@ export function MakeDifferenceSection() {
             viewBox="0 0 120 120"
             xmlns="http://www.w3.org/2000/svg"
             style={{
-              width: 'clamp(3rem, 6vw, 5.5rem)',
-              height: 'clamp(3rem, 6vw, 5.5rem)',
+              width: 'clamp(4rem, 8vw, 7.5rem)',
+              height: 'clamp(4rem, 8vw, 7.5rem)',
               flexShrink: 0,
               overflow: 'visible',
             }}

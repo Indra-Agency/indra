@@ -35,7 +35,7 @@ export default async function Home() {
   const logos = REMOTE_LOGOS;
 
   return (
-    <main className="min-h-screen" style={{ background: '#0A0A0A' }}>
+    <main className="min-h-screen" style={{ background: 'var(--color-abyssal-blue)' }}>
       <Navbar />
       <HeroSection logos={logos} />
       <MarqueeSection />
