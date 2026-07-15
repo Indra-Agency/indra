@@ -12,7 +12,7 @@ export interface ExperienceData {
   shortDesc: string;
   achievements: string[];
   tech: TechStackItem[];
-  btnVariant: 'white' | 'white';
+  btnVariant: 'white' | 'orange' | string;
 }
 
 export const EXPERIENCE_DATA: ExperienceData[] = [
@@ -41,7 +41,7 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
       { name: 'Firebase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
       { name: 'Supabase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' }
     ],
-    btnVariant: 'green'
+    btnVariant: 'orange'
   },
   {
     company: 'Play Game',
@@ -65,7 +65,7 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
       { name: 'GA4', img: 'https://api.iconify.design/logos:google-analytics.svg' },
       { name: 'Optimization', img: 'https://api.iconify.design/flat-color-icons:positive-dynamic.svg' }
     ],
-    btnVariant: 'green'
+    btnVariant: 'orange'
   },
   {
     company: 'منظومة Delivery App',
@@ -90,6 +90,6 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
       { name: 'Firebase', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
       { name: 'Google Maps', img: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg' }
     ],
-    btnVariant: 'green'
+    btnVariant: 'orange'
   }
 ];

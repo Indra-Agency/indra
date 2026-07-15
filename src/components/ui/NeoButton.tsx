@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 interface NeoButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
-  variant?: 'primary' | 'white' | 'green';
+  variant?: 'primary' | 'white' | 'green' | 'orange' | string;
   className?: string;
   children: React.ReactNode;
 }
@@ -15,7 +15,7 @@ export function NeoButton({
   children,
   ...props
 }: NeoButtonProps) {
-  const variantClass = variant === 'primary' ? 'btn-neo-green' : variant === 'green' ? 'btn-neo-green' : 'btn-neo-white';
+  const variantClass = ['primary', 'green', 'orange'].includes(variant as string) ? 'btn-neo-green' : 'btn-neo-white';
   const combinedClassName = `btn-neo ${variantClass} flex items-center justify-center gap-2 ${className}`;
 
   if (href) {
