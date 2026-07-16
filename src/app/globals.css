@@ -67,8 +67,8 @@ body {
   font-size: 16px;
   font-weight: 700;
   transition: all 0.2s ease;
-  border: 2px solid var(--color-abyssal-blue);
-  box-shadow: 5px 5px 0px 0px var(--color-abyssal-blue);
+  border: 2px solid #1B2632;
+  box-shadow: 5px 5px 0px 0px #1B2632;
   cursor: pointer;
 }
 .btn-neo:hover {
@@ -76,15 +76,15 @@ body {
 }
 .btn-neo:active {
   transform: translate(3px, 3px);
-  box-shadow: 0 0 0 0 var(--color-abyssal-blue);
+  box-shadow: 0 0 0 0 #1B2632;
 }
 .btn-neo-green {
-  background: var(--color-burning-flame);
-  color: var(--color-abyssal-blue);
+  background: #FF9933;
+  color: #1B2632;
 }
 .btn-neo-white {
-  background: var(--color-palladian);
-  color: var(--color-abyssal-blue);
+  background: #EEE9DF;
+  color: #1B2632;
 }
 
 /* ===== Breathing glow keyframe ===== */

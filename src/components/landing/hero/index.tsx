@@ -20,15 +20,26 @@
  */
 
 import { HeroContent }      from './HeroContent';
-import { ParticleNetwork }  from './ParticleNetwork';
+import dynamic from 'next/dynamic';
+
+const FloatingAnimation = dynamic(() => import('./FloatingAnimation'), {
+  ssr: false,
+});
 
 export function HeroSection({ logos = [] }: { logos?: string[] }) {
   return (
     <section
       className="relative overflow-hidden flex flex-col min-h-screen w-full bg-abyssal-blue"
     >
-      {/* Background Particle Network (z-index: 0) */}
-      <ParticleNetwork />
+      {/* Background Floating Animation (z-index: 0) */}
+      <FloatingAnimation 
+        className="absolute inset-0 z-0 pointer-events-none" 
+        // We use Azr branding colors but keep it vibrant for the wave
+        colorStops={['#ff9933', '#c9c1b1', '#4285F4']} 
+        amplitude={1}
+        blend={0.5}
+        speed={0.8}
+      />
 
       {/* Content wrapper sitting clearly above the animated background */}
       <div

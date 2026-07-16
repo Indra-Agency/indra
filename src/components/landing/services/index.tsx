@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { SERVICES_DATA } from '@/data/services';
+import { LottiePlayer } from '@/components/ui/LottiePlayer';
 
 export function ServicesSection() {
   return (
@@ -83,13 +84,20 @@ export function ServicesSection() {
 
                 {/* Left side: Illustration */}
                 <div className="hidden lg:flex flex-col items-center justify-center relative min-h-[300px]">
-                   <Image 
-                     src={service.image} 
-                     alt={service.title} 
-                     fill 
-                     sizes="(max-width: 1024px) 100vw, 50vw"
-                     className="object-contain mix-blend-multiply"
-                   />
+                   {service.lottie ? (
+                     <LottiePlayer 
+                       src={service.lottie} 
+                       className="w-full h-full max-w-[400px] object-contain mix-blend-multiply"
+                     />
+                   ) : (
+                     <Image 
+                       src={service.image} 
+                       alt={service.title} 
+                       fill 
+                       sizes="(max-width: 1024px) 100vw, 50vw"
+                       className="object-contain mix-blend-multiply"
+                     />
+                   )}
                 </div>
 
               </div>

@@ -55,8 +55,21 @@ export function ExperienceSection() {
                   className={`relative flex flex-col ${flexDir} items-center justify-between w-full gap-8 lg:gap-0`}
                 >
                   
-                  {/* Center Dot */}
-                  <div className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[18px] h-[18px] rounded-full border-[3px] border-burning-flame bg-abyssal-blue z-10"></div>
+                  {/* Center Dot Wrapper */}
+                  <div className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[28px] h-[28px] items-center justify-center">
+                    <motion.div 
+                      className="w-full h-full rounded-full"
+                      style={{
+                        background: "conic-gradient(from 0deg, var(--color-burning-flame) 0%, #ffffff 50%, var(--color-burning-flame) 100%)",
+                        padding: "3.5px", // Thickness of the glowing ring
+                        boxShadow: "0 0 20px 2px rgba(255, 153, 51, 0.7)"
+                      }}
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
+                    >
+                      <div className="w-full h-full rounded-full bg-abyssal-blue shadow-[inset_0_0_10px_rgba(0,0,0,0.8)]"></div>
+                    </motion.div>
+                  </div>
                   
                   {/* Card (Wider and less padding) */}
                   <div className={`w-full lg:w-[calc(50%-2.5rem)] p-6 md:p-8 rounded-[1.5rem] shadow-2xl ${exp.bgColor} ${exp.textColor}`}>

@@ -14,6 +14,7 @@ export interface ServiceData {
   iconBg: string;
   tags: string[];
   image: string;
+  lottie: string;
   icon: ReactNode;
 }
 
@@ -31,6 +32,7 @@ export const SERVICES_DATA: ServiceData[] = [
     iconBg: 'bg-abyssal-blue/5',
     tags: ['أتمتة العمليات', 'روبوتات ذكية', 'نماذج لغوية', 'وكلاء ذكاء اصطناعي'],
     image: '/images/1.png',
+    lottie: '/lottie/Assistant-Bot.json',
     icon: <FaBrain className="w-5 h-5" />
   },
   {
@@ -46,6 +48,7 @@ export const SERVICES_DATA: ServiceData[] = [
     iconBg: 'bg-oatmeal/20',
     tags: ['تطبيقات الهواتف (Cross-platform)', 'واجهات الويب', 'قواعد البيانات', 'لوحات تحكم'],
     image: '/images/2.jpg',
+    lottie: '/lottie/web development.json',
     icon: <FaLaptopCode className="w-5 h-5" />
   },
   {
@@ -61,6 +64,7 @@ export const SERVICES_DATA: ServiceData[] = [
     iconBg: 'bg-abyssal-blue/5',
     tags: ['ربط الأنظمة (API)', 'البنية السحابية', 'أتمتة سير العمل المتقدمة', 'مساحات العمل المركزية'],
     image: '/images/5.png',
+    lottie: '/lottie/Digital Marketing.json',
     icon: <FaNetworkWired className="w-5 h-5" />
   },
   {
@@ -76,6 +80,7 @@ export const SERVICES_DATA: ServiceData[] = [
     iconBg: 'bg-oatmeal/20',
     tags: ['تدقيق تقني', 'بناء روابط', 'تحسين داخلي', 'استراتيجية المحتوى'],
     image: '/images/4.jpg',
+    lottie: '/lottie/SEOs.json',
     icon: <FaSearch className="w-5 h-5" />
   }
 ];

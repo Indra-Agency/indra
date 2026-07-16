@@ -8,6 +8,7 @@
  */
 
 import { motion } from 'framer-motion';
+import { NeoButton } from '@/components/ui/NeoButton';
 
 export function CenterCard() {
   return (
@@ -102,16 +103,17 @@ export function CenterCard() {
       </div>
 
       {/* ── CTA Button ── */}
-      <a
+      <NeoButton
         href="#contact"
-        className="w-full py-4 rounded-full font-bold text-sm text-abyssal-blue bg-burning-flame flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+        variant="green"
+        className="w-full text-sm"
       >
         لنبني منتجك
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="rtl:-scale-x-100">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
-      </a>
+      </NeoButton>
       </div>
     </motion.div>
   );

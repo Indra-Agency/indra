@@ -49,8 +49,8 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
     title: 'مطور واجهات وتحسين محركات البحث',
     date: '2026',
     location: 'دول الخليج (عن بُعد)',
-    pillClass: 'bg-burning-flame/10 text-burning-flame',
-    bgColor: 'bg-white',
+    pillClass: 'bg-white/20 text-white',
+    bgColor: 'bg-burning-flame',
     textColor: 'text-abyssal-blue',
     shortDesc: 'تطوير منصة ترفيهية شاملة لبيع بطاقات الألعاب والمسلسلات، مع التركيز المكثف على سرعة الأداء واكتساب العملاء عضوياً.',
     achievements: [
@@ -65,7 +65,7 @@ export const EXPERIENCE_DATA: ExperienceData[] = [
       { name: 'GA4', img: 'https://api.iconify.design/logos:google-analytics.svg' },
       { name: 'Optimization', img: 'https://api.iconify.design/flat-color-icons:positive-dynamic.svg' }
     ],
-    btnVariant: 'orange'
+    btnVariant: 'white'
   },
   {
     company: 'منظومة Delivery App',

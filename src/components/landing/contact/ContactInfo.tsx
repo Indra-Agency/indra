@@ -14,7 +14,7 @@ export function ContactInfo() {
       className="flex flex-col gap-4 h-full"
     >
       {/* Location Card */}
-      <div className="bg-white text-abyssal-blue rounded-[2rem] p-6 relative flex items-start justify-center flex-col min-h-[140px] shadow-sm">
+      <div className="bg-white text-abyssal-blue rounded-[2rem] p-6 relative flex items-start justify-center flex-col flex-1 shadow-sm">
         <div className="absolute left-6 top-6 w-10 h-10 bg-burning-flame/10 rounded-xl flex items-center justify-center shadow-sm">
           <FiMapPin className="text-lg text-burning-flame" />
         </div>
@@ -26,7 +26,7 @@ export function ContactInfo() {
       </div>
 
       {/* Email Card */}
-      <div className="bg-white text-abyssal-blue rounded-[2rem] p-6 relative flex items-center justify-start min-h-[95px] shadow-sm">
+      <div className="bg-white text-abyssal-blue rounded-[2rem] p-6 relative flex items-center justify-start flex-1 shadow-sm">
         <div className="absolute left-5 w-11 h-11 bg-burning-flame/10 rounded-xl flex items-center justify-center hidden sm:flex">
           <FiMail className="text-xl text-burning-flame" />
         </div>
@@ -39,7 +39,7 @@ export function ContactInfo() {
       </div>
 
       {/* Phone Card */}
-      <div className="bg-white text-abyssal-blue rounded-[2rem] p-6 relative flex items-center justify-start min-h-[95px] shadow-sm">
+      <div className="bg-white text-abyssal-blue rounded-[2rem] p-6 relative flex items-center justify-start flex-1 shadow-sm">
         <div className="absolute left-5 w-11 h-11 bg-burning-flame/10 rounded-xl flex items-center justify-center hidden sm:flex">
           <FiPhone className="text-xl text-burning-flame" />
         </div>
@@ -52,7 +52,7 @@ export function ContactInfo() {
       </div>
 
       {/* WhatsApp Card */}
-      <div className="bg-white text-abyssal-blue rounded-[2rem] p-6 relative flex items-center justify-start min-h-[95px] shadow-sm">
+      <div className="bg-white text-abyssal-blue rounded-[2rem] p-6 relative flex items-center justify-start flex-1 shadow-sm">
         <div className="absolute left-5 w-11 h-11 bg-burning-flame/10 rounded-xl flex items-center justify-center hidden sm:flex">
           <FaWhatsapp className="text-2xl text-burning-flame" />
         </div>
