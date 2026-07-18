@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { FaDatabase, FaBolt, FaFileAlt, FaChartBar, FaBell, FaMicrochip } from 'react-icons/fa';
 
 interface NodeProps {
@@ -46,7 +46,7 @@ const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = '#ff9933'
 };
 
 export function DiagramFlowSection() {
-  const lineVariants = {
+  const lineVariants: Variants = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: { 
       pathLength: 1, 
