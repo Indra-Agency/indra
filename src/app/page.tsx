@@ -5,6 +5,7 @@ import { AboutSection } from '@/components/landing/about';
 import { MakeDifferenceSection }  from '@/components/landing/why/MakeDifferenceSection';
 import { ServicesSection } from '@/components/landing/services';
 import { MethodologySection } from '@/components/landing/methodology';
+import { DiagramFlowSection } from '@/components/landing/diagram-flow';
 import { ProjectsSection } from '@/components/landing/projects';
 import { StatsSection } from '@/components/landing/stats';
 import { Footer } from '@/components/layout/footer';
@@ -44,6 +45,7 @@ export default async function Home() {
       <ServicesPhysicsCloud />
       <ServicesSection />
       <MethodologySection />
+      <DiagramFlowSection />
       <ProjectsSection />
       <StatsSection />
       <ExperienceSection />
