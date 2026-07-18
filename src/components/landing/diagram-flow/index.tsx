@@ -22,24 +22,31 @@ const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = '#ff9933'
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay, type: 'spring' }}
-      className={`absolute flex items-center gap-3 p-3 md:p-4 rounded-2xl border border-white/10 bg-abyssal-blue transform -translate-x-1/2 -translate-y-1/2 shadow-2xl ${isCenter ? 'z-20 w-44 md:w-52 flex-col justify-center text-center py-6 md:py-8' : 'z-10 w-44 md:w-56'}`}
+      // Use percentages for width, responsive padding
+      className={`absolute flex items-center gap-1.5 md:gap-3 p-1.5 sm:p-2 md:p-4 rounded-xl md:rounded-2xl border border-white/10 bg-abyssal-blue transform -translate-x-1/2 -translate-y-1/2 shadow-2xl ${
+        isCenter 
+          ? 'z-20 w-[26%] flex-col justify-center text-center py-2 sm:py-4 md:py-8' 
+          : 'z-10 w-[29%]'
+      }`}
       style={{ left: x, top: y }}
       dir="rtl"
     >
       {isCenter && (
         <motion.div 
-          className="absolute inset-0 rounded-2xl blur-2xl pointer-events-none" 
+          className="absolute inset-0 rounded-xl md:rounded-2xl blur-xl md:blur-2xl pointer-events-none" 
           style={{ backgroundColor: glowColor }} 
           animate={{ opacity: [0.15, 0.4, 0.15] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         />
       )}
-      <div className={`flex items-center justify-center rounded-xl bg-white/5 text-burning-flame ${isCenter ? 'w-14 h-14 text-3xl mb-2' : 'w-12 h-12 text-xl flex-shrink-0'}`}>
+      <div className={`flex items-center justify-center rounded-lg md:rounded-xl bg-white/5 text-burning-flame ${
+        isCenter ? 'w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 text-xl md:text-3xl mb-1 md:mb-2' : 'w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 text-sm sm:text-base md:text-xl flex-shrink-0'
+      }`}>
         {icon}
       </div>
       <div className={`${isCenter ? '' : 'text-right overflow-hidden flex-1'}`}>
-        <h4 className="text-sm md:text-base font-bold text-white leading-tight truncate">{label}</h4>
-        <p className="text-xs text-zinc-400 font-sans leading-tight mt-1 truncate" dir="ltr">{sub}</p>
+        <h4 className="text-[10px] sm:text-xs md:text-base font-bold text-white leading-tight truncate">{label}</h4>
+        <p className="text-[8px] sm:text-[10px] md:text-xs text-zinc-400 font-sans leading-tight mt-0.5 md:mt-1 truncate" dir="ltr">{sub}</p>
       </div>
     </motion.div>
   );
@@ -66,7 +73,7 @@ export function DiagramFlowSection() {
 
   return (
     <section className="py-24 relative bg-transparent overflow-hidden" dir="ltr">
-      <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-2 md:px-8 relative z-10">
         <div className="text-center mb-16 max-w-3xl mx-auto" dir="rtl">
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
@@ -90,15 +97,15 @@ export function DiagramFlowSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-zinc-400 text-sm md:text-base leading-relaxed"
+            className="text-zinc-400 text-sm md:text-base leading-relaxed px-4"
           >
             نحن لا نكتفي بكتابة الأكواد، بل نصمم لك أنظمة مؤتمتة متكاملة. تستقبل أعمالك، وتعالج بياناتك بذكاء فائق، لتتحول في النهاية إلى نتائج ورؤى تساعدك على مضاعفة أرباحك وتوسيع نطاق عملك براحة تامة.
           </motion.p>
         </div>
 
         {/* Diagram Container */}
-        {/* We use a fixed aspect ratio so the SVG and absolute % positioning scale perfectly together */}
-        <div className="relative w-full max-w-5xl mx-auto aspect-[1/1] md:aspect-[2/1] mt-8 bg-transparent">
+        {/* We use a fixed aspect ratio so the SVG and absolute % positioning scale perfectly together on all screens */}
+        <div className="relative w-full max-w-5xl mx-auto aspect-[2/1] mt-8 bg-transparent">
           
           {/* Animated SVG Connections */}
           <svg 
