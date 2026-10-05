@@ -6,16 +6,20 @@
   */
 
   /* 👇👇👇 غيّر اللون الأساسي للموقع من هذا السطر فقط 👇👇👇 */
-  --color-primary: #EA580C;
+  --color-primary: #F57C00;
 
   /* لون التأشير عند تمرير الفأرة على الأزرار (Hover) */
   --color-primary-hover: #C2410C;
 
   /* ── ألوان الهوية والخلفيات ── */
-  --color-background-dark: #1B2632;  /* خلفية الموقع الداكنة */
-  --color-surface-dark: #2C3B4D;     /* لون البطاقات والأسطح */
-  --color-text-light: #EEE9DF;       /* لون النصوص والعناوين الفاتحة */
-  --color-text-muted: #C9C1B1;       /* لون النصوص الفرعية */
+  --color-background-dark: #1B2632;
+  /* خلفية الموقع الداكنة */
+  --color-surface-dark: #2C3B4D;
+  /* لون البطاقات والأسطح */
+  --color-text-light: #EEE9DF;
+  /* لون النصوص والعناوين الفاتحة */
+  --color-text-muted: #C9C1B1;
+  /* لون النصوص الفرعية */
 
   /* ── ربط برمجي تلقائي (لا تحتاج لتعديل ما تحته) ── */
   --color-burning-flame: var(--color-primary);
