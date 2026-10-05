@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./colors.css";
 
 /* Satoshi is used only for the logo text — use a local system font fallback instead of blocking external import */
 .font-satoshi {
@@ -9,8 +10,6 @@
 html {
   scroll-behavior: smooth;
 }
-
-@import "./colors.css";
 
 @theme {
   --font-sans: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;

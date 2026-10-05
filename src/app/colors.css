@@ -1,25 +1,21 @@
-@theme {
-  /* 
-    =============================================================================
-    🎨 ملف التحكم في ألوان الموقع بالكامل (Indra Design System - Colors)
-    =============================================================================
-  */
+/* 
+  =============================================================================
+  🎨 ملف التحكم في ألوان الموقع بالكامل (Indra Design System - Colors)
+  =============================================================================
+*/
 
+:root {
   /* 👇👇👇 غيّر اللون الأساسي للموقع من هذا السطر فقط 👇👇👇 */
-  --color-primary: #F57C00;
+  --color-primary: #f57c00;
 
   /* لون التأشير عند تمرير الفأرة على الأزرار (Hover) */
-  --color-primary-hover: #C2410C;
+  --color-primary-hover: #c2410c;
 
   /* ── ألوان الهوية والخلفيات ── */
-  --color-background-dark: #1B2632;
-  /* خلفية الموقع الداكنة */
-  --color-surface-dark: #2C3B4D;
-  /* لون البطاقات والأسطح */
-  --color-text-light: #EEE9DF;
-  /* لون النصوص والعناوين الفاتحة */
-  --color-text-muted: #C9C1B1;
-  /* لون النصوص الفرعية */
+  --color-background-dark: #1b2632;  /* خلفية الموقع الداكنة */
+  --color-surface-dark: #2c3b4d;     /* لون البطاقات والأسطح */
+  --color-text-light: #eee9df;       /* لون النصوص والعناوين الفاتحة */
+  --color-text-muted: #c9c1b1;       /* لون النصوص الفرعية */
 
   /* ── ربط برمجي تلقائي (لا تحتاج لتعديل ما تحته) ── */
   --color-burning-flame: var(--color-primary);
@@ -33,5 +29,27 @@
   --color-oatmeal: var(--color-text-muted);
   --color-muted: var(--color-text-muted);
   --color-border: color-mix(in srgb, var(--color-text-muted) 20%, transparent);
-  --color-truffle-trouble: #A35139;
+  --color-truffle-trouble: #a35139;
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-background-dark: var(--color-background-dark);
+  --color-surface-dark: var(--color-surface-dark);
+  --color-text-light: var(--color-text-light);
+  --color-text-muted: var(--color-text-muted);
+
+  --color-burning-flame: var(--color-primary);
+  --color-accent: var(--color-primary);
+  --color-abyssal-blue: var(--color-background-dark);
+  --color-background: var(--color-background-dark);
+  --color-blue-fantastic: var(--color-surface-dark);
+  --color-surface: var(--color-surface-dark);
+  --color-palladian: var(--color-text-light);
+  --color-foreground: var(--color-text-light);
+  --color-oatmeal: var(--color-text-muted);
+  --color-muted: var(--color-text-muted);
+  --color-border: color-mix(in srgb, var(--color-text-muted) 20%, transparent);
+  --color-truffle-trouble: #a35139;
 }
