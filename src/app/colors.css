@@ -1,68 +1,23 @@
-/* 
-  =============================================================================
-  🎨 ملف التحكم في ألوان الموقع بالكامل (Indra Design System - Colors)
-  =============================================================================
-  💡 للتحكم في ألوان الموقع كاملاً، عدل القيم هنا فقط وسيتغير في كامل الموقع:
-  
-  1. --color-primary: 
-     اللون الأساسي (Primary / Accent Color)
-     يتحكم في: الأزرار، التوهجات، العناوين، المسارات التفاعلية، شريط المهارات، الفوتر، والرسومات.
-  
-  2. --color-primary-hover:
-     لون التأشير على الأزرار عند تمرير الفأرة (Hover).
-  
-  3. --color-background-dark:
-     لون خلفية الموقع الرئيسية الداكنة (Dark Navy).
-  
-  4. --color-surface-dark:
-     لون البطاقات والأسطح المرتفعة (Card / Surface Blue).
-  
-  5. --color-text-light:
-     لون النصوص والعناوين الفاتحة (Off-White).
-  
-  6. --color-text-muted:
-     لون النصوص الفرعية والحدود الهادئة (Muted Gray).
-  =============================================================================
-*/
-
-:root {
-  /* ── 🌟 اللون الأساسي (Primary Brand Color) ── */
-  --color-primary: #EA580C;
-  --color-primary-hover: #C2410C;
-
-  /* ── 🌌 ألوان الهوية والخلفية (Theme Background & Surfaces) ── */
-  --color-background-dark: #1B2632;
-  --color-surface-dark: #2C3B4D;
-  --color-text-light: #EEE9DF;
-  --color-text-muted: #C9C1B1;
-
-  /* ── 🔄 الربط البرمجي الداخلي (Aliases & Semantic Mapping) ── */
-  --color-burning-flame: var(--color-primary);
-  --color-accent: var(--color-primary);
-  --color-abyssal-blue: var(--color-background-dark);
-  --color-background: var(--color-background-dark);
-  --color-blue-fantastic: var(--color-surface-dark);
-  --color-surface: var(--color-surface-dark);
-  --color-palladian: var(--color-text-light);
-  --color-foreground: var(--color-text-light);
-  --color-oatmeal: var(--color-text-muted);
-  --color-muted: var(--color-text-muted);
-  --color-border: color-mix(in srgb, var(--color-text-muted) 20%, transparent);
-  --color-truffle-trouble: #A35139;
-}
-
 @theme {
-  /* ── 🌟 اللون الأساسي (Primary Brand Color) ── */
+  /* 
+    =============================================================================
+    🎨 ملف التحكم في ألوان الموقع بالكامل (Indra Design System - Colors)
+    =============================================================================
+  */
+
+  /* 👇👇👇 غيّر اللون الأساسي للموقع من هذا السطر فقط 👇👇👇 */
   --color-primary: #EA580C;
+
+  /* لون التأشير عند تمرير الفأرة على الأزرار (Hover) */
   --color-primary-hover: #C2410C;
 
-  /* ── 🌌 ألوان الهوية والخلفية (Theme Background & Surfaces) ── */
-  --color-background-dark: #1B2632;
-  --color-surface-dark: #2C3B4D;
-  --color-text-light: #EEE9DF;
-  --color-text-muted: #C9C1B1;
+  /* ── ألوان الهوية والخلفيات ── */
+  --color-background-dark: #1B2632;  /* خلفية الموقع الداكنة */
+  --color-surface-dark: #2C3B4D;     /* لون البطاقات والأسطح */
+  --color-text-light: #EEE9DF;       /* لون النصوص والعناوين الفاتحة */
+  --color-text-muted: #C9C1B1;       /* لون النصوص الفرعية */
 
-  /* ── 🔄 الربط البرمجي لتوليد أصناف Tailwind v4 التلقائية ── */
+  /* ── ربط برمجي تلقائي (لا تحتاج لتعديل ما تحته) ── */
   --color-burning-flame: var(--color-primary);
   --color-accent: var(--color-primary);
   --color-abyssal-blue: var(--color-background-dark);
