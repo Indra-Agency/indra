@@ -31,21 +31,13 @@ export function FloatingBadge({ badge }: Props) {
       }}
       className="hidden lg:block pointer-events-none" // Hide on small screens to avoid clutter
     >
-      <motion.div
-        animate={{
-          y: [0, -15, 0],
-          rotate: [badge.rotate, badge.rotate + 3, badge.rotate],
-        }}
-        transition={{
-          duration: 4 + Math.random() * 2, // 4-6s random float
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="px-5 py-2.5 rounded-full flex items-center gap-2 cursor-default"
+      <div
+        className="px-5 py-2.5 rounded-full flex items-center gap-2 cursor-default animate-float"
         style={{
           background: badge.bgColor,
           color: badge.textColor,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.3)'
+          boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+          transform: `rotate(${badge.rotate}deg)`,
         }}
       >
         {badge.iconPosition === 'right' && (
@@ -61,7 +53,7 @@ export function FloatingBadge({ badge }: Props) {
             {badge.icon}
           </span>
         )}
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

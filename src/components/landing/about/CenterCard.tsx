@@ -52,11 +52,7 @@ export function CenterCard() {
         <div className="absolute inset-0 bg-burning-flame blur-[80px] opacity-20 rounded-full" />
 
         {/* Abstract Isometric Layers */}
-        <motion.div
-          animate={{ y: [-5, 5, -5] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-full h-full"
-        >
+        <div className="relative w-full h-full animate-float">
           {/* Layer 3 (Bottom) */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-32 rounded-2xl border border-burning-flame/20 bg-burning-flame/5 transform rotate-45 scale-y-50 skew-x-12" />
           {/* Layer 2 (Middle) */}
@@ -68,7 +64,7 @@ export function CenterCard() {
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* ── Info ── */}

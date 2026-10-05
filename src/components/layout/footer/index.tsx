@@ -56,10 +56,10 @@ export function Footer() {
               وكالة رقمية متكاملة متخصصة في حلول الأتمتة والذكاء الاصطناعي، وتطوير المواقع والتطبيقات المبتكرة. نُحوّل رؤيتك إلى أنظمة متطورة تعمل على مدار الساعة لتعزيز نمو أعمالك.
             </p>
             <div className="flex items-center gap-3">
-              <a href="mailto:indraagency.dev@gmail.com" className="w-11 h-11 bg-palladian rounded-full border-[1.5px] border-abyssal-blue flex items-center justify-center text-lg text-abyssal-blue hover:bg-abyssal-blue hover:text-burning-flame transition-colors shadow-sm">
+              <a href="mailto:indraagency.dev@gmail.com" aria-label="البريد الإلكتروني" className="w-11 h-11 bg-palladian rounded-full border-[1.5px] border-abyssal-blue flex items-center justify-center text-lg text-abyssal-blue hover:bg-abyssal-blue hover:text-burning-flame transition-colors shadow-sm">
                 <FiMail />
               </a>
-              <a href="https://wa.me/967738688812" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-palladian rounded-full border-[1.5px] border-abyssal-blue flex items-center justify-center text-lg text-abyssal-blue hover:bg-abyssal-blue hover:text-burning-flame transition-colors shadow-sm">
+              <a href="https://wa.me/967738688812" target="_blank" rel="noopener noreferrer" aria-label="واتساب" className="w-11 h-11 bg-palladian rounded-full border-[1.5px] border-abyssal-blue flex items-center justify-center text-lg text-abyssal-blue hover:bg-abyssal-blue hover:text-burning-flame transition-colors shadow-sm">
                 <FaWhatsapp />
               </a>
             </div>
@@ -96,6 +96,7 @@ export function Footer() {
 
             <button
               onClick={scrollToTop}
+              aria-label="العودة إلى أعلى الصفحة"
               className="bg-abyssal-blue text-burning-flame font-bold text-[13px] px-6 py-2.5 rounded-full flex items-center justify-center gap-2.5 hover:-translate-y-1 transition-transform shadow-[2px_2px_0_0_rgba(27,38,50,0.3)]"
               dir="ltr"
             >

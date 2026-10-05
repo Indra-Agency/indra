@@ -19,7 +19,8 @@
  *     └─ ./TrustedBy    — logo strip
  */
 
-import { HeroContent }      from './HeroContent';
+import { useState, useEffect } from 'react';
+import { HeroContent } from './HeroContent';
 import dynamic from 'next/dynamic';
 
 const FloatingAnimation = dynamic(() => import('./FloatingAnimation'), {
@@ -27,19 +28,34 @@ const FloatingAnimation = dynamic(() => import('./FloatingAnimation'), {
 });
 
 export function HeroSection({ logos = [] }: { logos?: string[] }) {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    // Only mount WebGL floating animation on desktop screens to save mobile CPU/GPU
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      setIsDesktop(true);
+    }
+  }, []);
+
   return (
     <section
       className="relative overflow-hidden flex flex-col min-h-screen w-full bg-abyssal-blue"
     >
-      {/* Background Floating Animation (z-index: 0) */}
-      <FloatingAnimation 
-        className="absolute inset-0 z-0 pointer-events-none" 
-        // We use Azr branding colors but keep it vibrant for the wave
-        colorStops={['#ff9933', '#c9c1b1', '#4285F4']} 
-        amplitude={1}
-        blend={0.5}
-        speed={0.8}
+      {/* Mobile Ambient Glow Fallback (0% CPU, 0KB WebGL overhead) */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none md:hidden bg-[radial-gradient(ellipse_80%_60%_at_50%_15%,rgba(255,153,51,0.18),transparent_70%)]" 
       />
+
+      {/* Desktop WebGL Floating Animation (z-index: 0) */}
+      {isDesktop && (
+        <FloatingAnimation 
+          className="absolute inset-0 z-0 pointer-events-none hidden md:block" 
+          colorStops={['#ff9933', '#c9c1b1', '#4285F4']} 
+          amplitude={1}
+          blend={0.5}
+          speed={0.8}
+        />
+      )}
 
       {/* Content wrapper sitting clearly above the animated background */}
       <div

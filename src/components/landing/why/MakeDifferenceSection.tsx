@@ -27,12 +27,13 @@ export function MakeDifferenceSection() {
   };
 
   useEffect(() => {
-    const DURATION = 15000; // 15 seconds for a full round-trip (very slow & smooth)
+    const DURATION = 15000; // 15 seconds for a full round-trip
     let start: number | null = null;
-    let raf: number;
+    let raf: number | null = null;
+    let isVisible = false;
     let widthCache = { container: 0, text: 0, svg: 120 };
 
-    // Asynchronously observe dimensions without forced reflows
+    // Observe dimensions
     const ro = new ResizeObserver((entries) => {
       for (const entry of entries) {
         if (entry.target === containerRef.current) widthCache.container = entry.contentRect.width;
@@ -48,6 +49,7 @@ export function MakeDifferenceSection() {
     if (gradRef.current?.ownerSVGElement) ro.observe(gradRef.current.ownerSVGElement);
 
     const step = (ts: number) => {
+      if (!isVisible) return;
       if (start === null) start = ts;
 
       const progress = ((ts - start) % DURATION) / DURATION;
@@ -72,10 +74,24 @@ export function MakeDifferenceSection() {
       raf = requestAnimationFrame(step);
     };
 
-    raf = requestAnimationFrame(step);
+    // Pause animation when offscreen to completely avoid CPU/forced reflow overhead
+    const io = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        start = null;
+        if (!raf) raf = requestAnimationFrame(step);
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = null;
+      }
+    }, { rootMargin: '100px' });
+
+    if (containerRef.current) io.observe(containerRef.current);
+
     return () => {
-      cancelAnimationFrame(raf);
+      if (raf) cancelAnimationFrame(raf);
       ro.disconnect();
+      io.disconnect();
     };
   }, []);
 

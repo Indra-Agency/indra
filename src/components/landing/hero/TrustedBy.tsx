@@ -30,15 +30,16 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
       <div className="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
         {displayLogos.length > 0 ? (
           displayLogos.map((url, i) => (
-            <div key={i} className="flex justify-center items-center w-[90px] md:w-[110px] lg:w-[130px]">
+            <div key={i} className="flex justify-center items-center w-[90px] md:w-[110px] lg:w-[130px] aspect-[130/52] shrink-0">
               <Image
                 src={url}
                 alt={`Partner ${i + 1}`}
                 width={130}
                 height={52}
+                sizes="(max-width: 768px) 90px, 130px"
                 loading="lazy"
                 decoding="async"
-                className="object-contain w-full h-auto brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
+                className="object-contain w-full h-full brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
               />
             </div>
           ))

@@ -15,7 +15,6 @@
  * To change the headline/copy — edit COPY object below.
  */
 
-import { motion } from 'framer-motion';
 import { HeroBadge } from './HeroBadge';
 import { TrustedBy } from './TrustedBy';
 import { NeoButton } from '@/components/ui/NeoButton';
@@ -36,16 +35,11 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
   return (
     <div className="max-w-6xl mx-auto text-center pt-32 pb-0">
       {/* Badge */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.15 }}
-        className="mb-7"
-      >
+      <div className="mb-7">
         <HeroBadge />
-      </motion.div>
+      </div>
 
-      {/* Main Heading */}
+      {/* Main Heading (LCP element) */}
       <div className="mb-7">
         <h1
           className="ar-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
@@ -69,10 +63,7 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
       </p>
 
       {/* CTA Buttons */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+      <div
         className="flex flex-wrap justify-center gap-5 mb-10"
         style={{ pointerEvents: 'auto' }}
       >
@@ -95,17 +86,12 @@ export function HeroContent({ logos = [] }: { logos?: string[] }) {
           </svg>
           {HERO_COPY.ctaSecondary.label}
         </NeoButton>
-      </motion.div>
+      </div>
 
       {/* Trusted-By */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.45 }}
-        className="mb-12"
-      >
+      <div className="mb-12">
         <TrustedBy logos={logos} />
-      </motion.div>
+      </div>
     </div>
   );
 }

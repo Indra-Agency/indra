@@ -44,8 +44,8 @@ const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = '#ff9933'
       }`}>
         {icon}
       </div>
-      <div className={`${isCenter ? '' : 'text-right overflow-hidden flex-1'}`}>
-        <h4 className="text-[10px] sm:text-xs md:text-base font-bold text-white leading-tight truncate">{label}</h4>
+      <div className={isCenter ? '' : 'text-right overflow-hidden flex-1'}>
+        <h3 className="text-[10px] sm:text-xs md:text-base font-bold text-white leading-tight truncate">{label}</h3>
         <p className="text-[8px] sm:text-[10px] md:text-xs text-zinc-400 font-sans leading-tight mt-0.5 md:mt-1 truncate" dir="ltr">{sub}</p>
       </div>
     </motion.div>
@@ -75,14 +75,14 @@ export function DiagramFlowSection() {
     <section className="py-24 relative bg-transparent overflow-hidden" dir="ltr">
       <div className="max-w-6xl mx-auto px-2 md:px-8 relative z-10">
         <div className="text-center mb-16 max-w-3xl mx-auto" dir="rtl">
-          <motion.h3 
+          <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-burning-flame font-bold mb-2 tracking-wide text-sm"
+            className="text-burning-flame font-bold mb-2 tracking-wide text-sm block"
           >
             بنية تحتية متطورة
-          </motion.h3>
+          </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

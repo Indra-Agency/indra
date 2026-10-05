@@ -2,26 +2,20 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-/* ── Primary font: Thmanyah Sans ── */
+/* ── Primary font: Thmanyah Sans (Preload only Regular and Bold for instant text render) ── */
 const thmanyahSans = localFont({
   src: [
-    { path: "./fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Light.woff2", weight: "300", style: "normal" },
     { path: "./fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Regular.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Medium.woff2", weight: "500", style: "normal" },
     { path: "./fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Bold.woff2", weight: "700", style: "normal" },
-    { path: "./fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Black.woff2", weight: "900", style: "normal" },
   ],
   variable: "--font-body",
   display: "swap",
   preload: true,
 });
 
-/* ── Heading font: Thmanyah Serif Display ── */
+/* ── Heading font: Thmanyah Serif Display (Preload Bold and Black for hero title) ── */
 const thmanyahSerifDisplay = localFont({
   src: [
-    { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/woff2/thmanyahserifdisplay-Light.woff2", weight: "300", style: "normal" },
-    { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/woff2/thmanyahserifdisplay-Regular.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/woff2/thmanyahserifdisplay-Medium.woff2", weight: "500", style: "normal" },
     { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/woff2/thmanyahserifdisplay-Bold.woff2", weight: "700", style: "normal" },
     { path: "./fonts/thmanyah typeface/thmanyahserifdisplay/woff2/thmanyahserifdisplay-Black.woff2", weight: "900", style: "normal" },
   ],
@@ -30,18 +24,15 @@ const thmanyahSerifDisplay = localFont({
   preload: true,
 });
 
-/* ── Paragraph/Sub-heading font: Thmanyah Serif Text ── */
+/* ── Paragraph/Sub-heading font: Thmanyah Serif Text (Below fold only — do NOT preload) ── */
 const thmanyahSerifText = localFont({
   src: [
-    { path: "./fonts/thmanyah typeface/thmanyahseriftext/woff2/thmanyahseriftext-Light.woff2", weight: "300", style: "normal" },
     { path: "./fonts/thmanyah typeface/thmanyahseriftext/woff2/thmanyahseriftext-Regular.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/thmanyah typeface/thmanyahseriftext/woff2/thmanyahseriftext-Medium.woff2", weight: "500", style: "normal" },
     { path: "./fonts/thmanyah typeface/thmanyahseriftext/woff2/thmanyahseriftext-Bold.woff2", weight: "700", style: "normal" },
-    { path: "./fonts/thmanyah typeface/thmanyahseriftext/woff2/thmanyahseriftext-Black.woff2", weight: "900", style: "normal" },
   ],
   variable: "--font-text",
   display: "swap",
-  preload: true,
+  preload: false,
 });
 
 

@@ -57,18 +57,16 @@ export function ExperienceSection() {
                   
                   {/* Center Dot Wrapper */}
                   <div className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[28px] h-[28px] items-center justify-center">
-                    <motion.div 
-                      className="w-full h-full rounded-full"
+                    <div 
+                      className="w-full h-full rounded-full animate-spin [animation-duration:3s]"
                       style={{
                         background: "conic-gradient(from 0deg, var(--color-burning-flame) 0%, #ffffff 50%, var(--color-burning-flame) 100%)",
                         padding: "3.5px", // Thickness of the glowing ring
                         boxShadow: "0 0 20px 2px rgba(255, 153, 51, 0.7)"
                       }}
-                      animate={{ rotate: 360 }}
-                      transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
                     >
                       <div className="w-full h-full rounded-full bg-abyssal-blue shadow-[inset_0_0_10px_rgba(0,0,0,0.8)]"></div>
-                    </motion.div>
+                    </div>
                   </div>
                   
                   {/* Card (Wider and less padding) */}

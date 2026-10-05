@@ -180,7 +180,9 @@ export function ServicesPhysicsCloud() {
               className={`absolute top-0 left-0 flex items-center gap-2 px-6 py-3 rounded-full font-bold select-none whitespace-nowrap will-change-transform shadow-xl transition-transform duration-75 ${tag.color}`}
               style={{ transformOrigin: 'center center' }}
             >
-              <Icon size={18} />
+              <span aria-hidden="true" className="inline-flex items-center justify-center">
+                <Icon size={18} />
+              </span>
               <span className="text-[15px] leading-none pt-1" dir="rtl">{tag.text}</span>
             </div>
           );

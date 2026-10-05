@@ -7,15 +7,16 @@ const MarqueeSet = ({ logos }: { logos: string[] }) => (
   <div className="flex shrink-0 items-center w-max">
     {logos.map((logo, i) => (
       <div key={i} className="flex shrink-0 px-2 md:px-3 justify-center">
-        <div className="flex justify-center items-center w-[95px] md:w-[130px]">
+        <div className="flex justify-center items-center w-[95px] md:w-[130px] aspect-[130/56]">
           <Image
             src={logo}
             alt="Client Logo"
             width={130}
             height={56}
+            sizes="(max-width: 768px) 95px, 130px"
             loading="lazy"
             decoding="async"
-            className="object-contain w-full h-auto brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300"
+            className="object-contain w-full h-full brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300"
           />
         </div>
       </div>
@@ -57,25 +58,23 @@ export function ClientsSection({ logos }: { logos: string[] }) {
       {/* Marquee Container */}
       <div className="relative w-full flex flex-col gap-2 md:gap-4" dir="ltr">
 
-        {/* Top Row - Moving Left */}
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 50 }}
+        {/* Top Row - Moving Left using GPU CSS compositor animation */}
+        <div
+          style={{ animation: 'ml 50s linear infinite', willChange: 'transform' }}
           className="flex w-max hover:[animation-play-state:paused]"
         >
           <MarqueeSet logos={topLogos} />
           <MarqueeSet logos={topLogos} />
-        </motion.div>
+        </div>
 
-        {/* Bottom Row - Moving Right */}
-        <motion.div
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 50 }}
+        {/* Bottom Row - Moving Right using GPU CSS compositor animation */}
+        <div
+          style={{ animation: 'mr 50s linear infinite', willChange: 'transform' }}
           className="flex w-max hover:[animation-play-state:paused]"
         >
           <MarqueeSet logos={bottomLogos} />
           <MarqueeSet logos={bottomLogos} />
-        </motion.div>
+        </div>
 
         {/* Gradient Overlays for smooth entry/exit */}
         <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-abyssal-blue via-abyssal-blue/80 to-transparent z-10 pointer-events-none"></div>
