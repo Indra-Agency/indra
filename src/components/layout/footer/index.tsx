@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FiArrowLeft, FiArrowUp, FiMail } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { NeoButton } from '@/components/ui/NeoButton';
@@ -38,19 +39,14 @@ export function Footer() {
 
           {/* Right Side (Name/Agency & Socials) */}
           <div className="flex flex-col items-center md:items-start text-center md:text-start">
-            <div className="flex items-center gap-2 mb-3" dir="ltr">
-              <svg
-                className="w-8 h-8 shrink-0"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path d="M 12 3.5 Q 12 7.5 16 7.5 Q 12 7.5 12 11.5 Q 12 7.5 8 7.5 Q 12 7.5 12 3.5 Z" fill="var(--color-abyssal-blue)" />
-                <path d="M 18.5 10 Q 18.5 15.5 24 15.5 Q 18.5 15.5 18.5 21 Q 18.5 15.5 13 15.5 Q 18.5 15.5 18.5 10 Z" fill="var(--color-abyssal-blue)" />
-                <path d="M 8 16.5 Q 8 19.5 11 19.5 Q 8 19.5 8 22.5 Q 8 19.5 5 19.5 Q 8 19.5 8 16.5 Z" fill="var(--color-abyssal-blue)" />
-              </svg>
-              <h3 className="text-4xl font-extrabold tracking-tight font-satoshi">Indra</h3>
+            <div className="mb-4 flex items-center justify-center md:justify-start" dir="ltr">
+              <Image
+                src="/images/12111.png"
+                alt="Indra"
+                width={160}
+                height={82}
+                className="h-14 w-auto object-contain select-none"
+              />
             </div>
             <p className="text-[13px] font-semibold opacity-70 max-w-xs mb-8 leading-relaxed">
               وكالة رقمية متكاملة متخصصة في حلول الأتمتة والذكاء الاصطناعي، وتطوير المواقع والتطبيقات المبتكرة. نُحوّل رؤيتك إلى أنظمة متطورة تعمل على مدار الساعة لتعزيز نمو أعمالك.
