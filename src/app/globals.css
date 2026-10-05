@@ -80,12 +80,15 @@ body {
   box-shadow: 0 0 0 0 #1B2632;
 }
 .btn-neo-green {
-  background: #EA580C;
-  color: #1B2632;
+  background: var(--color-primary);
+  color: var(--color-background-dark);
+}
+.btn-neo-green:hover {
+  background: var(--color-primary-hover);
 }
 .btn-neo-white {
-  background: #EEE9DF;
-  color: #1B2632;
+  background: var(--color-text-light);
+  color: var(--color-background-dark);
 }
 
 /* ===== Breathing glow keyframe ===== */

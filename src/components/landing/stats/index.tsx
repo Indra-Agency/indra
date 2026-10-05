@@ -112,11 +112,11 @@ export function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="relative p-[1.5px] rounded-3xl overflow-hidden group shadow-[0_0_20px_rgba(234,88,12,0.02)] hover:shadow-[0_0_30px_rgba(234,88,12,0.1)] transition-shadow duration-500"
+              className="relative p-[1.5px] rounded-3xl overflow-hidden group shadow-[0_0_20px_color-mix(in_srgb,var(--color-primary)_4%,transparent)] hover:shadow-[0_0_30px_color-mix(in_srgb,var(--color-primary)_15%,transparent)] transition-shadow duration-500"
             >
               
               {/* Spinning Glow Border Layer (2 Angles) */}
-              <div className="absolute inset-[-150%] animate-spin [animation-duration:6s] bg-[conic-gradient(from_90deg_at_50%_50%,rgba(234,88,12,0)_0%,rgba(234,88,12,0.8)_25%,rgba(234,88,12,0)_50%,rgba(234,88,12,0.8)_75%,rgba(234,88,12,0)_100%)]"></div>
+              <div className="absolute inset-[-150%] animate-spin [animation-duration:6s] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,var(--color-primary)_25%,transparent_50%,var(--color-primary)_75%,transparent_100%)]"></div>
 
               {/* Inner Card */}
               <div className="relative bg-abyssal-blue rounded-[calc(1.5rem-1.5px)] p-10 flex flex-col items-center text-center h-full z-10 hover:bg-[#223040] transition-colors duration-500">

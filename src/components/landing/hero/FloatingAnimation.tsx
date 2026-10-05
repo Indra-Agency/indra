@@ -127,7 +127,12 @@ function parseColor(color: any, defaultColor: number[] = [1, 0, 0]): number[] {
     return defaultColor;
   }
   if (typeof color === 'string') {
-    const cleanColor = color.trim();
+    let cleanColor = color.trim();
+    if (cleanColor.startsWith('var(') && typeof window !== 'undefined') {
+      const varName = cleanColor.replace(/^var\(\s*|\s*\)$/g, '');
+      const resolved = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+      if (resolved) cleanColor = resolved;
+    }
     if (cleanColor.startsWith('#')) {
       const hex =
         cleanColor.length === 4

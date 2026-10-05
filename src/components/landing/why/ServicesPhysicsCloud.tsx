@@ -18,7 +18,7 @@ const GOOGLE_GRADIENT = 'bg-[linear-gradient(90deg,#4285F4_0%,#EA4335_33%,#FBBC0
 const TAGS = [
   // Existing Kept Tags
   { id: 'ai', text: 'الذكاء الاصطناعي', icon: SiOpenai, color: 'bg-[#6EE7B7] text-blue-fantastic' },
-  { id: 'auto', text: 'أتمتة العمليات', icon: SiZapier, color: 'bg-[#F97316] text-palladian' },
+  { id: 'auto', text: 'أتمتة العمليات', icon: SiZapier, color: 'bg-primary text-palladian' },
   { id: 'db', text: 'قواعد البيانات', icon: SiFirebase, color: 'bg-[#F5CD3F] text-abyssal-blue' },
   { id: 'firebase', text: 'Firebase', icon: SiFirebase, color: 'bg-[#F5CD3F] text-abyssal-blue' },
   { id: 'supabase', text: 'Supabase', icon: SiFirebase, color: 'bg-[#4ade80] text-blue-fantastic' }, // Using green for supabase since icon is generic here
