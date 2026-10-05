@@ -38,7 +38,7 @@ const thmanyahSerifText = localFont({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://indra.agency"),
+  metadataBase: new URL("https://indraagancy.software"),
   title: {
     default: "وكالة إندرا للأتمتة والذكاء الاصطناعي | Indra",
     template: "%s | Indra - وكالة إندرا للأتمتة والذكاء الاصطناعي",
@@ -77,6 +77,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/icon.png", type: "image/png" }
     ],
@@ -85,7 +86,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ar_AR",
-    url: "https://indra.agency",
+    url: "https://indraagancy.software",
     title: "وكالة إندرا للأتمتة والذكاء الاصطناعي | Indra",
     description: "وكالة إندرا (Indra) هي وكالة متخصصة في تقديم حلول أتمتة الأعمال، وتطبيقات الذكاء الاصطناعي، وتطوير البرمجيات، وتحليل النظم، وهيكلة المشاريع التقنية. نبتكر حلولاً رقمية ذكية وشاملة.",
     siteName: "إندرا (Indra)",
@@ -114,8 +115,8 @@ const jsonLd = {
   "@type": "Organization",
   "name": "وكالة إندرا للأتمتة والذكاء الاصطناعي | Indra",
   "alternateName": "Indra Agency",
-  "url": "https://indra.agency",
-  "logo": "https://indra.agency/images/logo.png",
+  "url": "https://indraagancy.software",
+  "logo": "https://indraagancy.software/icon-512.png",
   "description": "وكالة إندرا (Indra) هي وكالة رائدة متخصصة في أتمتة الأعمال، وحلول الذكاء الاصطناعي، وتطوير البرمجيات، وتحليل النظم، وهيكلة المشاريع التقنية. نقدم حلولاً رقمية ذكية لزيادة كفاءة وأداء الشركات.",
   "contactPoint": {
     "@type": "ContactPoint",
