@@ -31,7 +31,7 @@ export const SERVICES_DATA: ServiceData[] = [
     watermark: 'text-abyssal-blue/5',
     iconBg: 'bg-abyssal-blue/5',
     tags: ['أتمتة العمليات', 'روبوتات ذكية', 'نماذج لغوية', 'وكلاء ذكاء اصطناعي'],
-    image: '/images/1.png',
+    image: '/images/1.webp',
     lottie: '/lottie/Assistant-Bot.json',
     icon: <FaBrain className="w-5 h-5" />
   },
@@ -63,7 +63,7 @@ export const SERVICES_DATA: ServiceData[] = [
     watermark: 'text-abyssal-blue/5',
     iconBg: 'bg-abyssal-blue/5',
     tags: ['ربط الأنظمة (API)', 'البنية السحابية', 'أتمتة سير العمل المتقدمة', 'مساحات العمل المركزية'],
-    image: '/images/5.png',
+    image: '/images/5.webp',
     lottie: '/lottie/Digital Marketing.json',
     icon: <FaNetworkWired className="w-5 h-5" />
   },

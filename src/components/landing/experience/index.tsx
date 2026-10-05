@@ -125,6 +125,8 @@ export function ExperienceSection() {
                                 src={tech.img} 
                                 alt={tech.name} 
                                 fill
+                                sizes="20px"
+                                loading="lazy"
                                 className="object-contain"
                               />
                             </div>

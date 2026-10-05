@@ -1,8 +1,9 @@
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap');
 @import "tailwindcss";
 
+/* Satoshi is used only for the logo text — use a local system font fallback instead of blocking external import */
 .font-satoshi {
-  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+  font-weight: 900;
 }
 
 html {

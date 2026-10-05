@@ -91,6 +91,7 @@ export function ProjectsSection() {
                             alt={tech.name}
                             fill
                             sizes="40px"
+                            loading="lazy"
                             className="p-[6px] object-contain"
                           />
                         </div>
@@ -151,6 +152,7 @@ export function ProjectsSection() {
                     alt="Project Showcase"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    loading="lazy"
                     className="object-cover"
                   />
                   {/* Subtle overlay */}

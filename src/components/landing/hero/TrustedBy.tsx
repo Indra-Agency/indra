@@ -36,7 +36,7 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
                 alt={`Partner ${i + 1}`}
                 width={130}
                 height={52}
-                priority
+                loading="lazy"
                 decoding="async"
                 className="object-contain w-full h-auto brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
               />
