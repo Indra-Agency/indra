@@ -14,6 +14,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { FlagIcon } from './FlagIcon';
 import { NAV_LINKS } from './navLinks';
 
@@ -65,20 +66,25 @@ export function DesktopNav() {
       {/* Logo */}
       <a
         href="#"
-        className={`text-[18px] select-none whitespace-nowrap ps-2 pe-4 transition-colors duration-300 flex items-center gap-1.5 ${isScrolled ? 'text-abyssal-blue' : 'text-palladian'}`}
+        className="ps-2 pe-3 flex items-center transition-opacity hover:opacity-85"
+        aria-label="Indra"
       >
-        <svg
-          className="w-5 h-5 shrink-0"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path d="M 12 3.5 Q 12 7.5 16 7.5 Q 12 7.5 12 11.5 Q 12 7.5 8 7.5 Q 12 7.5 12 3.5 Z" fill="var(--color-burning-flame)" />
-          <path d="M 18.5 10 Q 18.5 15.5 24 15.5 Q 18.5 15.5 18.5 21 Q 18.5 15.5 13 15.5 Q 18.5 15.5 18.5 10 Z" fill="var(--color-burning-flame)" />
-          <path d="M 8 16.5 Q 8 19.5 11 19.5 Q 8 19.5 8 22.5 Q 8 19.5 5 19.5 Q 8 19.5 8 16.5 Z" fill="var(--color-burning-flame)" />
-        </svg>
-        <span className="font-satoshi font-extrabold tracking-tight">Indra</span>
+        <Image
+          src="/images/12111.png"
+          alt="Indra"
+          width={100}
+          height={51}
+          priority
+          className={`h-9 w-auto object-contain select-none ${isScrolled ? 'hidden' : 'block'}`}
+        />
+        <Image
+          src="/images/12111-dark.png"
+          alt="Indra"
+          width={100}
+          height={51}
+          priority
+          className={`h-9 w-auto object-contain select-none ${isScrolled ? 'block' : 'hidden'}`}
+        />
       </a>
 
       {/* Nav Links */}
