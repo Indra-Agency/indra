@@ -15,7 +15,7 @@ interface NodeProps {
   isCenter?: boolean;
 }
 
-const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = '#ff9933', isCenter = false }: NodeProps) => {
+const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = '#EA580C', isCenter = false }: NodeProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -127,7 +127,7 @@ export function DiagramFlowSection() {
                 key={i}
                 d={d}
                 fill="none" 
-                stroke="#ff9933" 
+                stroke="#EA580C" 
                 strokeWidth="1.5"
                 variants={lineVariants} 
                 initial="hidden" 
@@ -147,7 +147,7 @@ export function DiagramFlowSection() {
               <motion.path 
                 key={`dot-${i}`}
                 d="M -6,-2 a 2,2 0 0,0 0,4 l 12,0 a 2,2 0 0,0 0,-4 z" 
-                fill="#ff9933" 
+                fill="#EA580C" 
                 filter="url(#glow)"
               >
                 <animateMotion 
@@ -168,7 +168,7 @@ export function DiagramFlowSection() {
           <AnimatedNode icon={<FaFileAlt />} label="إدارة الأصول" sub="مزامنة وتخزين عالي الأداء" x="15%" y="80%" delay={0.4} />
 
           {/* Center (x=50%) */}
-          <AnimatedNode icon={<FaMicrochip />} label="النواة الذكية" sub="معالجة فائقة السرعة للعمليات" x="50%" y="50%" delay={0.5} isCenter glowColor="#ff9933" />
+          <AnimatedNode icon={<FaMicrochip />} label="النواة الذكية" sub="معالجة فائقة السرعة للعمليات" x="50%" y="50%" delay={0.5} isCenter glowColor="#EA580C" />
 
           {/* Right Side (x=85%) */}
           <AnimatedNode icon={<FaChartBar />} label="لوحات تحكم تفاعلية" sub="رؤى وتحليلات لدعم قراراتك" x="85%" y="20%" delay={0.6} />

@@ -43,14 +43,14 @@ export function HeroSection({ logos = [] }: { logos?: string[] }) {
     >
       {/* Mobile Ambient Glow Fallback (0% CPU, 0KB WebGL overhead) */}
       <div 
-        className="absolute inset-0 z-0 pointer-events-none md:hidden bg-[radial-gradient(ellipse_80%_60%_at_50%_15%,rgba(255,153,51,0.18),transparent_70%)]" 
+        className="absolute inset-0 z-0 pointer-events-none md:hidden bg-[radial-gradient(ellipse_80%_60%_at_50%_15%,rgba(234,88,12,0.18),transparent_70%)]" 
       />
 
       {/* Desktop WebGL Floating Animation (z-index: 0) */}
       {isDesktop && (
         <FloatingAnimation 
           className="absolute inset-0 z-0 pointer-events-none hidden md:block" 
-          colorStops={['#ff9933', '#c9c1b1', '#4285F4']} 
+          colorStops={['#EA580C', '#c9c1b1', '#4285F4']} 
           amplitude={1}
           blend={0.5}
           speed={0.8}

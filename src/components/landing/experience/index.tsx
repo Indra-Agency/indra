@@ -62,7 +62,7 @@ export function ExperienceSection() {
                       style={{
                         background: "conic-gradient(from 0deg, var(--color-burning-flame) 0%, #ffffff 50%, var(--color-burning-flame) 100%)",
                         padding: "3.5px", // Thickness of the glowing ring
-                        boxShadow: "0 0 20px 2px rgba(255, 153, 51, 0.7)"
+                        boxShadow: "0 0 20px 2px rgba(234, 88, 12, 0.7)"
                       }}
                     >
                       <div className="w-full h-full rounded-full bg-abyssal-blue shadow-[inset_0_0_10px_rgba(0,0,0,0.8)]"></div>
