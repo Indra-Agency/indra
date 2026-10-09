@@ -13,7 +13,7 @@
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FlagIcon } from './FlagIcon';
-import { NAV_LINKS } from './navLinks';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface Props {
   mobileOpen: boolean;
@@ -21,6 +21,16 @@ interface Props {
 }
 
 export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
+  const { language, toggleLanguage, t } = useLanguage();
+
+  const navItems = [
+    { href: '#about', label: t.nav.about },
+    { href: '#services', label: t.nav.services },
+    { href: '#work', label: t.nav.work },
+    { href: '#experience', label: t.nav.experience },
+    { href: '#contact', label: t.nav.contact },
+  ];
+
   return (
     <>
       {/* ── Top bar ── */}
@@ -42,15 +52,16 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
 
         <div className="flex items-center gap-2">
           {/* Language button */}
-          <a
-            href="/"
+          <button
+            type="button"
+            onClick={toggleLanguage}
             style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}
-            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full text-[12px] font-bold text-palladian"
-            aria-label="Switch to English"
+            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full text-[12px] font-bold text-palladian cursor-pointer"
+            aria-label={t.nav.langAria}
           >
-            <FlagIcon size={16} />
-            EN
-          </a>
+            <FlagIcon size={16} country={language === 'ar' ? 'uk' : 'sa'} />
+            {t.nav.langToggle}
+          </button>
 
           {/* Hamburger */}
           <button
@@ -80,7 +91,7 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
             className="fixed inset-0 z-[90] bg-abyssal-blue/96 backdrop-blur-2xl flex flex-col items-center justify-center md:hidden"
           >
             <nav className="flex flex-col items-center gap-8">
-              {NAV_LINKS.map((link, i) => (
+              {navItems.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
@@ -104,7 +115,7 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
                 className="mt-4 inline-flex items-center gap-2 h-12 px-8 rounded-full text-base font-bold"
                 onClick={() => setMobileOpen(false)}
               >
-                لنتحدث 👋
+                {t.nav.cta} 👋
               </motion.a>
             </nav>
           </motion.div>

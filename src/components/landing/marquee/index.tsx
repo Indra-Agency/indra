@@ -1,19 +1,19 @@
+'use client';
+
 /**
  * index.tsx  (MarqueeSection entry point)
  * ─────────────────────────────────────────
  * Two-row infinite scrolling skill ticker.
  * Row 1 scrolls left, Row 2 scrolls right.
  * Edge fades (left/right gradients) applied as absolute overlays.
- *
- * Sub-components:
- *   ./MarqueeRow    — single animated row
- *   ./marqueeData   — ROW1 and ROW2 skill arrays
  */
 
-import { MarqueeRow }    from './MarqueeRow';
-import { ROW1, ROW2 }   from './marqueeData';
+import { useLanguage } from '@/i18n/LanguageContext';
+import { MarqueeRow } from './MarqueeRow';
 
 export function MarqueeSection() {
+  const { t } = useLanguage();
+
   return (
     <div
       dir="ltr"
@@ -32,8 +32,8 @@ export function MarqueeSection() {
       />
 
       <div className="flex flex-col gap-4">
-        <MarqueeRow items={ROW1} direction="left"  />
-        <MarqueeRow items={ROW2} direction="right" />
+        <MarqueeRow items={t.marquee.row1} direction="left" />
+        <MarqueeRow items={t.marquee.row2} direction="right" />
       </div>
     </div>
   );

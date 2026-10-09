@@ -85,9 +85,13 @@ function CountUpValue({ targetStr }: { targetStr: string }) {
   );
 }
 
+import { useLanguage } from '@/i18n/LanguageContext';
+
 export function StatsSection() {
+  const { t, dir } = useLanguage();
+
   return (
-    <section className="py-16 md:py-24 relative bg-abyssal-blue" dir="rtl">
+    <section className="py-16 md:py-24 relative bg-abyssal-blue" dir={dir}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
@@ -99,55 +103,60 @@ export function StatsSection() {
             viewport={{ once: true }}
             className="text-2xl md:text-4xl text-palladian font-extrabold tracking-tight"
           >
-            أثر يُثبت بالأرقام
+            {t.stats.title}
           </motion.h2>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {STATS_DATA.map((stat, i) => (
-            <motion.div
-              key={stat.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="relative p-[1.5px] rounded-3xl overflow-hidden group shadow-[0_0_20px_color-mix(in_srgb,var(--color-primary)_4%,transparent)] hover:shadow-[0_0_30px_color-mix(in_srgb,var(--color-primary)_15%,transparent)] transition-shadow duration-500"
-            >
-              
-              {/* Spinning Glow Border Layer (2 Angles) */}
-              <div className="absolute inset-[-150%] animate-spin [animation-duration:6s] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,var(--color-primary)_25%,transparent_50%,var(--color-primary)_75%,transparent_100%)]"></div>
+          {STATS_DATA.map((baseStat, i) => {
+            const item = t.stats.items[i] || baseStat;
+            const Icon = baseStat.icon;
 
-              {/* Inner Card */}
-              <div className="relative bg-abyssal-blue rounded-[calc(1.5rem-1.5px)] p-10 flex flex-col items-center text-center h-full z-10 hover:bg-[#223040] transition-colors duration-500">
-                {/* Icon in Circle Arc */}
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-8 relative">
-                  {/* SVG open arc */}
-                  <svg 
-                    className="absolute inset-0 w-full h-full text-burning-flame/50 -rotate-90 group-hover:rotate-[90deg] transition-transform duration-1000 origin-center" 
-                    viewBox="0 0 100 100" 
-                    fill="none"
-                  >
-                    <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="2.5" strokeDasharray="220 100" strokeLinecap="round" />
-                  </svg>
-                  {/* Icon */}
-                  <stat.icon className="text-burning-flame text-2xl relative z-10" />
+            return (
+              <motion.div
+                key={baseStat.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="relative p-[1.5px] rounded-3xl overflow-hidden group shadow-[0_0_20px_color-mix(in_srgb,var(--color-primary)_4%,transparent)] hover:shadow-[0_0_30px_color-mix(in_srgb,var(--color-primary)_15%,transparent)] transition-shadow duration-500"
+              >
+                
+                {/* Spinning Glow Border Layer (2 Angles) */}
+                <div className="absolute inset-[-150%] animate-spin [animation-duration:6s] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,var(--color-primary)_25%,transparent_50%,var(--color-primary)_75%,transparent_100%)]"></div>
+
+                {/* Inner Card */}
+                <div className="relative bg-abyssal-blue rounded-[calc(1.5rem-1.5px)] p-10 flex flex-col items-center text-center h-full z-10 hover:bg-[#223040] transition-colors duration-500">
+                  {/* Icon in Circle Arc */}
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-8 relative">
+                    {/* SVG open arc */}
+                    <svg 
+                      className="absolute inset-0 w-full h-full text-burning-flame/50 -rotate-90 group-hover:rotate-[90deg] transition-transform duration-1000 origin-center" 
+                      viewBox="0 0 100 100" 
+                      fill="none"
+                    >
+                      <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="2.5" strokeDasharray="220 100" strokeLinecap="round" />
+                    </svg>
+                    {/* Icon */}
+                    <Icon className="text-burning-flame text-2xl relative z-10" />
+                  </div>
+
+                  {/* Value */}
+                  <h3 className="text-3xl md:text-4xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-palladian to-burning-flame mb-5 tracking-wide">
+                    <CountUpValue targetStr={item.value || baseStat.value} />
+                  </h3>
+
+                  {/* Title & Subtitle */}
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-palladian font-heading text-lg font-bold">{item.title}</span>
+                    <span className="text-palladian/40 text-[13px] font-medium leading-relaxed">{item.subtitle}</span>
+                  </div>
                 </div>
 
-                {/* Value */}
-                <h3 className="text-3xl md:text-4xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-b from-palladian to-burning-flame mb-5 tracking-wide">
-                  <CountUpValue targetStr={stat.value} />
-                </h3>
-
-                {/* Title & Subtitle */}
-                <div className="flex flex-col gap-1.5">
-                  <span className="text-palladian font-heading text-lg font-bold">{stat.title}</span>
-                  <span className="text-palladian/40 text-[13px] font-medium leading-relaxed">{stat.subtitle}</span>
-                </div>
-              </div>
-
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

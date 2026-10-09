@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 
 /* ── Primary font: Thmanyah Sans (Preload only Regular and Bold for instant text render) ── */
 const thmanyahSans = localFont({
@@ -129,7 +130,7 @@ const jsonLd = {
     "https://wa.me/967738688812"
   ]
 };
-
+ 
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -142,16 +143,18 @@ export default function RootLayout({
       className={`${thmanyahSans.variable} ${thmanyahSerifDisplay.variable} ${thmanyahSerifText.variable} scroll-smooth`}
     >
       <body
-        style={{ fontFamily: "var(--font-body), sans-serif", direction: "rtl" }}
+        style={{ fontFamily: "var(--font-body), sans-serif" }}
         className="bg-background text-foreground antialiased"
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        {children}
-        <DynamicWidgetsWrapper />
-        <SpeedInsights />
+        <LanguageProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+          {children}
+          <DynamicWidgetsWrapper />
+          <SpeedInsights />
+        </LanguageProvider>
       </body>
     </html>
   );

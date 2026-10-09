@@ -7,9 +7,12 @@ import Image from 'next/image';
  * "Trusted by" pill + brand names as styled text (no broken images).
  */
 
+import { useLanguage } from '@/i18n/LanguageContext';
+
 const BRANDS = ['Ooredoo', 'QNB', 'Amazon', 'Remal'];
 
 export function TrustedBy({ logos = [] }: { logos?: string[] }) {
+  const { t } = useLanguage();
   // Take only the first 5 logos
   const displayLogos = logos.slice(0, 5);
 
@@ -20,7 +23,7 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" fill="var(--color-burning-flame)" />
         </svg>
-        <span className="text-xs font-semibold tracking-wide text-palladian/60">موثوق من قبل</span>
+        <span className="text-xs font-semibold tracking-wide text-palladian/60">{t.hero.trustedBy}</span>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" fill="var(--color-burning-flame)" />
         </svg>
@@ -45,7 +48,7 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
           ))
         ) : (
           <div className="text-sm font-semibold tracking-widest uppercase text-zinc-500">
-            جاري تحميل شركاء النجاح...
+            {t.hero.loadingPartners}
           </div>
         )}
       </div>

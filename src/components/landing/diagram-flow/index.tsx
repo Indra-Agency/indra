@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { FaDatabase, FaBolt, FaFileAlt, FaChartBar, FaBell, FaMicrochip } from 'react-icons/fa';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface NodeProps {
   icon: React.ReactNode;
@@ -13,9 +14,10 @@ interface NodeProps {
   y: string;
   glowColor?: string;
   isCenter?: boolean;
+  dir?: 'rtl' | 'ltr';
 }
 
-const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = 'var(--color-primary)', isCenter = false }: NodeProps) => {
+const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = 'var(--color-primary)', isCenter = false, dir = 'rtl' }: NodeProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -29,7 +31,7 @@ const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = 'var(--co
           : 'z-10 w-[29%]'
       }`}
       style={{ left: x, top: y }}
-      dir="rtl"
+      dir={dir}
     >
       {isCenter && (
         <motion.div 
@@ -44,15 +46,17 @@ const AnimatedNode = ({ icon, label, sub, delay = 0, x, y, glowColor = 'var(--co
       }`}>
         {icon}
       </div>
-      <div className={isCenter ? '' : 'text-right overflow-hidden flex-1'}>
+      <div className={isCenter ? '' : `${dir === 'rtl' ? 'text-right' : 'text-left'} overflow-hidden flex-1`}>
         <h3 className="text-[10px] sm:text-xs md:text-base font-bold text-white leading-tight truncate">{label}</h3>
-        <p className="text-[8px] sm:text-[10px] md:text-xs text-zinc-400 font-sans leading-tight mt-0.5 md:mt-1 truncate" dir="ltr">{sub}</p>
+        <p className="text-[8px] sm:text-[10px] md:text-xs text-zinc-400 font-sans leading-tight mt-0.5 md:mt-1 truncate" dir={dir}>{sub}</p>
       </div>
     </motion.div>
   );
 };
 
 export function DiagramFlowSection() {
+  const { t, dir } = useLanguage();
+
   const lineVariants: Variants = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: { 
@@ -74,14 +78,14 @@ export function DiagramFlowSection() {
   return (
     <section className="py-24 relative bg-transparent overflow-hidden" dir="ltr">
       <div className="max-w-6xl mx-auto px-2 md:px-8 relative z-10">
-        <div className="text-center mb-16 max-w-3xl mx-auto" dir="rtl">
+        <div className="text-center mb-16 max-w-3xl mx-auto" dir={dir}>
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-burning-flame font-bold mb-2 tracking-wide text-sm block"
           >
-            بنية تحتية متطورة
+            {t.diagram.subtitle}
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -90,7 +94,7 @@ export function DiagramFlowSection() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-extrabold text-white mb-4"
           >
-            ندير عملياتك المعقدة بكفاءة وأمان
+            {t.diagram.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -99,7 +103,7 @@ export function DiagramFlowSection() {
             transition={{ delay: 0.2 }}
             className="text-zinc-400 text-sm md:text-base leading-relaxed px-4"
           >
-            نحن لا نكتفي بكتابة الأكواد، بل نصمم لك أنظمة مؤتمتة متكاملة. تستقبل أعمالك، وتعالج بياناتك بذكاء فائق، لتتحول في النهاية إلى نتائج ورؤى تساعدك على مضاعفة أرباحك وتوسيع نطاق عملك براحة تامة.
+            {t.diagram.description}
           </motion.p>
         </div>
 
@@ -163,16 +167,16 @@ export function DiagramFlowSection() {
 
           {/* Nodes */}
           {/* Left Side (x=15%) */}
-          <AnimatedNode icon={<FaDatabase />} label="بيانات عملائك" sub="تخزين سحابي مشفر وآمن" x="15%" y="20%" delay={0.2} />
-          <AnimatedNode icon={<FaBolt />} label="تكامل الأنظمة" sub="ربط سلس واستجابة لحظية" x="15%" y="50%" delay={0.3} />
-          <AnimatedNode icon={<FaFileAlt />} label="إدارة الأصول" sub="مزامنة وتخزين عالي الأداء" x="15%" y="80%" delay={0.4} />
+          <AnimatedNode icon={<FaDatabase />} label={t.diagram.node1.label} sub={t.diagram.node1.sub} x="15%" y="20%" delay={0.2} dir={dir} />
+          <AnimatedNode icon={<FaBolt />} label={t.diagram.node2.label} sub={t.diagram.node2.sub} x="15%" y="50%" delay={0.3} dir={dir} />
+          <AnimatedNode icon={<FaFileAlt />} label={t.diagram.node3.label} sub={t.diagram.node3.sub} x="15%" y="80%" delay={0.4} dir={dir} />
 
           {/* Center (x=50%) */}
-          <AnimatedNode icon={<FaMicrochip />} label="النواة الذكية" sub="معالجة فائقة السرعة للعمليات" x="50%" y="50%" delay={0.5} isCenter glowColor="var(--color-primary)" />
+          <AnimatedNode icon={<FaMicrochip />} label={t.diagram.center.label} sub={t.diagram.center.sub} x="50%" y="50%" delay={0.5} isCenter glowColor="var(--color-primary)" dir={dir} />
 
           {/* Right Side (x=85%) */}
-          <AnimatedNode icon={<FaChartBar />} label="لوحات تحكم تفاعلية" sub="رؤى وتحليلات لدعم قراراتك" x="85%" y="20%" delay={0.6} />
-          <AnimatedNode icon={<FaBell />} label="متابعة مستمرة" sub="إشعارات وتقارير لحظية" x="85%" y="80%" delay={0.7} />
+          <AnimatedNode icon={<FaChartBar />} label={t.diagram.node4.label} sub={t.diagram.node4.sub} x="85%" y="20%" delay={0.6} dir={dir} />
+          <AnimatedNode icon={<FaBell />} label={t.diagram.node5.label} sub={t.diagram.node5.sub} x="85%" y="80%" delay={0.7} dir={dir} />
 
         </div>
       </div>

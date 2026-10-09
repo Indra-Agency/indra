@@ -16,11 +16,20 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FlagIcon } from './FlagIcon';
-import { NAV_LINKS } from './navLinks';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export function DesktopNav() {
+  const { language, toggleLanguage, t } = useLanguage();
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const navItems = [
+    { href: '#about', label: t.nav.about },
+    { href: '#services', label: t.nav.services },
+    { href: '#work', label: t.nav.work },
+    { href: '#experience', label: t.nav.experience },
+    { href: '#contact', label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +38,7 @@ export function DesktopNav() {
 
       // 2. Track active section
       let current = '';
-      const sections = NAV_LINKS.map(l => l.href.substring(1));
+      const sections = ['about', 'services', 'work', 'experience', 'contact'];
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -89,7 +98,7 @@ export function DesktopNav() {
 
       {/* Nav Links */}
       <div className="flex items-center gap-0.5">
-        {NAV_LINKS.map((link) => {
+        {navItems.map((link) => {
           const sectionId = link.href.substring(1);
           const isActive = activeSection === sectionId;
 
@@ -98,10 +107,10 @@ export function DesktopNav() {
             // Neo-brutalism style for active link
             linkStyle = 'bg-burning-flame text-abyssal-blue border-2 border-abyssal-blue shadow-[3px_3px_0px_var(--color-abyssal-blue)] px-4 py-[6px]';
           } else if (isScrolled) {
-            // Inactive state on white bar (transparent border to prevent layout shift)
+            // Inactive state on white bar
             linkStyle = 'text-abyssal-blue/60 hover:text-abyssal-blue hover:bg-abyssal-blue/5 px-4 py-[6px] border-2 border-transparent shadow-[0px_0px_0px_transparent]';
           } else {
-            // Inactive state on dark bar (transparent border to prevent layout shift)
+            // Inactive state on dark bar
             linkStyle = 'text-palladian/60 hover:text-palladian hover:bg-palladian/5 px-4 py-[6px] border-2 border-transparent shadow-[0px_0px_0px_transparent]';
           }
 
@@ -118,18 +127,19 @@ export function DesktopNav() {
       </div>
 
       {/* Language Toggle */}
-      <a
-        href="/"
+      <button
+        type="button"
+        onClick={toggleLanguage}
         style={{
           background: isScrolled ? 'rgba(27, 38, 50, 0.05)' : 'rgba(201, 193, 177, 0.08)',
           border: isScrolled ? '1px solid rgba(27, 38, 50, 0.1)' : '1px solid rgba(201, 193, 177, 0.1)'
         }}
-        className={`inline-flex items-center gap-1.5 h-9 px-3.5 ms-1 rounded-full text-[12px] font-bold transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap ${isScrolled ? 'text-abyssal-blue' : 'text-palladian'}`}
-        aria-label="Switch to English"
+        className={`inline-flex items-center gap-1.5 h-9 px-3.5 ms-1 rounded-full text-[12px] font-bold transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap cursor-pointer ${isScrolled ? 'text-abyssal-blue' : 'text-palladian'}`}
+        aria-label={t.nav.langAria}
       >
-        <FlagIcon size={18} />
-        <span>EN</span>
-      </a>
+        <FlagIcon size={18} country={language === 'ar' ? 'uk' : 'sa'} />
+        <span>{t.nav.langToggle}</span>
+      </button>
 
       {/* CTA Button */}
       <a
@@ -144,7 +154,7 @@ export function DesktopNav() {
         onClick={(e) => { e.currentTarget.style.boxShadow = 'none'; }}
         onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '3px 3px 0px 0px var(--color-abyssal-blue)'; }}
       >
-        لنتحدث 👋
+        {t.nav.cta} 👋
       </a>
     </nav>
   );

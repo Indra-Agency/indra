@@ -24,7 +24,11 @@ const MarqueeSet = ({ logos }: { logos: string[] }) => (
   </div>
 );
 
+import { useLanguage } from '@/i18n/LanguageContext';
+
 export function ClientsSection({ logos }: { logos: string[] }) {
+  const { t, dir } = useLanguage();
+
   if (!logos || logos.length === 0) return null;
 
   const mid = Math.ceil(logos.length / 2);
@@ -32,7 +36,7 @@ export function ClientsSection({ logos }: { logos: string[] }) {
   const bottomLogos = logos.slice(mid);
 
   return (
-    <section id="clients" className="py-16 md:py-24 bg-abyssal-blue overflow-hidden" dir="rtl">
+    <section id="clients" className="py-16 md:py-24 bg-abyssal-blue overflow-hidden" dir={dir}>
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-10 text-center flex flex-col items-center">
         <motion.span
@@ -42,7 +46,7 @@ export function ClientsSection({ logos }: { logos: string[] }) {
           viewport={{ once: true }}
           className="text-burning-flame font-bold tracking-wider text-xs md:text-sm mb-6"
         >
-          موثوق من قبل
+          {t.clients.subtitle}
         </motion.span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +55,7 @@ export function ClientsSection({ logos }: { logos: string[] }) {
           viewport={{ once: true }}
           className="text-palladian font-black text-2xl md:text-3xl -mt-2 md:-mt-3"
         >
-          أبرز العملاء
+          {t.clients.title}
         </motion.h2>
       </div>
 

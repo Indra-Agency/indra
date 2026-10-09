@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiSend, FiX } from 'react-icons/fi';
 import Image from 'next/image';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface Message {
   id: string;
@@ -12,24 +13,16 @@ interface Message {
   time: string;
 }
 
-const QUICK_QUESTIONS = [
-  'ما هي خدماتكم؟',
-  'كيف تفيدني الأتمتة؟',
-  'ما هي حلول الذكاء الاصطناعي؟',
-  'حدثني عن مشاريعكم',
-  'هل تقدمون استشارات؟',
-  'كيف نبدأ العمل معاً؟',
-];
-
 export function SmartChatbot() {
+  const { t, dir, isRTL } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
       sender: 'bot',
-      text: 'أهلاً! 👋 مرحباً بك في Indra. نحن وكالة متخصصة في حلول الأتمتة والذكاء الاصطناعي لتسريع نمو أعمالك. ما اسمك الكريم لنبدأ؟',
-      time: getFormattedTime(),
+      text: t.chatbot.welcome,
+      time: '',
     },
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -37,6 +30,38 @@ export function SmartChatbot() {
   const [userName, setUserName] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  function getFormattedTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? (isRTL ? 'م' : 'PM') : (isRTL ? 'ص' : 'AM');
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    return `${hours}:${minutes} ${ampm}`;
+  }
+
+  // Set initial time on mount
+  useEffect(() => {
+    setMessages((prev) => 
+      prev.map((m) => m.id === 'welcome' && !m.time ? { ...m, time: getFormattedTime() } : m)
+    );
+  }, []);
+
+  // Update welcome message if language switched before conversation started
+  useEffect(() => {
+    setMessages((prev) => {
+      if (prev.length === 1 && prev[0].id === 'welcome') {
+        return [{
+          id: 'welcome',
+          sender: 'bot',
+          text: t.chatbot.welcome,
+          time: getFormattedTime(),
+        }];
+      }
+      return prev;
+    });
+  }, [t.chatbot.welcome]);
 
   // Show tooltip after a brief delay on load
   useEffect(() => {
@@ -52,16 +77,6 @@ export function SmartChatbot() {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isTyping]);
-
-  function getFormattedTime() {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const ampm = hours >= 12 ? 'م' : 'ص';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    return `${hours}:${minutes} ${ampm}`;
-  }
 
   const handleSendMessage = (text: string) => {
     if (!text.trim()) return;
@@ -107,55 +122,103 @@ export function SmartChatbot() {
       }
 
       let replyText = '';
-      // First reply after greeting: User gave their name
-      if (!userName && messages.length <= 2) {
-        setUserName(text);
-        replyText = `أهلاً بك يا ${text}! يسعدنا تواصلك مع وكالة Indra. تفضل باختيار أحد المواضيع التالية أو اسألنا عن أي استفسار يخطر ببالك:`;
-      } else {
-        const query = text.toLowerCase().trim();
 
-        if (query.includes('خدمات') || query.includes('ما هي خدماتكم') || query.includes('ماذا تقدم')) {
-          replyText = `نحن في وكالة Indra نقدم حلولاً رقمية ذكية لرفع كفاءة أعمالك، وتتضمن:
+      if (isRTL) {
+        // Arabic replies
+        if (!userName && messages.length <= 2) {
+          setUserName(text);
+          replyText = `أهلاً بك يا ${text}! يسعدنا تواصلك مع وكالة Indra. تفضل باختيار أحد المواضيع التالية أو اسألنا عن أي استفسار يخطر ببالك:`;
+        } else {
+          const query = text.toLowerCase().trim();
+
+          if (query.includes('خدمات') || query.includes('ما هي خدماتكم') || query.includes('ماذا تقدم')) {
+            replyText = `نحن في وكالة Indra نقدم حلولاً رقمية ذكية لرفع كفاءة أعمالك، وتتضمن:
 • أتمتة العمليات (Workflow Automation) لربط الأنظمة وتوفير الوقت والجهد.
 • دمج الذكاء الاصطناعي (AI Integration) لبناء نماذج ذكية تخدم عملك.
 • تطوير تطبيقات الويب والمنصات السحابية (Next.js & React) فائقة الأداء.
 • تصميم وتطوير تطبيقات الهواتف الذكية (iOS & Android).
 • بناء وتطوير أنظمة خدمة العملاء الآلية وروبوتات الرد الذكي.`;
-        } else if (query.includes('أتمتة') || query.includes('تفيدني') || query.includes('كيف تفيدني')) {
-          replyText = `أتمتة العمليات تساعد شركتك على النمو السريع من خلال:
+          } else if (query.includes('أتمتة') || query.includes('تفيدني') || query.includes('كيف تفيدني')) {
+            replyText = `أتمتة العمليات تساعد شركتك على النمو السريع من خلال:
 • تقليل التكاليف التشغيلية بشكل ضخم عبر تقليص المهام اليدوية المتكررة.
 • تشغيل عملياتك والمبيعات وخدمة العملاء على مدار الساعة 24/7 دون توقف.
 • زيادة سرعة الإنجاز والإنتاجية وضمان دقة العمل بنسبة 100% دون أخطاء بشرية.
 
 هل تود أتمتة عملية معينة أو ربط تطبيقين في شركتك؟`;
-        } else if (query.includes('ذكاء') || query.includes('حلول الذكاء') || query.includes('ai')) {
-          replyText = `نقدم حلول ذكاء اصطناعي ذكية ومخصصة لأعمالك تشمل:
+          } else if (query.includes('ذكاء') || query.includes('حلول الذكاء') || query.includes('ai')) {
+            replyText = `نقدم حلول ذكاء اصطناعي ذكية ومخصصة لأعمالك تشمل:
 • أنظمة تحليل البيانات والتنبؤ بالسلوك والمبيعات.
 • روبوتات المحادثة الذكية (Chatbots) المتقدمة لخدمة العملاء.
 • أتمتة إدخال وتصنيف البيانات والملفات تلقائياً باستخدام الذكاء الاصطناعي.
 • دمج الذكاء الاصطناعي التوليدي (ChatGPT, Claude) لتسريع وتسهيل إنتاج المحتوى والعمليات اليومية لشركتك.`;
-        } else if (query.includes('مشاريع') || query.includes('أعمال') || query.includes('سابقة')) {
-          replyText = `قمنا بتطوير حلول برمجية وأنظمة أتمتة لجهات وشركات مختلفة، مثل:
+          } else if (query.includes('مشاريع') || query.includes('أعمال') || query.includes('سابقة')) {
+            replyText = `قمنا بتطوير حلول برمجية وأنظمة أتمتة لجهات وشركات مختلفة، مثل:
 • لوحات تحكم متقدمة لإدارة المبيعات والعمليات.
 • منصات أتمتة لخدمة العملاء وربطها بأنظمة الـ CRM.
 • مواقع وتطبيقات سحابية سريعة ومتوافقة مع معايير الـ SEO بنسبة 100%.
 
 يمكنك استكشاف معرض مشاريعنا المميزة في الموقع للمزيد من التفاصيل!`;
-        } else if (query.includes('استشار') || query.includes('استشارات') || query.includes('تواصل')) {
-          replyText = `نعم بكل سرور! نحن نقدم استشارات تقنية مجانية في البداية لدراسة طبيعة عملك وتحديد الفرص التي يمكن للذكاء الاصطناعي والأتمتة تسريعها وتحسينها.
+          } else if (query.includes('استشار') || query.includes('استشارات') || query.includes('تواصل')) {
+            replyText = `نعم بكل سرور! نحن نقدم استشارات تقنية مجانية في البداية لدراسة طبيعة عملك وتحديد الفرص التي يمكن للذكاء الاصطناعي والأتمتة تسريعها وتحسينها.
 
 يمكنك حجز استشارتك مباشرة عبر نموذج الاتصال أو الضغط على زر الواتساب للتحدث معنا فوراً!`;
-        } else if (query.includes('بدء') || query.includes('نبدأ') || query.includes('العمل')) {
-          replyText = `البدء معنا سهل للغاية:
+          } else if (query.includes('بدء') || query.includes('نبدأ') || query.includes('العمل')) {
+            replyText = `البدء معنا سهل للغاية:
 1. نتناقش أولاً حول متطلباتك والعمليات التي تود تطويرها أو أتمتتها.
 2. نقدم لك دراسة سريعة وعرضاً فنياً ومالياً مخصصاً لمشروعك.
 3. نبدأ في التطوير والتكامل الفعلي مع أنظمتك الحالية.
 
 تواصل معنا الآن عبر نموذج الاتصال في الموقع أو مباشرة عبر الواتساب لنبدأ فوراً!`;
-        } else if (query.includes('مرحبا') || query.includes('أهلاً') || query.includes('هلا') || query.includes('السلام')) {
-          replyText = `أهلاً بك! يسعدنا تواصلك مع وكالة Indra. كيف يمكننا مساعدتك اليوم؟ يمكنك سؤالي عن خدماتنا، أتمتة العمليات، أو كيف نبدأ العمل معاً.`;
+          } else if (query.includes('مرحبا') || query.includes('أهلاً') || query.includes('هلا') || query.includes('السلام')) {
+            replyText = `أهلاً بك! يسعدنا تواصلك مع وكالة Indra. كيف يمكننا مساعدتك اليوم؟ يمكنك سؤالي عن خدماتنا، أتمتة العمليات، أو كيف نبدأ العمل معاً.`;
+          } else {
+            replyText = `سؤال رائع! للحصول على إجابة تفصيلية مخصصة، أو لمناقشة مشروعك بشكل مباشر، يمكنك مراسلتنا مباشرة عبر الواتساب، وسنكون سعداء جداً بمساعدتك!`;
+          }
+        }
+      } else {
+        // English replies
+        if (!userName && messages.length <= 2) {
+          setUserName(text);
+          replyText = `Welcome, ${text}! We're thrilled to connect with you at Indra Agency. Choose from the quick questions below or ask me anything!`;
         } else {
-          replyText = `سؤال رائع! للحصول على إجابة تفصيلية مخصصة، أو لمناقشة مشروعك بشكل مباشر، يمكنك مراسلتنا مباشرة عبر الواتساب، وسنكون سعداء جداً بمساعدتك!`;
+          const query = text.toLowerCase().trim();
+
+          if (query.includes('service') || query.includes('offer') || query.includes('what do you do')) {
+            replyText = `At Indra Agency, we deliver intelligent digital solutions to boost business efficiency:
+• Workflow Automation to integrate your systems and save time.
+• AI Integration & smart conversational systems for your workflows.
+• Modern, high-performance Web Apps & Platforms (Next.js & React).
+• iOS & Android Mobile Apps built for seamless user experience.
+• 24/7 automated support and monitoring.`;
+          } else if (query.includes('automat') || query.includes('benefit')) {
+            replyText = `Process automation accelerates company growth by:
+• Drastically slashing operational costs and manual repetitive tasks.
+• Running sales and operations 24/7 without interruption.
+• Boosting delivery speed with 100% precision.
+
+Would you like to automate a specific process or link your apps together?`;
+          } else if (query.includes('ai') || query.includes('intelligence')) {
+            replyText = `Our AI solutions include:
+• Data intelligence & forecasting models.
+• Advanced conversational bots & customer assistants.
+• Automated document parsing & classification.
+• Generative AI integration (ChatGPT, Claude) customized for your business.`;
+          } else if (query.includes('project') || query.includes('work') || query.includes('portfolio')) {
+            replyText = `We’ve built platforms and automation systems for clients across the region, including custom Flutter apps, real-time dashboards, and automated logistics systems. Check out our Featured Projects section above for details!`;
+          } else if (query.includes('consult') || query.includes('call') || query.includes('contact')) {
+            replyText = `Absolutely! We offer initial technical consultations to explore how automation and AI can multiply your business results. Reach out via the contact form or WhatsApp anytime!`;
+          } else if (query.includes('start') || query.includes('begin') || query.includes('hire')) {
+            replyText = `Getting started is simple:
+1. We discuss your goals and processes.
+2. We present a tailored proposal and roadmap.
+3. We build, integrate, and launch.
+
+Send us a message via the form or WhatsApp to get started today!`;
+          } else if (query.includes('hello') || query.includes('hi') || query.includes('hey')) {
+            replyText = `Hello! Welcome to Indra Agency. How can we help your business today? Feel free to ask about our services, automation, or how we can collaborate.`;
+          } else {
+            replyText = `Great question! For tailored advice on your project, please message us directly on WhatsApp or drop us a note in the contact form, and we'll be delighted to assist!`;
+          }
         }
       }
 
@@ -181,7 +244,7 @@ export function SmartChatbot() {
             setShowTooltip(false);
           }}
           className="relative w-14 h-14 bg-burning-flame text-abyssal-blue rounded-full flex items-center justify-center border-2 border-abyssal-blue shadow-[3px_3px_0_0_var(--color-abyssal-blue)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[5px_5px_0_0_var(--color-abyssal-blue)] transition-all duration-300 pointer-events-auto"
-          aria-label="اسأل Indra"
+          aria-label={t.chatbot.triggerAria}
         >
           {/* Online Dot */}
           <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-red-500 border border-abyssal-blue" />
@@ -200,9 +263,10 @@ export function SmartChatbot() {
               exit={{ opacity: 0, x: 15, scale: 0.95 }}
               transition={{ duration: 0.3 }}
               className="bg-palladian text-blue-fantastic px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 border border-oatmeal max-w-[260px] md:max-w-xs text-start relative pointer-events-auto font-medium"
+              dir={dir}
             >
               <span className="text-xs md:text-sm font-semibold leading-relaxed">
-                اسألني عن خدمات Indra وحلول الأتمتة والذكاء الاصطناعي 🤖
+                {t.chatbot.tooltip}
               </span>
               {/* Tooltip arrow pointing right to the button */}
               <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-palladian border-r border-t border-oatmeal transform rotate-45" />
@@ -220,6 +284,7 @@ export function SmartChatbot() {
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ duration: 0.3 }}
             className="w-[90vw] sm:w-[380px] h-[550px] bg-palladian border-2 border-abyssal-blue rounded-3xl overflow-hidden shadow-2xl flex flex-col text-start pointer-events-auto"
+            dir={dir}
           >
             {/* Header */}
             <div className="bg-burning-flame p-4 flex items-center justify-between text-abyssal-blue relative z-10 border-b-2 border-abyssal-blue">
@@ -235,8 +300,8 @@ export function SmartChatbot() {
                   />
                 </div>
                 <div className="flex flex-col items-start leading-tight">
-                  <span className="font-extrabold text-sm">اسأل Indra</span>
-                  <span className="text-[10px] font-semibold opacity-60">متصل · يرد فوراً</span>
+                  <span className="font-extrabold text-sm">{t.chatbot.askTitle}</span>
+                  <span className="text-[10px] font-semibold opacity-60">{t.chatbot.online}</span>
                 </div>
               </div>
 
@@ -244,7 +309,7 @@ export function SmartChatbot() {
               <button
                 onClick={() => setIsOpen(false)}
                 className="w-8 h-8 rounded-full flex items-center justify-center bg-abyssal-blue/5 hover:bg-abyssal-blue/10 transition-colors"
-                aria-label="إغلاق المحادثة"
+                aria-label={t.chatbot.closeAria}
               >
                 <FiX className="text-lg text-abyssal-blue" />
               </button>
@@ -314,16 +379,19 @@ export function SmartChatbot() {
             </div>
 
             {/* Quick Questions (Chips) */}
-            <div className="p-3 border-t border-oatmeal bg-palladian flex flex-wrap gap-1.5 justify-start max-h-[120px] overflow-y-auto">
-              {QUICK_QUESTIONS.map((q, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSendMessage(q)}
-                  className="bg-palladian hover:bg-zinc-50 text-zinc-700 border border-oatmeal hover:border-zinc-300 px-3.5 py-2 rounded-full text-[12px] font-bold shadow-sm transition-all duration-200 active:scale-95 whitespace-nowrap"
-                >
-                  {q}
-                </button>
-              ))}
+            <div className="p-3 border-t border-oatmeal bg-palladian">
+              <div className="grid grid-cols-2 gap-2">
+                {t.chatbot.quickQuestions.map((q, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => handleSendMessage(q)}
+                    className="w-full bg-palladian hover:bg-white text-zinc-700 hover:text-abyssal-blue border border-oatmeal hover:border-abyssal-blue/30 py-2 px-2 rounded-full text-[11px] sm:text-xs font-bold shadow-xs hover:shadow-sm transition-all duration-200 active:scale-95 text-center flex items-center justify-center leading-normal"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Input Form */}
@@ -339,15 +407,16 @@ export function SmartChatbot() {
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="اسألني أي شيء..."
+                  placeholder={t.chatbot.inputPlaceholder}
                   className="flex-1 bg-transparent text-abyssal-blue px-2 py-2 text-xs md:text-sm focus:outline-none placeholder:text-zinc-400 font-medium"
+                  dir={dir}
                 />
                 <button
                   type="submit"
                   className="w-8 h-8 rounded-full bg-oatmeal hover:bg-oatmeal text-zinc-500 hover:text-abyssal-blue flex items-center justify-center transition-all shrink-0"
-                  aria-label="إرسال"
+                  aria-label={t.chatbot.sendAria}
                 >
-                  <FiSend className="text-sm rtl:-rotate-180" />
+                  <FiSend className={`text-sm ${isRTL ? '-rotate-90' : ''}`} />
                 </button>
               </div>
             </form>

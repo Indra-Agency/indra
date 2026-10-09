@@ -12,8 +12,11 @@ import { motion } from 'framer-motion';
 import { CenterCard } from './CenterCard';
 import { FloatingBadge } from './FloatingBadge';
 import { FLOATING_BADGES } from './aboutData';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export function AboutSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="py-16 md:py-28 lg:py-32 relative overflow-hidden bg-abyssal-blue">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -25,7 +28,7 @@ export function AboutSection() {
             viewport={{ once: true }}
             className="text-burning-flame font-bold text-base mb-3"
           >
-            عن الوكالة
+            {t.about.subtitle}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -34,7 +37,7 @@ export function AboutSection() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-palladian tracking-tight"
           >
-            حلول رقمية شاملة
+            {t.about.title}
           </motion.h2>
         </div>
 

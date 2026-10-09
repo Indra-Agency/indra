@@ -3,13 +3,15 @@
 import Image from 'next/image';
 import { NeoButton } from '@/components/ui/NeoButton';
 import { motion } from 'framer-motion';
-import { FaApple, FaGooglePlay } from 'react-icons/fa';
-
+import { FaApple } from 'react-icons/fa';
+import { useLanguage } from '@/i18n/LanguageContext';
 import { PROJECTS_DATA } from '@/data/projects';
 
 export function ProjectsSection() {
+  const { t, dir, isRTL } = useLanguage();
+
   return (
-    <section id="work" className="py-16 md:py-24 relative" dir="rtl">
+    <section id="work" className="py-16 md:py-24 relative" dir={dir}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* Section Header */}
@@ -21,7 +23,7 @@ export function ProjectsSection() {
             viewport={{ once: true }}
             className="text-burning-flame font-semibold tracking-wider text-sm mb-3 uppercase"
           >
-            التأثير
+            {t.projects.subtitle}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -30,14 +32,21 @@ export function ProjectsSection() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl lg:text-5xl text-palladian font-bold tracking-tight"
           >
-            المشاريع المميزة
+            {t.projects.title}
           </motion.h2>
         </div>
 
         {/* Projects List */}
         <div className="space-y-12">
           {PROJECTS_DATA.map((project, i) => {
-            // All cards: Image on Right, Content on Left
+            const projectTrans = t.projects.items[i] || project;
+            const title = projectTrans.title || project.title;
+            const desc = projectTrans.desc || project.desc;
+            const tags = projectTrans.tags || project.tags;
+            const country = projectTrans.country || project.country;
+            const year = projectTrans.year || project.year;
+
+            // All cards: Image on Right, Content on Left in RTL; in LTR, Content on Left, Image on Right
             const layoutClass = 'lg:flex-row';
 
             return (
@@ -56,21 +65,27 @@ export function ProjectsSection() {
                   {/* Optional Logo */}
                   {project.logo && (
                     <div className="-mb-3 md:-mb-4 relative h-20 md:h-24 w-[200px]">
-                      <Image src={project.logo} alt="Logo" fill sizes="200px" className="object-contain object-right brightness-0 opacity-90" />
+                      <Image 
+                        src={project.logo} 
+                        alt="Logo" 
+                        fill 
+                        sizes="200px" 
+                        className={`object-contain ${isRTL ? 'object-right' : 'object-left'} brightness-0 opacity-90`} 
+                      />
                     </div>
                   )}
 
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-4 tracking-tight leading-tight">
-                    {project.title}
+                    {title}
                   </h3>
 
                   <p className="text-[15px] md:text-base font-serif leading-[1.8] mb-8 font-medium opacity-80 text-start max-w-[90%]">
-                    {project.desc}
+                    {desc}
                   </p>
 
                   {/* Tags */}
                   <div className="flex flex-wrap justify-start gap-2.5 mb-8">
-                    {project.tags.map((tag, idx) => (
+                    {tags.map((tag, idx) => (
                       <span
                         key={idx}
                         className="inline-flex items-center gap-2 rounded-full border border-abyssal-blue/10 px-3.5 py-1.5 text-[13px] font-bold shadow-[0_1px_2px_rgba(0,0,0,0.05)] bg-abyssal-blue/5 hover:bg-abyssal-blue/10 transition-colors cursor-default"
@@ -109,22 +124,22 @@ export function ProjectsSection() {
                         <button className="flex items-center justify-center gap-2.5 bg-abyssal-blue text-palladian px-4 py-2.5 md:px-5 rounded-2xl hover:bg-blue-fantastic transition-transform hover:-translate-y-1 shadow-md">
                           <FaApple className="text-2xl mb-0.5" />
                           <div className="flex flex-col items-start leading-tight">
-                            <span className="text-[9px] text-palladian/80 mb-0.5">حمّله من</span>
-                            <span className="text-[14px] md:text-[15px] font-bold tracking-wide">آب ستور</span>
+                            <span className="text-[9px] text-palladian/80 mb-0.5">{t.projects.downloadFrom}</span>
+                            <span className="text-[14px] md:text-[15px] font-bold tracking-wide">{t.projects.appStore}</span>
                           </div>
                         </button>
                         <button className="flex items-center justify-center gap-2.5 bg-abyssal-blue text-palladian px-4 py-2.5 md:px-5 rounded-2xl hover:bg-blue-fantastic transition-transform hover:-translate-y-1 shadow-md">
                           <div className="relative w-6 h-6"><Image src="https://api.iconify.design/logos:google-play-icon.svg" alt="Google Play" fill sizes="24px" className="object-contain" /></div>
                           <div className="flex flex-col items-start leading-tight">
-                            <span className="text-[9px] text-palladian/80 mb-0.5">حمّله من</span>
-                            <span className="text-[14px] md:text-[15px] font-bold tracking-wide">جوجل بلاي</span>
+                            <span className="text-[9px] text-palladian/80 mb-0.5">{t.projects.downloadFrom}</span>
+                            <span className="text-[14px] md:text-[15px] font-bold tracking-wide">{t.projects.googlePlay}</span>
                           </div>
                         </button>
                       </>
                     ) : (
                       <NeoButton variant="green" className="text-[15px]">
-                        زيارة الموقع
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        {t.projects.visitWebsite}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={isRTL ? '' : 'rotate-180'}>
                           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                           <polyline points="15 3 21 3 21 9"></polyline>
                           <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -138,12 +153,12 @@ export function ProjectsSection() {
                 <div className="lg:w-1/2 relative bg-blue-fantastic min-h-[400px] lg:min-h-full">
 
                   {/* Floating Badges */}
-                  <div className="absolute top-6 right-6 z-10 bg-abyssal-blue/50 text-palladian rounded-full px-5 py-1.5 text-sm font-bold border border-palladian/10 backdrop-blur-md">
-                    {project.country}
+                  <div className={`absolute top-6 ${isRTL ? 'right-6' : 'left-6'} z-10 bg-abyssal-blue/50 text-palladian rounded-full px-5 py-1.5 text-sm font-bold border border-palladian/10 backdrop-blur-md`}>
+                    {country}
                   </div>
 
-                  <div className="absolute top-6 left-6 z-10 bg-abyssal-blue/50 text-palladian rounded-full px-5 py-1.5 text-sm font-bold border border-palladian/10 backdrop-blur-md">
-                    {project.year}
+                  <div className={`absolute top-6 ${isRTL ? 'left-6' : 'right-6'} z-10 bg-abyssal-blue/50 text-palladian rounded-full px-5 py-1.5 text-sm font-bold border border-palladian/10 backdrop-blur-md`}>
+                    {year}
                   </div>
 
                   {/* Fully covering mockup image */}
@@ -177,8 +192,8 @@ export function ProjectsSection() {
             variant="green"
             className="text-[16px] px-10"
           >
-            ابدأ مشروع
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mb-0.5">
+            {t.projects.startProject}
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={`mb-0.5 ${isRTL ? '' : 'rotate-90'}`}>
               <line x1="17" y1="17" x2="7" y2="7"></line>
               <polyline points="17 7 7 7 7 17"></polyline>
             </svg>

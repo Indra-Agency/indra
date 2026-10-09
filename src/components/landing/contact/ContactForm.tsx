@@ -5,8 +5,10 @@ import { FiSend, FiCheck, FiX } from 'react-icons/fi';
 import { useState } from 'react';
 import { NeoButton } from '@/components/ui/NeoButton';
 import { submitContactForm } from '@/actions/contact';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export function ContactForm() {
+  const { t, dir, isRTL } = useLanguage();
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -52,12 +54,12 @@ export function ContactForm() {
       viewport={{ once: true, margin: "-100px" }}
       className="h-full"
     >
-      <form onSubmit={handleSubmit} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm text-abyssal-blue flex flex-col h-full relative">
+      <form onSubmit={handleSubmit} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm text-abyssal-blue flex flex-col h-full relative" dir={dir}>
         
         {/* Title area */}
         <div className="text-start mb-8 flex flex-col items-start w-full">
-          <h3 className="text-2xl md:text-3xl font-extrabold mb-2 tracking-tight">أرسل رسالة</h3>
-          <p className="text-zinc-500 font-medium text-[14px]">سأعود إليك خلال 24 ساعة.</p>
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-2 tracking-tight">{t.contact.formTitle}</h3>
+          <p className="text-zinc-500 font-medium text-[14px]">{t.contact.formSubtitle}</p>
         </div>
 
         {/* Spam Protection & Config */}
@@ -67,52 +69,52 @@ export function ContactForm() {
           {/* Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2 items-start">
-              <label className="text-[12px] font-bold text-zinc-700 pr-1 w-full text-start">الاسم</label>
+              <label className="text-[12px] font-bold text-zinc-700 pr-1 w-full text-start">{t.contact.nameLabel}</label>
               <input 
                 type="text" 
                 name="name"
                 required
                 className="w-full bg-[#fcfcfc] border border-oatmeal rounded-2xl px-5 py-3.5 text-abyssal-blue text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
-                placeholder="اسمك"
-                dir="rtl"
+                placeholder={t.contact.namePlaceholder}
+                dir={dir}
               />
             </div>
             <div className="flex flex-col gap-2 items-start">
-              <label className="text-[12px] font-bold text-zinc-700 pr-1 w-full text-start">البريد الإلكتروني</label>
+              <label className="text-[12px] font-bold text-zinc-700 pr-1 w-full text-start">{t.contact.emailLabel}</label>
               <input 
                 type="email" 
                 name="email"
                 required
                 className="w-full bg-[#fcfcfc] border border-oatmeal rounded-2xl px-5 py-3.5 text-abyssal-blue text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
-                placeholder="your@email.com"
-                dir="rtl"
+                placeholder={t.contact.emailPlaceholder}
+                dir={dir}
               />
             </div>
           </div>
 
           {/* Row 2 */}
           <div className="flex flex-col gap-2 items-start">
-            <label className="text-[12px] font-bold text-zinc-700 pr-1 w-full text-start">الموضوع</label>
+            <label className="text-[12px] font-bold text-zinc-700 pr-1 w-full text-start">{t.contact.subjectLabel}</label>
             <input 
               type="text" 
               name="_subject"
               required
               className="w-full bg-[#fcfcfc] border border-oatmeal rounded-2xl px-5 py-3.5 text-abyssal-blue text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px]"
-              placeholder="ما موضوع رسالتك؟"
-              dir="rtl"
+              placeholder={t.contact.subjectPlaceholder}
+              dir={dir}
             />
           </div>
 
           {/* Row 3 */}
           <div className="flex flex-col gap-2 items-start">
-            <label className="text-[12px] font-bold text-zinc-700 pr-1 w-full text-start">الرسالة</label>
+            <label className="text-[12px] font-bold text-zinc-700 pr-1 w-full text-start">{t.contact.messageLabel}</label>
             <textarea 
               name="message"
               required
               rows={4}
               className="w-full bg-[#fcfcfc] border border-oatmeal rounded-2xl px-5 py-4 text-abyssal-blue text-start focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all font-medium text-[14px] resize-none"
-              placeholder="أخبرني عن مشروعك وأهدافك والجدول الزمني..."
-              dir="rtl"
+              placeholder={t.contact.messagePlaceholder}
+              dir={dir}
             />
           </div>
         </div>
@@ -125,13 +127,13 @@ export function ContactForm() {
           className="mt-8 w-full text-[16px] py-4 disabled:opacity-70 disabled:pointer-events-none"
         >
           {status === 'loading' ? (
-            'جاري الإرسال...'
+            t.contact.sendingBtn
           ) : status === 'success' ? (
-            <>تم الإرسال بنجاح <FiCheck className="text-xl" /></>
+            <>{t.contact.successBtn} <FiCheck className="text-xl" /></>
           ) : status === 'error' ? (
-            <>حدث خطأ، حاول مجدداً <FiX className="text-xl" /></>
+            <>{t.contact.errorBtn} <FiX className="text-xl" /></>
           ) : (
-            <>إرسال الرسالة <FiSend className="text-lg -rotate-45 mb-1" /></>
+            <>{t.contact.sendBtn} <FiSend className={`text-lg mb-1 ${isRTL ? '-rotate-45' : 'rotate-45'}`} /></>
           )}
         </NeoButton>
       </form>

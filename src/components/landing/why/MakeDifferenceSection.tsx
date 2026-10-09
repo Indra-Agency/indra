@@ -14,8 +14,10 @@
  */
 
 import { useRef, useEffect } from 'react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export function MakeDifferenceSection() {
+  const { t, isRTL } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const gradRef = useRef<SVGLinearGradientElement>(null);
@@ -122,7 +124,7 @@ export function MakeDifferenceSection() {
           paddingBottom: 'clamp(1.5rem, 3vw, 3.5rem)',
           overflow: 'hidden',
         }}
-        aria-label="أصنع الفارق"
+        aria-label={t.why.shimmerTitle}
       >
         <div
           ref={containerRef}
@@ -131,7 +133,7 @@ export function MakeDifferenceSection() {
             alignItems: 'center',
             justifyContent: 'center',
             gap: 'clamp(0.6rem, 2vw, 2rem)',
-            direction: 'rtl',
+            direction: isRTL ? 'rtl' : 'ltr',
             width: 'fit-content',
             margin: '0 auto', /* Keeps the calculation tightly bound to the content */
           }}
@@ -146,7 +148,7 @@ export function MakeDifferenceSection() {
               whiteSpace: 'nowrap',
             }}
           >
-            أصنع الفارق
+            {t.why.shimmerTitle}
           </h2>
 
           {/* ── SVG Sparkles (On the left) ── */}

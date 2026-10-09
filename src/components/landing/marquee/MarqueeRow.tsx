@@ -15,6 +15,34 @@ interface Props {
   direction: 'left' | 'right';
 }
 
+function EightSpokedAsterisk({ className = "w-5 h-5 md:w-6 md:h-6 text-white shrink-0" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="1.3" />
+      {/* 4 radiating axes */}
+      <line x1="12" y1="3.5" x2="12" y2="20.5" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="3.5" y1="12" x2="20.5" y2="12" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="6" y1="6" x2="18" y2="18" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="6" y1="18" x2="18" y2="6" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Dots at the tips */}
+      <circle cx="12" cy="3.5" r="1.3" />
+      <circle cx="12" cy="20.5" r="1.3" />
+      <circle cx="3.5" cy="12" r="1.3" />
+      <circle cx="20.5" cy="12" r="1.3" />
+      <circle cx="6" cy="6" r="1.3" />
+      <circle cx="18" cy="18" r="1.3" />
+      <circle cx="6" cy="18" r="1.3" />
+      <circle cx="18" cy="6" r="1.3" />
+    </svg>
+  );
+}
+
 function PillUnit({ label }: { label: string }) {
   return (
     <>
@@ -25,11 +53,10 @@ function PillUnit({ label }: { label: string }) {
         {label}
       </span>
       <span
-        className="flex items-center text-xl md:text-2xl shrink-0"
-        style={{ color: 'white' }}
+        className="flex items-center shrink-0 text-white"
         aria-hidden="true"
       >
-        ✳
+        <EightSpokedAsterisk />
       </span>
     </>
   );

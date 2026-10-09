@@ -4,12 +4,14 @@ import Image from 'next/image';
 import { NeoButton } from '@/components/ui/NeoButton';
 import { motion } from 'framer-motion';
 import { FiCalendar, FiMapPin, FiArrowLeft } from 'react-icons/fi';
-
+import { useLanguage } from '@/i18n/LanguageContext';
 import { EXPERIENCE_DATA } from '@/data/experience';
 
 export function ExperienceSection() {
+  const { t, dir, isRTL } = useLanguage();
+
   return (
-    <section id="experience" className="py-16 md:py-24 relative" dir="rtl">
+    <section id="experience" className="py-16 md:py-24 relative" dir={dir}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
@@ -21,7 +23,7 @@ export function ExperienceSection() {
             viewport={{ once: true }}
             className="text-burning-flame font-semibold tracking-wider text-sm mb-3 uppercase"
           >
-            المسيرة المهنية
+            {t.experience.subtitle}
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +32,7 @@ export function ExperienceSection() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl lg:text-5xl tracking-tight"
           >
-            أين صنعت الأثر
+            {t.experience.title}
           </motion.h2>
         </div>
 
@@ -42,6 +44,15 @@ export function ExperienceSection() {
 
           <div className="space-y-12 lg:space-y-20">
             {EXPERIENCE_DATA.map((exp, i) => {
+              const expTrans = t.experience.items[i] || exp;
+              const company = expTrans.company || exp.company;
+              const badge = expTrans.badge || exp.badge;
+              const title = expTrans.title || exp.title;
+              const location = expTrans.location || exp.location;
+              const date = expTrans.date || exp.date;
+              const shortDesc = expTrans.shortDesc || exp.shortDesc;
+              const achievements = expTrans.achievements || exp.achievements;
+
               const isEven = i % 2 === 0;
               const flexDir = isEven ? 'lg:flex-row' : 'lg:flex-row-reverse';
 
@@ -74,35 +85,35 @@ export function ExperienceSection() {
                     
                     {/* Top Row: Company & Badge */}
                     <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                      <span className="font-extrabold text-base md:text-lg">{exp.company}</span>
+                      <span className="font-extrabold text-base md:text-lg">{company}</span>
                       <span className="bg-abyssal-blue/5 px-3 py-1 rounded-full text-[11px] font-bold border border-abyssal-blue/5">
-                        {exp.badge}
+                        {badge}
                       </span>
                     </div>
 
                     {/* Job Title */}
                     <h3 className="text-xl md:text-2xl font-black mb-4 tracking-tight leading-tight">
-                      {exp.title}
+                      {title}
                     </h3>
                     
                     {/* Date & Location Pills */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[12px] md:text-[13px] font-bold ${exp.pillClass}`}>
-                        <FiMapPin className="text-sm" /> {exp.location}
+                        <FiMapPin className="text-sm" /> {location}
                       </div>
                       <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[12px] md:text-[13px] font-bold ${exp.pillClass}`}>
-                        <FiCalendar className="text-sm" /> {exp.date}
+                        <FiCalendar className="text-sm" /> {date}
                       </div>
                     </div>
 
                     {/* Short Description */}
                     <p className="text-[13.5px] md:text-[14px] font-medium leading-[1.7] opacity-90 mb-5">
-                      {exp.shortDesc}
+                      {shortDesc}
                     </p>
 
                     {/* Achievements */}
                     <ul className="space-y-2 mb-6 w-full">
-                      {exp.achievements.map((ach, idx) => (
+                      {achievements.map((ach, idx) => (
                         <li key={idx} className="flex items-start gap-2.5 text-[13px] md:text-[13.5px] font-bold opacity-90 leading-[1.6]">
                           <svg xmlns="http://www.w3.org/2000/svg" className="w-[16px] h-[16px] shrink-0 mt-0.5 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M9 14 4 9l5-5" />
@@ -139,8 +150,8 @@ export function ExperienceSection() {
                     {/* CTA Button */}
                     <div className="flex justify-end mt-2">
                       <NeoButton href="#contact" variant={exp.btnVariant} className="px-5 py-2 text-[13px]">
-                        للتحدث
-                        <FiArrowLeft className="text-base" />
+                        {t.experience.cta}
+                        <FiArrowLeft className={`text-base ${isRTL ? '' : 'rotate-180'}`} />
                       </NeoButton>
                     </div>
 

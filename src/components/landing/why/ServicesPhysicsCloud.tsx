@@ -12,6 +12,7 @@ import {
   FaUsers, FaChartLine, FaCloud 
 } from 'react-icons/fa';
 import { MdRocketLaunch, MdAnalytics } from 'react-icons/md';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 const GOOGLE_GRADIENT = 'bg-[linear-gradient(90deg,#4285F4_0%,#EA4335_33%,#FBBC05_66%,#34A853_100%)] text-palladian';
 
@@ -161,15 +162,18 @@ export function ServicesPhysicsCloud() {
     };
   }, [isInView]);
 
+  const { t, isRTL } = useLanguage();
+
   return (
     <section className="w-full bg-abyssal-blue">
       <div 
         ref={sceneRef} 
         className="relative w-full h-[350px] overflow-hidden cursor-pointer"
-        dir="rtl"
+        dir={isRTL ? "rtl" : "ltr"}
       >
         {TAGS.map((tag) => {
           const Icon = tag.icon;
+          const tagText = t.physicsCloud.find((p) => p.id === tag.id)?.text || tag.text;
           return (
             <div
               key={tag.id}
@@ -183,7 +187,7 @@ export function ServicesPhysicsCloud() {
               <span aria-hidden="true" className="inline-flex items-center justify-center">
                 <Icon size={18} />
               </span>
-              <span className="text-[15px] leading-none pt-1" dir="rtl">{tag.text}</span>
+              <span className="text-[15px] leading-none pt-1" dir={isRTL ? "rtl" : "ltr"}>{tagText}</span>
             </div>
           );
         })}

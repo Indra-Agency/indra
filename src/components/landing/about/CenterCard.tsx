@@ -9,8 +9,11 @@
 
 import { motion } from 'framer-motion';
 import { NeoButton } from '@/components/ui/NeoButton';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export function CenterCard() {
+  const { t, isRTL } = useLanguage();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -42,7 +45,7 @@ export function CenterCard() {
         </div>
         <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-medium bg-palladian/5 px-2.5 py-1 rounded-full">
           <span className="w-1.5 h-1.5 rounded-full bg-burning-flame animate-pulse" />
-          متاح
+          {t.about.centerCard.available}
         </div>
       </div>
 
@@ -69,14 +72,14 @@ export function CenterCard() {
 
       {/* ── Info ── */}
       <div className="text-center mb-10 w-full">
-        <h3 className="text-xl font-bold text-palladian mb-2">وكالة Indra</h3>
-        <p className="text-sm text-burning-flame font-medium mb-4">شريكك التقني الشامل</p>
+        <h3 className="text-xl font-bold text-palladian mb-2">{t.about.centerCard.brand}</h3>
+        <p className="text-sm text-burning-flame font-medium mb-4">{t.about.centerCard.tagline}</p>
         <p className="text-xs text-zinc-500 flex items-center justify-center gap-1.5">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
-          تخدم العملاء عالمياً
+          {t.about.centerCard.global}
         </p>
       </div>
 
@@ -84,17 +87,17 @@ export function CenterCard() {
       <div className="flex w-full justify-between items-center px-4 mb-8">
         <div className="text-center">
           <p className="text-palladian font-bold text-lg mb-1">4</p>
-          <p className="text-zinc-600 text-[10px] uppercase tracking-wider">دول</p>
+          <p className="text-zinc-600 text-[10px] uppercase tracking-wider">{t.about.centerCard.countries}</p>
         </div>
         <div className="w-px h-8 bg-blue-fantastic" />
         <div className="text-center">
           <p className="text-palladian font-bold text-lg mb-1">+50</p>
-          <p className="text-zinc-600 text-[10px] uppercase tracking-wider">مشروع</p>
+          <p className="text-zinc-600 text-[10px] uppercase tracking-wider">{t.about.centerCard.projects}</p>
         </div>
         <div className="w-px h-8 bg-blue-fantastic" />
         <div className="text-center">
           <p className="text-palladian font-bold text-lg mb-1">+5</p>
-          <p className="text-zinc-600 text-[10px] uppercase tracking-wider">سنوات</p>
+          <p className="text-zinc-600 text-[10px] uppercase tracking-wider">{t.about.centerCard.years}</p>
         </div>
       </div>
 
@@ -104,8 +107,8 @@ export function CenterCard() {
         variant="green"
         className="w-full text-sm"
       >
-        لنبني منتجك
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="rtl:-scale-x-100">
+        {t.about.centerCard.cta}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={isRTL ? "rtl:-scale-x-100" : ""}>
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
