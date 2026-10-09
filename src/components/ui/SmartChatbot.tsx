@@ -224,19 +224,15 @@ export function SmartChatbot() {
             {/* Header */}
             <div className="bg-burning-flame p-4 flex items-center justify-between text-abyssal-blue relative z-10 border-b-2 border-abyssal-blue">
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-abyssal-blue/10 bg-palladian/20">
+                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-abyssal-blue/20 bg-black shrink-0 shadow-sm">
                   <Image
-                    src="/images/4.jpg"
+                    src="/apple-touch-icon.png"
                     alt="Indra"
                     fill
                     sizes="40px"
-                    className="object-cover"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "https://api.iconify.design/ph:user-bold.svg";
-                    }}
+                    className="object-contain p-1.5"
+                    priority
                   />
-                  <span className="absolute bottom-0 left-0 w-2.5 h-2.5 rounded-full bg-burning-flame border border-burning-flame" />
                 </div>
                 <div className="flex flex-col items-start leading-tight">
                   <span className="font-extrabold text-sm">اسأل Indra</span>
@@ -263,17 +259,13 @@ export function SmartChatbot() {
                 >
                   {/* Bot Avatar */}
                   {msg.sender === 'bot' && (
-                    <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-oatmeal bg-palladian">
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-abyssal-blue/10 bg-black shadow-sm">
                       <Image
-                        src="/images/4.jpg"
+                        src="/apple-touch-icon.png"
                         alt="Indra"
                         fill
                         sizes="32px"
-                        className="object-cover"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = "https://api.iconify.design/ph:user-bold.svg";
-                        }}
+                        className="object-contain p-1"
                       />
                     </div>
                   )}
@@ -301,17 +293,13 @@ export function SmartChatbot() {
               {/* Typing Indicator */}
               {isTyping && (
                 <div className="flex items-start gap-2.5">
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-oatmeal bg-palladian">
+                  <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-abyssal-blue/10 bg-black shadow-sm">
                     <Image
-                      src="/images/4.jpg"
+                      src="/apple-touch-icon.png"
                       alt="Indra"
                       fill
                       sizes="32px"
-                      className="object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = "https://api.iconify.design/ph:user-bold.svg";
-                      }}
+                      className="object-contain p-1"
                     />
                   </div>
                   <div className="bg-palladian px-4 py-3 rounded-2xl rounded-tr-none shadow-sm border border-oatmeal/80 flex items-center justify-center gap-1">
