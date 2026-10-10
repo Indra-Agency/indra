@@ -17,17 +17,28 @@ export function DynamicWidgetsWrapper() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Defer widgets until after critical rendering is completely finished
-    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-      const id = (window as Window & { requestIdleCallback: any; cancelIdleCallback: any }).requestIdleCallback(
-        () => setMounted(true),
-        { timeout: 3000 }
-      );
-      return () => (window as Window & { requestIdleCallback: any; cancelIdleCallback: any }).cancelIdleCallback(id);
-    } else {
-      const timer = setTimeout(() => setMounted(true), 2500);
-      return () => clearTimeout(timer);
-    }
+    const trigger = () => {
+      setMounted(true);
+      cleanup();
+    };
+
+    const cleanup = () => {
+      window.removeEventListener('scroll', trigger);
+      window.removeEventListener('pointerdown', trigger);
+      window.removeEventListener('keydown', trigger);
+    };
+
+    window.addEventListener('scroll', trigger, { once: true, passive: true });
+    window.addEventListener('pointerdown', trigger, { once: true, passive: true });
+    window.addEventListener('keydown', trigger, { once: true, passive: true });
+
+    // Fallback timer for delayed idle mount
+    const timer = setTimeout(trigger, 4000);
+
+    return () => {
+      cleanup();
+      clearTimeout(timer);
+    };
   }, []);
 
   if (!mounted) return null;

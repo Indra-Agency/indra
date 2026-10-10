@@ -121,14 +121,14 @@ export function ProjectsSection() {
                   <div className="flex flex-wrap justify-start items-center gap-3 mt-auto">
                     {project.ctaType === 'apps' ? (
                       <>
-                        <button className="flex items-center justify-center gap-2.5 bg-abyssal-blue text-palladian px-4 py-2.5 md:px-5 rounded-2xl hover:bg-blue-fantastic transition-transform hover:-translate-y-1 shadow-md">
+                        <button type="button" aria-label={`${t.projects.downloadFrom} ${t.projects.appStore}`} className="flex items-center justify-center gap-2.5 bg-abyssal-blue text-palladian px-4 py-2.5 md:px-5 rounded-2xl hover:bg-blue-fantastic transition-transform hover:-translate-y-1 shadow-md">
                           <FaApple className="text-2xl mb-0.5" />
                           <div className="flex flex-col items-start leading-tight">
                             <span className="text-[9px] text-palladian/80 mb-0.5">{t.projects.downloadFrom}</span>
                             <span className="text-[14px] md:text-[15px] font-bold tracking-wide">{t.projects.appStore}</span>
                           </div>
                         </button>
-                        <button className="flex items-center justify-center gap-2.5 bg-abyssal-blue text-palladian px-4 py-2.5 md:px-5 rounded-2xl hover:bg-blue-fantastic transition-transform hover:-translate-y-1 shadow-md">
+                        <button type="button" aria-label={`${t.projects.downloadFrom} ${t.projects.googlePlay}`} className="flex items-center justify-center gap-2.5 bg-abyssal-blue text-palladian px-4 py-2.5 md:px-5 rounded-2xl hover:bg-blue-fantastic transition-transform hover:-translate-y-1 shadow-md">
                           <div className="relative w-6 h-6"><Image src="https://api.iconify.design/logos:google-play-icon.svg" alt="Google Play" fill sizes="24px" className="object-contain" /></div>
                           <div className="flex flex-col items-start leading-tight">
                             <span className="text-[9px] text-palladian/80 mb-0.5">{t.projects.downloadFrom}</span>

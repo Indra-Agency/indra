@@ -14,14 +14,14 @@ export function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-24">
-          <motion.h3 
+          <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-burning-flame font-bold mb-4 text-base tracking-wide"
+            className="text-burning-flame font-bold mb-4 text-base tracking-wide block"
           >
             {t.services.subtitle}
-          </motion.h3>
+          </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -108,10 +108,10 @@ export function DesktopNav() {
             linkStyle = 'bg-burning-flame text-abyssal-blue border-2 border-abyssal-blue shadow-[3px_3px_0px_var(--color-abyssal-blue)] px-4 py-[6px]';
           } else if (isScrolled) {
             // Inactive state on white bar
-            linkStyle = 'text-abyssal-blue/60 hover:text-abyssal-blue hover:bg-abyssal-blue/5 px-4 py-[6px] border-2 border-transparent shadow-[0px_0px_0px_transparent]';
+            linkStyle = 'text-abyssal-blue/80 hover:text-abyssal-blue hover:bg-abyssal-blue/5 px-4 py-[6px] border-2 border-transparent shadow-[0px_0px_0px_transparent]';
           } else {
             // Inactive state on dark bar
-            linkStyle = 'text-palladian/60 hover:text-palladian hover:bg-palladian/5 px-4 py-[6px] border-2 border-transparent shadow-[0px_0px_0px_transparent]';
+            linkStyle = 'text-palladian/85 hover:text-palladian hover:bg-palladian/5 px-4 py-[6px] border-2 border-transparent shadow-[0px_0px_0px_transparent]';
           }
 
           return (

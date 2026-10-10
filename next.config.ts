@@ -66,8 +66,9 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    // Serve images in modern WebP format
-    formats: ["image/webp"],
+    // Serve images in modern AVIF and WebP formats
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
     // Specific device sizes for responsive images
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
@@ -89,6 +90,16 @@ const nextConfig: NextConfig = {
       // Aggressive caching for images
       {
         source: "/images/:all*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Aggressive caching for fonts
+      {
+        source: "/fonts/:all*",
         headers: [
           {
             key: "Cache-Control",

@@ -21,7 +21,7 @@ interface Props {
 }
 
 export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, toggleLanguage, t, isRTL } = useLanguage();
 
   const navItems = [
     { href: '#about', label: t.nav.about },
@@ -65,10 +65,12 @@ export function MobileNav({ mobileOpen, setMobileOpen }: Props) {
 
           {/* Hamburger */}
           <button
+            type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{ background: 'rgba(255,255,255,0.15)' }}
             className="w-9 h-9 rounded-full flex flex-col items-center justify-center gap-[5px] cursor-pointer"
-            aria-label="القائمة"
+            aria-label={isRTL ? "القائمة" : "Menu"}
+            aria-expanded={mobileOpen}
           >
             <span className="block h-[2px] rounded-full bg-palladian transition-all duration-300 origin-center"
               style={{ width: 18, transform: mobileOpen ? 'translateY(7px) rotate(-45deg)' : 'none' }} />

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 const MarqueeSet = ({ logos }: { logos: string[] }) => (
   <div className="flex shrink-0 items-center w-max">
@@ -10,21 +11,19 @@ const MarqueeSet = ({ logos }: { logos: string[] }) => (
         <div className="flex justify-center items-center w-[95px] md:w-[130px] aspect-[130/56]">
           <Image
             src={logo}
-            alt="Client Logo"
+            alt={`Client partner logo ${i + 1}`}
             width={130}
             height={56}
             sizes="(max-width: 768px) 95px, 130px"
             loading="lazy"
             decoding="async"
-            className="object-contain w-full h-full brightness-0 invert opacity-50 hover:opacity-100 transition-opacity duration-300"
+            className="object-contain w-full h-full brightness-0 invert opacity-60 hover:opacity-100 transition-opacity duration-300"
           />
         </div>
       </div>
     ))}
   </div>
 );
-
-import { useLanguage } from '@/i18n/LanguageContext';
 
 export function ClientsSection({ logos }: { logos: string[] }) {
   const { t, dir } = useLanguage();

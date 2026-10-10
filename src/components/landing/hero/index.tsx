@@ -19,43 +19,22 @@
  *     └─ ./TrustedBy    — logo strip
  */
 
-import { useState, useEffect } from 'react';
 import { HeroContent } from './HeroContent';
-import dynamic from 'next/dynamic';
-
-const FloatingAnimation = dynamic(() => import('./FloatingAnimation'), {
-  ssr: false,
-});
 
 export function HeroSection({ logos = [] }: { logos?: string[] }) {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    // Only mount WebGL floating animation on desktop screens to save mobile CPU/GPU
-    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
-      setIsDesktop(true);
-    }
-  }, []);
-
   return (
     <section
       className="relative overflow-hidden flex flex-col min-h-screen w-full bg-abyssal-blue"
     >
-      {/* Mobile Ambient Glow Fallback (0% CPU, 0KB WebGL overhead) */}
+      {/* High-Performance GPU Ambient Glow (0% CPU, 0KB WebGL overhead) */}
       <div 
-        className="absolute inset-0 z-0 pointer-events-none md:hidden bg-[radial-gradient(ellipse_80%_60%_at_50%_15%,color-mix(in_srgb,var(--color-primary)_18%,transparent),transparent_70%)]" 
-      />
-
-      {/* Desktop WebGL Floating Animation (z-index: 0) */}
-      {isDesktop && (
-        <FloatingAnimation 
-          className="absolute inset-0 z-0 pointer-events-none hidden md:block" 
-          colorStops={['var(--color-primary)', 'var(--color-oatmeal)', '#4285F4']} 
-          amplitude={1}
-          blend={0.5}
-          speed={0.8}
-        />
-      )}
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="absolute top-[-5%] left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] lg:w-[1200px] h-[400px] sm:h-[500px] lg:h-[600px] rounded-full bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--color-primary)_24%,transparent)_0%,color-mix(in_srgb,var(--color-primary)_8%,transparent)_40%,transparent_70%)] blur-3xl opacity-80" />
+        <div className="absolute top-[25%] right-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(66,133,244,0.14)_0%,transparent_70%)] blur-3xl" />
+        <div className="absolute top-[35%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--color-oatmeal)_12%,transparent)_0%,transparent_70%)] blur-3xl" />
+      </div>
 
       {/* Content wrapper sitting clearly above the animated background */}
       <div

@@ -17,14 +17,14 @@ export function MethodologySection() {
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-32">
-          <motion.h3 
+          <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-burning-flame font-bold mb-4 text-base tracking-wide"
+            className="text-burning-flame font-bold mb-4 text-base tracking-wide block"
           >
             {t.methodology.subtitle}
-          </motion.h3>
+          </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

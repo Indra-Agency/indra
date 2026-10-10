@@ -23,7 +23,7 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" fill="var(--color-burning-flame)" />
         </svg>
-        <span className="text-xs font-semibold tracking-wide text-palladian/60">{t.hero.trustedBy}</span>
+        <span className="text-xs font-semibold tracking-wide text-palladian/80">{t.hero.trustedBy}</span>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" fill="var(--color-burning-flame)" />
         </svg>
@@ -36,7 +36,7 @@ export function TrustedBy({ logos = [] }: { logos?: string[] }) {
             <div key={i} className="flex justify-center items-center w-[90px] md:w-[110px] lg:w-[130px] aspect-[130/52] shrink-0">
               <Image
                 src={url}
-                alt={`Partner ${i + 1}`}
+                alt={`Partner brand logo ${i + 1}`}
                 width={130}
                 height={52}
                 sizes="(max-width: 768px) 90px, 130px"
